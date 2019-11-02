@@ -7,16 +7,21 @@
 //
 
 import Foundation
-import Combine
 
-struct MyType: Decodable {
-    
-}
-
-class ViewModel: ObservableObject {
-    var cancellable: AnyPublisher<MyType, Error>
-    
+class ViewModel {
     init() {
-        cancellable = cancellable.dataTask(for: "asd").eraseToAnyPublisher()
+        APIService.fetch(url: "https://ergast.com/api/f1/current/drivers/ricciardo.json")
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error)
+                    break
+                }
+            }, receiveValue: { (myType: DriverInfo) in
+                print(myType)
+            })
     }
 }
