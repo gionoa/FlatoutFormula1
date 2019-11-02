@@ -15,12 +15,13 @@
 		3F9BAE29236CCBBA00FB994D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BAE27236CCBBA00FB994D /* LaunchScreen.storyboard */; };
 		3F9BAE34236CCBBA00FB994D /* Formula_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BAE33236CCBBA00FB994D /* Formula_1Tests.swift */; };
 		3F9BAE3F236CCBBA00FB994D /* Formula_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BAE3E236CCBBA00FB994D /* Formula_1UITests.swift */; };
-		3F9BAE4E236CCDC600FB994D /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BAE4D236CCDC600FB994D /* Publisher.swift */; };
+		3F9BAE4E236CCDC600FB994D /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BAE4D236CCDC600FB994D /* APIService.swift */; };
 		3F9BAE55236D4C6800FB994D /* Formula1-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BAE51236D4C6800FB994D /* Formula1-Black.ttf */; };
 		3F9BAE56236D4C6800FB994D /* Formula1-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BAE52236D4C6800FB994D /* Formula1-Bold.ttf */; };
 		3F9BAE57236D4C6800FB994D /* Formula1-Wide.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BAE53236D4C6800FB994D /* Formula1-Wide.ttf */; };
 		3F9BAE58236D4C6800FB994D /* Formula1-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BAE54236D4C6800FB994D /* Formula1-Regular.ttf */; };
 		3FC1CE27236E277C00B092FB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1CE26236E277C00B092FB /* ViewModel.swift */; };
+		3FC1CE29236E4AF600B092FB /* DriverInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1CE28236E4AF600B092FB /* DriverInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,12 +56,13 @@
 		3F9BAE3A236CCBBA00FB994D /* Formula 1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Formula 1UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F9BAE3E236CCBBA00FB994D /* Formula_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formula_1UITests.swift; sourceTree = "<group>"; };
 		3F9BAE40236CCBBA00FB994D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F9BAE4D236CCDC600FB994D /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
+		3F9BAE4D236CCDC600FB994D /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		3F9BAE51236D4C6800FB994D /* Formula1-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula1-Black.ttf"; sourceTree = "<group>"; };
 		3F9BAE52236D4C6800FB994D /* Formula1-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula1-Bold.ttf"; sourceTree = "<group>"; };
 		3F9BAE53236D4C6800FB994D /* Formula1-Wide.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula1-Wide.ttf"; sourceTree = "<group>"; };
 		3F9BAE54236D4C6800FB994D /* Formula1-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula1-Regular.ttf"; sourceTree = "<group>"; };
 		3FC1CE26236E277C00B092FB /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		3FC1CE28236E4AF600B092FB /* DriverInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +113,6 @@
 		3F9BAE1B236CCBB800FB994D /* Formula 1 */ = {
 			isa = PBXGroup;
 			children = (
-				3F9BAE4F236D238E00FB994D /* Extensions */,
 				3F9BAE1C236CCBB800FB994D /* AppDelegate.swift */,
 				3F9BAE1E236CCBB800FB994D /* SceneDelegate.swift */,
 				3FC1CE25236E274300B092FB /* Models */,
@@ -119,6 +120,7 @@
 				3FC1CE24236E273600B092FB /* ViewModels */,
 				3F9BAE4C236CCDAC00FB994D /* Networking */,
 				3F9BAE50236D4C5500FB994D /* Fonts */,
+				3F9BAE4F236D238E00FB994D /* Extensions */,
 				3F9BAE22236CCBBA00FB994D /* Assets.xcassets */,
 				3F9BAE27236CCBBA00FB994D /* LaunchScreen.storyboard */,
 				3F9BAE2A236CCBBA00FB994D /* Info.plist */,
@@ -156,6 +158,7 @@
 		3F9BAE4C236CCDAC00FB994D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				3F9BAE4D236CCDC600FB994D /* APIService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -163,7 +166,6 @@
 		3F9BAE4F236D238E00FB994D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3F9BAE4D236CCDC600FB994D /* Publisher.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -198,6 +200,7 @@
 		3FC1CE25236E274300B092FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3FC1CE28236E4AF600B092FB /* DriverInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -339,7 +342,8 @@
 			files = (
 				3FC1CE27236E277C00B092FB /* ViewModel.swift in Sources */,
 				3F9BAE1D236CCBB800FB994D /* AppDelegate.swift in Sources */,
-				3F9BAE4E236CCDC600FB994D /* Publisher.swift in Sources */,
+				3F9BAE4E236CCDC600FB994D /* APIService.swift in Sources */,
+				3FC1CE29236E4AF600B092FB /* DriverInfo.swift in Sources */,
 				3F9BAE1F236CCBB800FB994D /* SceneDelegate.swift in Sources */,
 				3F9BAE21236CCBB800FB994D /* ContentView.swift in Sources */,
 			);
