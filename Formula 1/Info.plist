@@ -56,5 +56,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Formula1-Bold.ttf</string>
+		<string>Formula1-Regular.ttf</string>
+		<string>Formula1-Wide.ttf</string>
+		<string>Formula1-Black.ttf</string>
+	</array>
 </dict>
 </plist>
