@@ -10,7 +10,7 @@ import Foundation
 
 class ViewModel {
     init() {
-        APIService.fetch(url: "https://ergast.com/api/f1/current/drivers/ricciardo.json")
+        DataLoader.fetch(url: "https://ergast.com/api/f1/current/drivers/ricciardo.json")
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -24,4 +24,10 @@ class ViewModel {
                 print(myType)
             })
     }
+    
+    func url() {
+        var components = URLComponents()
+        
+    }
 }
+
