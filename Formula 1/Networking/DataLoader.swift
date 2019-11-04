@@ -9,24 +9,10 @@
 import Foundation
 import Combine
 
-enum PublisherError: Error, CustomStringConvertible {
-    case network
-    case parsing
-    
-    var description: String {
-        switch self {
-            case .network: return "Failed to reach server"
-            case .parsing: return "Failed to decode from server"
-        }
-    }
-}
-
-struct DataLoader {
+struct WebService {
     private static func dataTask(_ url: URL) -> AnyPublisher<Data, Error> {
-        let endpoint = Endpoint(category: .drivers, driver: .ricciardo).url!
-        print(endpoint)
         return URLSession.shared
-            .dataTaskPublisher(for: endpoint)//url)
+            .dataTaskPublisher(for: url)
             .tryMap { data, response in
                 guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
                     throw PublisherError.network
@@ -36,15 +22,13 @@ struct DataLoader {
             .eraseToAnyPublisher()
     }
     
-    static func fetch<T: Decodable>(url: String) -> AnyPublisher<T, PublisherError> {
-        let url = URL(string: url)!
-        
+    static func fetch<T: Decodable>(_ subPath: Path) -> AnyPublisher<T, PublisherError> {
+        let url = Endpoint(subPath).url!
+        print(url)
         return
-            Self.dataTask(url)
+            dataTask(url)
                 .decode(type: T.self, decoder: JSONDecoder())
-                .mapError { error in
-                    return PublisherError.parsing
-                }
+                .mapError { _ in return PublisherError.parsing }
                 .eraseToAnyPublisher()
     }
 }
