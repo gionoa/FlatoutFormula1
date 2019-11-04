@@ -18,7 +18,7 @@
 		3F9BAE29236CCBBA00FB994D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BAE27236CCBBA00FB994D /* LaunchScreen.storyboard */; };
 		3F9BAE34236CCBBA00FB994D /* Formula_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BAE33236CCBBA00FB994D /* Formula_1Tests.swift */; };
 		3F9BAE3F236CCBBA00FB994D /* Formula_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BAE3E236CCBBA00FB994D /* Formula_1UITests.swift */; };
-		3F9BAE4E236CCDC600FB994D /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BAE4D236CCDC600FB994D /* DataLoader.swift */; };
+		3F9BAE4E236CCDC600FB994D /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BAE4D236CCDC600FB994D /* WebService.swift */; };
 		3F9BAE55236D4C6800FB994D /* Formula1-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BAE51236D4C6800FB994D /* Formula1-Black.ttf */; };
 		3F9BAE56236D4C6800FB994D /* Formula1-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BAE52236D4C6800FB994D /* Formula1-Bold.ttf */; };
 		3F9BAE57236D4C6800FB994D /* Formula1-Wide.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BAE53236D4C6800FB994D /* Formula1-Wide.ttf */; };
@@ -61,7 +61,7 @@
 		3F9BAE3A236CCBBA00FB994D /* Formula 1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Formula 1UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F9BAE3E236CCBBA00FB994D /* Formula_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formula_1UITests.swift; sourceTree = "<group>"; };
 		3F9BAE40236CCBBA00FB994D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F9BAE4D236CCDC600FB994D /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		3F9BAE4D236CCDC600FB994D /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		3F9BAE51236D4C6800FB994D /* Formula1-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula1-Black.ttf"; sourceTree = "<group>"; };
 		3F9BAE52236D4C6800FB994D /* Formula1-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula1-Bold.ttf"; sourceTree = "<group>"; };
 		3F9BAE53236D4C6800FB994D /* Formula1-Wide.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula1-Wide.ttf"; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				3F7E9DCA236FD579007E4F26 /* PublisherError.swift */,
-				3F9BAE4D236CCDC600FB994D /* DataLoader.swift */,
+				3F9BAE4D236CCDC600FB994D /* WebService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -350,7 +350,7 @@
 				3F7E9DC9236F331E007E4F26 /* URLBuilder.swift in Sources */,
 				3F9BAE1D236CCBB800FB994D /* AppDelegate.swift in Sources */,
 				3F7E9DCD236FDDDB007E4F26 /* Drivers.swift in Sources */,
-				3F9BAE4E236CCDC600FB994D /* DataLoader.swift in Sources */,
+				3F9BAE4E236CCDC600FB994D /* WebService.swift in Sources */,
 				3F9BAE1F236CCBB800FB994D /* SceneDelegate.swift in Sources */,
 				3F9BAE21236CCBB800FB994D /* ContentView.swift in Sources */,
 				3F7E9DCB236FD579007E4F26 /* PublisherError.swift in Sources */,
