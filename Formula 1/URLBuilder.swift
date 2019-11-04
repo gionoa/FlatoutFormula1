@@ -8,28 +8,22 @@
 
 import Foundation
 
+enum Path: String {
+    case drivers = "/current/drivers.json"
+    case results = "/results"
+    case driverStandings = "/driverStandings"
+    case constructorStandings = "/constructorStandings"
+}
+
 struct Endpoint {
-    private (set) var path = "/api/f1/"
+    private (set) var path = "/api/f1"
     
-    init(forSeason season: Season = .current, category: Category, driver: Driver) {
-        self.path += season.rawValue + category.rawValue + driver.rawValue
+    init(_ subPath: Path) {
+        path.append(subPath.rawValue)
     }
 }
 
 extension Endpoint {
-    
-    enum Season: String {
-        case current = "current/"
-    }
-    
-    enum Category: String {
-        case drivers = "drivers/"
-    }
-    
-    enum Driver: String {
-        case ricciardo = "ricciardo.json"
-    }
-    
     var url: URL? {
         var components = URLComponents()
         components.scheme = "https"
@@ -38,5 +32,3 @@ extension Endpoint {
         return components.url
     }
 }
-
-//endpoint.url(forSeason: .current, )

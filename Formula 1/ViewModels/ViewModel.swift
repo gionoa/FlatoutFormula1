@@ -10,7 +10,7 @@ import Foundation
 
 class ViewModel {
     init() {
-        DataLoader.fetch(url: "https://ergast.com/api/f1/current/drivers/ricciardo.json")
+        WebService.fetch(.drivers)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -20,14 +20,9 @@ class ViewModel {
                     print(error)
                     break
                 }
-            }, receiveValue: { (myType: DriverInfo) in
+            }, receiveValue: { (myType: Drivers) in
                 print(myType)
             })
-    }
-    
-    func url() {
-        var components = URLComponents()
-        
     }
 }
 
