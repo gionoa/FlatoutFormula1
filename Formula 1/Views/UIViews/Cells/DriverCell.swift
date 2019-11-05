@@ -29,13 +29,11 @@ class DriverKitCell: UITableViewCell {
     
     private lazy var firstNameLabel: UILabel = {
         let label = UILabel()
-        
         return label
     }()
     
     private lazy var lastNameLabel: UILabel = {
         let label = UILabel()
-        
         return label
     }()
     

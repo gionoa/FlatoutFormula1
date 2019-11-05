@@ -14,7 +14,7 @@ import SwiftUI
 
  Struct that wraps a UIViewController for use in SwiftUI Views.
  - Usage: ```ViewControllerRepresentation<ViewController>()```
- 
+
  */
 struct ViewControllerRepresentation<ViewController: UIViewController>: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> ViewController { ViewController() }

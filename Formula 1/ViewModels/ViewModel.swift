@@ -52,20 +52,20 @@ class DriversViewModel: ObservableObject {
     
     func fetchPublished() {
         WebService.fetch(.drivers)
-        .receive(on: RunLoop.main)
-        .sink(receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-                break
-            case .failure(let error):
-                print(error)
-                break
-            }
-        }, receiveValue: { (response: Drivers) in
-            print(">>> ", response)
-            self.drivers = response.MRData.DriverTable.Drivers
-            self.delegate?.didFinishFetching()
-        })
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error)
+                    break
+                }
+            }, receiveValue: { (response: Drivers) in
+                print(">>> ", response)
+                self.drivers = response.MRData.DriverTable.Drivers
+                self.delegate?.didFinishFetching()
+            })
     }
 }
 
