@@ -9,10 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    let vm = ViewModel()
-    
     var body: some View {
-        Text("Hello World")
+        NavigationView {
+            TabView {
+                DriversListView()
+                    .tabItem {
+                        Text("Drivers")
+                }
+                
+                Text("Constructors")
+                    .tabItem {
+                        Text("Constructors")
+                }
+            }
+            .navigationBarTitle("Drivers")
+        }
     }
 }
 
