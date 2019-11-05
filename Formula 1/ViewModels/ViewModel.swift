@@ -46,6 +46,10 @@ class DriversViewModel: ObservableObject {
     
     weak var delegate: Fetchable?
         
+    init() {
+        fetchPublished()
+    }
+    
     func fetchPublished() {
         WebService.fetch(.drivers)
         .receive(on: RunLoop.main)

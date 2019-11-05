@@ -7,12 +7,14 @@
 //
 
 import SwiftUI
+import UIKit
 
-struct ContentView: View {
+struct RootContentView: View {
     var body: some View {
         NavigationView {
             TabView {
-                DriversListView()
+                ViewControllerRepresentation<DriversTableView>()
+                //DriversListView() /* SwiftUI version */
                     .tabItem {
                         Text("Drivers")
                 }
@@ -29,6 +31,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        RootContentView()
     }
 }

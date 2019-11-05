@@ -19,7 +19,6 @@ class DriversTableView: UITableViewController {
         tableView.register(DriverKitCell.self, forCellReuseIdentifier: DriverKitCell.reuseIdentifier)
         
         viewModel.delegate = self
-        viewModel.fetchPublished()
     }
 
     required init?(coder: NSCoder) {
@@ -47,6 +46,7 @@ class DriversTableView: UITableViewController {
     }
 }
 
+// MARK: - Fetchable
 extension DriversTableView: Fetchable {
     func didFinishFetching() {
         DispatchQueue.main.async {

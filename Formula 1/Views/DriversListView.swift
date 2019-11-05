@@ -11,7 +11,14 @@ import SwiftUI
 import Combine
 
 struct DriversListView: View {
+    @ObservedObject var viewModel = DriversViewModel()
+    
     var body: some View {
-        ViewControllerRepresentation<DriversTableView>()
+        List(viewModel.drivers) { driver in
+            HStack {
+                Text(driver.givenName)
+                Text(driver.familyName)
+            }
+        }
     }
 }
