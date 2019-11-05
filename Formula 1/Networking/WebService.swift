@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-struct WebService {
+enum WebService {
     private static func dataTask(_ url: URL) -> AnyPublisher<Data, Error> {
         return URLSession.shared
             .dataTaskPublisher(for: url)
