@@ -43,6 +43,8 @@ class DriverKitCell: UITableViewCell {
         let stackView = UIStackView(arrangedSubviews: [firstNameLabel, lastNameLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fill
         stackView.spacing = 8
         return stackView
     }()
@@ -64,8 +66,8 @@ class DriverKitCell: UITableViewCell {
     
     func activateConstraints() {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8)
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16)
         ])
     }
     

@@ -42,22 +42,14 @@ struct Driver: Codable, Identifiable {
 }
 
 protocol DriversViewModelDelegate: class {
-    func didFetch()
+    func didFinishFetching()
 }
 
-class DriversViewModel: ObservableObject, DriversViewModelDelegate {
-    @Published var drivers = [Driver]() 
+class DriversViewModel: ObservableObject {
+    @Published var drivers = [Driver]()
     
     weak var delegate: DriversViewModelDelegate?
-    
-    init() {
-        delegate = self
-    }
-    
-    func didFetch() {
         
-    }
-    
     func fetchPublished() {
         WebService.fetch(.drivers)
         .receive(on: RunLoop.main)
@@ -70,7 +62,9 @@ class DriversViewModel: ObservableObject, DriversViewModelDelegate {
                 break
             }
         }, receiveValue: { (response: Drivers) in
+            print(">>> ", response)
             self.drivers = response.MRData.DriverTable.Drivers
+            self.delegate?.didFinishFetching()
         })
     }
 }
