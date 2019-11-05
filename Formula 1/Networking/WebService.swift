@@ -24,7 +24,7 @@ enum WebService {
     
     static func fetch<T: Decodable>(_ subPath: Path) -> AnyPublisher<T, PublisherError> {
         let url = Endpoint(subPath).url!
-        print(url)
+        
         return
             dataTask(url)
                 .decode(type: T.self, decoder: JSONDecoder())
