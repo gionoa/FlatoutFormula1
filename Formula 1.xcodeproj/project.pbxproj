@@ -14,6 +14,7 @@
 		3F99728A23711A7200796DAB /* DriversTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F99728923711A7200796DAB /* DriversTableView.swift */; };
 		3F99728D2371307C00796DAB /* DriverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F99728C2371307C00796DAB /* DriverCell.swift */; };
 		3F99728F237131C900796DAB /* ViewControllerRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F99728E237131C900796DAB /* ViewControllerRepresentation.swift */; };
+		3F9972912371418A00796DAB /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9972902371418A00796DAB /* Fetchable.swift */; };
 		3F9BAE1D236CCBB800FB994D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BAE1C236CCBB800FB994D /* AppDelegate.swift */; };
 		3F9BAE1F236CCBB800FB994D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BAE1E236CCBB800FB994D /* SceneDelegate.swift */; };
 		3F9BAE21236CCBB800FB994D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9BAE20236CCBB800FB994D /* ContentView.swift */; };
@@ -55,6 +56,7 @@
 		3F99728923711A7200796DAB /* DriversTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversTableView.swift; sourceTree = "<group>"; };
 		3F99728C2371307C00796DAB /* DriverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverCell.swift; sourceTree = "<group>"; };
 		3F99728E237131C900796DAB /* ViewControllerRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRepresentation.swift; sourceTree = "<group>"; };
+		3F9972902371418A00796DAB /* Fetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetchable.swift; sourceTree = "<group>"; };
 		3F9BAE19236CCBB800FB994D /* Formula 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Formula 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F9BAE1C236CCBB800FB994D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F9BAE1E236CCBB800FB994D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				3F9BAE1C236CCBB800FB994D /* AppDelegate.swift */,
 				3F9BAE1E236CCBB800FB994D /* SceneDelegate.swift */,
 				3F3FBBAF236FF85600318BD5 /* ImageLoader.swift */,
+				3F9972902371418A00796DAB /* Fetchable.swift */,
 				3FC1CE25236E274300B092FB /* Models */,
 				3F9BAE59236D4E5500FB994D /* Views */,
 				3FC1CE24236E273600B092FB /* ViewModels */,
@@ -383,6 +386,7 @@
 				3F99728A23711A7200796DAB /* DriversTableView.swift in Sources */,
 				3F9BAE1F236CCBB800FB994D /* SceneDelegate.swift in Sources */,
 				3F9BAE21236CCBB800FB994D /* ContentView.swift in Sources */,
+				3F9972912371418A00796DAB /* Fetchable.swift in Sources */,
 				3F3FBBB22371033C00318BD5 /* DriversListView.swift in Sources */,
 				3F7E9DCB236FD579007E4F26 /* PublisherError.swift in Sources */,
 				3F99728F237131C900796DAB /* ViewControllerRepresentation.swift in Sources */,

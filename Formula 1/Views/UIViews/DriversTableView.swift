@@ -47,7 +47,7 @@ class DriversTableView: UITableViewController {
     }
 }
 
-extension DriversTableView: DriversViewModelDelegate {
+extension DriversTableView: Fetchable {
     func didFinishFetching() {
         DispatchQueue.main.async {
             self.tableView.reloadData()

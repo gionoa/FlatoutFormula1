@@ -41,14 +41,10 @@ struct Driver: Codable, Identifiable {
     }
 }
 
-protocol DriversViewModelDelegate: class {
-    func didFinishFetching()
-}
-
 class DriversViewModel: ObservableObject {
     @Published var drivers = [Driver]()
     
-    weak var delegate: DriversViewModelDelegate?
+    weak var delegate: Fetchable?
         
     func fetchPublished() {
         WebService.fetch(.drivers)
