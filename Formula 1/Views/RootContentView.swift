@@ -18,7 +18,7 @@ struct RootContentView: View {
                         Text("Drivers")
                 }
                 
-                Text("Constructors")
+                ViewControllerRepresentation<ConstructorCollectionViewController>()
                     .tabItem {
                         Text("Constructors")
                 }
