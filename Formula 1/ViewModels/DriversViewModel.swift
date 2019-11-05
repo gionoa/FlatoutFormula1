@@ -67,7 +67,6 @@ class DriversViewModel: ObservableObject {
                     break
                 }
             }, receiveValue: { (response: Drivers) in
-                print(">>> ", response)
                 self.drivers = response.MRData.DriverTable.Drivers
                 self.delegate?.didFinishFetching()
             })

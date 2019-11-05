@@ -63,9 +63,10 @@ class DriverKitCell: UITableViewCell {
     }
     
     func activateConstraints() {
+        let inset: CGFloat = 8
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16)
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset * 1.5),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset * 2)
         ])
     }
     

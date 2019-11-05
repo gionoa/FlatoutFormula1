@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct RootContentView: View {
     var body: some View {
