@@ -6,7 +6,6 @@
 //  Copyright © 2019 Gio. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import SwiftUI
 
@@ -17,7 +16,6 @@ class DriversTableView: UITableViewController {
         super.init(style: style)
         
         tableView.register(DriverKitCell.self, forCellReuseIdentifier: DriverKitCell.reuseIdentifier)
-        
         viewModel.delegate = self
     }
 
@@ -25,17 +23,12 @@ class DriversTableView: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
-    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 44 }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(viewModel.drivers.count)
-        return viewModel.drivers.count
-    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { viewModel.numberOfDrivers }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let driver = viewModel.drivers[indexPath.row]
+        let driver = viewModel.driver(at: indexPath.row)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: DriverKitCell.reuseIdentifier,
                                                  for: indexPath)
@@ -43,6 +36,10 @@ class DriversTableView: UITableViewController {
         
         cell.configure(firstName: driver.givenName, lastName: driver.familyName)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

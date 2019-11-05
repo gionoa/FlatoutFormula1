@@ -28,7 +28,7 @@
 		3F9BAE56236D4C6800FB994D /* Formula1-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BAE52236D4C6800FB994D /* Formula1-Bold.ttf */; };
 		3F9BAE57236D4C6800FB994D /* Formula1-Wide.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BAE53236D4C6800FB994D /* Formula1-Wide.ttf */; };
 		3F9BAE58236D4C6800FB994D /* Formula1-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BAE54236D4C6800FB994D /* Formula1-Regular.ttf */; };
-		3FC1CE27236E277C00B092FB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1CE26236E277C00B092FB /* ViewModel.swift */; };
+		3FC1CE27236E277C00B092FB /* DriversViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1CE26236E277C00B092FB /* DriversViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +76,7 @@
 		3F9BAE52236D4C6800FB994D /* Formula1-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula1-Bold.ttf"; sourceTree = "<group>"; };
 		3F9BAE53236D4C6800FB994D /* Formula1-Wide.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula1-Wide.ttf"; sourceTree = "<group>"; };
 		3F9BAE54236D4C6800FB994D /* Formula1-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula1-Regular.ttf"; sourceTree = "<group>"; };
-		3FC1CE26236E277C00B092FB /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		3FC1CE26236E277C00B092FB /* DriversViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,7 +230,7 @@
 		3FC1CE24236E273600B092FB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				3FC1CE26236E277C00B092FB /* ViewModel.swift */,
+				3FC1CE26236E277C00B092FB /* DriversViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -377,7 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FC1CE27236E277C00B092FB /* ViewModel.swift in Sources */,
+				3FC1CE27236E277C00B092FB /* DriversViewModel.swift in Sources */,
 				3F7E9DC9236F331E007E4F26 /* Endpoint.swift in Sources */,
 				3F9BAE1D236CCBB800FB994D /* AppDelegate.swift in Sources */,
 				3F9BAE4E236CCDC600FB994D /* WebService.swift in Sources */,

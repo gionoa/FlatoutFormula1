@@ -14,7 +14,7 @@ struct DriversListView: View {
     @ObservedObject var viewModel = DriversViewModel()
     
     var body: some View {
-        List(viewModel.drivers) { driver in
+        List(viewModel.driversArray) { driver in
             HStack {
                 Text(driver.givenName)
                 Text(driver.familyName)

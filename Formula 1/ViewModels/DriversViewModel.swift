@@ -42,15 +42,20 @@ struct Driver: Codable, Identifiable {
 }
 
 class DriversViewModel: ObservableObject {
-    @Published var drivers = [Driver]()
+    var numberOfDrivers: Int { drivers.count }
+    var driversArray: [Driver] { drivers }
     
     weak var delegate: Fetchable?
-        
+
+    @Published private var drivers = [Driver]()
+    
     init() {
-        fetchPublished()
+        fetch()
     }
     
-    func fetchPublished() {
+    func driver(at index: Int) -> Driver { drivers[index] }
+    
+    private func fetch() {
         WebService.fetch(.drivers)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
@@ -68,4 +73,3 @@ class DriversViewModel: ObservableObject {
             })
     }
 }
-
