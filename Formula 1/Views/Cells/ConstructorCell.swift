@@ -23,6 +23,8 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = .darkGray
         addSubviews()
         activateConstraints()
+        applySkin()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -36,8 +38,17 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     func activateConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8)
+            titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
+    }
+    
+    func applySkin() {
+        let contentViewLayer = contentView.layer
+        contentViewLayer.borderColor = UIColor.darkGray.cgColor
+        contentViewLayer.borderWidth = 1
+        contentViewLayer.shadowColor = UIColor.darkGray.cgColor
+        contentViewLayer.shadowOffset = CGSize(width: 10, height: 10)
+        contentViewLayer.cornerRadius = 35//frame.width / 4
     }
     
     func configure(title: String) {

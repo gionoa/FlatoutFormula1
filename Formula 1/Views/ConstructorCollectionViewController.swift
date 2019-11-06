@@ -9,17 +9,23 @@
 import Foundation
 import UIKit
 
-class ConstructorCollectionViewController: UICollectionViewController {
+class ConstructorsCollectionViewController: UICollectionViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         let flowLayout = UICollectionViewFlowLayout()
+                
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
+        
         super.init(collectionViewLayout: flowLayout)
+        
+        collectionView.backgroundColor = .blue
+        navigationController?.title = "Constructors"
+        navigationItem.title = "Constructors"
     }
     
     override func viewDidLoad() {
-        collectionView.register(ConstructorCollectionViewCell.self, forCellWithReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier)
-        collectionView.backgroundColor = .white
+        collectionView.register(ConstructorCollectionViewCell.self,
+                                forCellWithReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier)
     }
     
     required init?(coder: NSCoder) {
@@ -28,20 +34,19 @@ class ConstructorCollectionViewController: UICollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 10 }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier, for: indexPath) as! ConstructorCollectionViewCell
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier,
+                                                      for: indexPath) as! ConstructorCollectionViewCell
         cell.configure(title: "Mercedes")
         return cell
     }
 }
 
-extension ConstructorCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension ConstructorsCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / (2.15), height: collectionView.frame.width / 3) // no me gusta esto
+        return CGSize(width: collectionView.frame.width / (2.15),
+                      height: collectionView.frame.width / 1.5)
     }
 }

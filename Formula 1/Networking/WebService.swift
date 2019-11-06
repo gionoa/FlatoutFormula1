@@ -11,15 +11,19 @@ import Combine
 
 enum WebService {
     private static func dataTask(_ url: URL) -> AnyPublisher<Data, Error> {
-        return URLSession.shared
-            .dataTaskPublisher(for: url)
-            .tryMap { data, response in
-                guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
-                    throw PublisherError.network
+        return
+            URLSession.shared
+                .dataTaskPublisher(for: url)
+                .tryMap { data, response in
+                    guard
+                        let httpResponse = response as? HTTPURLResponse,
+                        200..<300 ~= httpResponse.statusCode
+                        else {
+                            throw PublisherError.network
+                    }
+                    return data
                 }
-                return data
-            }
-            .eraseToAnyPublisher()
+                .eraseToAnyPublisher()
     }
     
     static func fetch<T: Decodable>(_ subPath: Path) -> AnyPublisher<T, PublisherError> {

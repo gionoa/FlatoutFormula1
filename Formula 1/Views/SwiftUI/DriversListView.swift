@@ -19,6 +19,10 @@ struct DriversListView: View {
                 Text(driver.givenName)
                 Text(driver.familyName)
             }
+            .navigationBarTitle("Drivers")
+
         }
+        .navigationBarTitle("Drivers")
     }
+
 }

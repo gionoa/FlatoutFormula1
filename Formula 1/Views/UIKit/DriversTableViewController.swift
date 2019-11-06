@@ -9,13 +9,16 @@
 import UIKit
 import SwiftUI
 
-class DriversTableView: UITableViewController {
+// MARK: - DriversTableView
+class DriversTableViewController: UITableViewController {
     @ObservedObject var viewModel = DriversViewModel()
-        
+
     override init(style: UITableView.Style) {
         super.init(style: style)
         
-        tableView.register(DriverKitCell.self, forCellReuseIdentifier: DriverKitCell.reuseIdentifier)
+        tableView.register(DriverKitCell.self,
+                           forCellReuseIdentifier: DriverKitCell.reuseIdentifier)
+        
         viewModel.delegate = self
     }
 
@@ -44,7 +47,7 @@ class DriversTableView: UITableViewController {
 }
 
 // MARK: - Fetchable
-extension DriversTableView: Fetchable {
+extension DriversTableViewController: Fetchable {
     func didFinishFetching() {
         DispatchQueue.main.async {
             self.tableView.reloadData()

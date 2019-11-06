@@ -64,7 +64,6 @@ class DriversViewModel: ObservableObject {
                     break
                 case .failure(let error):
                     print(error)
-                    break
                 }
             }, receiveValue: { (response: Drivers) in
                 self.drivers = response.MRData.DriverTable.Drivers
