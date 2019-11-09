@@ -12,13 +12,24 @@ import SwiftUI
 
 // MARK: - SwiftUI View
 struct DriverCell: View {
+    @ObservedObject var imageLoader = ImageLoader()
+    
     let firstName: String
     let lastName: String
     
     var body: some View {
         HStack {
+            Image(uiImage: imageLoader.image ?? UIImage(systemName: "doc.text") as! UIImage)
+                .resizable()
+                .frame(width: 50, height: 50)
+                .aspectRatio(contentMode: .fit)
+                .shadow(color: .gray, radius: 5.0, x: 0.0, y: 2.0)
+            
             Text(firstName)
             Text(lastName)
+        }
+        .onAppear {
+            self.imageLoader.getImage(urlString: "https://www.formula1.com/content/fom-website/en/drivers/lewis-hamilton/_jcr_content/image.img.1024.medium.jpg")
         }
     }
 }
