@@ -12,7 +12,7 @@ enum Path: String {
     case drivers = "/current/drivers.json"
     case results = "/results"
     case driverStandings = "/driverStandings"
-    case constructorStandings = "/constructorStandings"
+    case constructorStandings = "/current/constructorStandings.json"
 }
 
 struct Endpoint {

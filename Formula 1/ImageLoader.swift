@@ -11,5 +11,13 @@ import UIKit
 import SwiftUI
 
 class ImageLoader: ObservableObject {
-    @Published var image: UIImage = UIImage(systemName: "doc.txt")
+    @Published var image: UIImage!
+    
+    func getImage(urlString: String) {
+        WebService.fetchImage(urlString: urlString)
+            .sink(receiveCompletion: { completion in })
+            { image in
+                self.image = image
+            }
+        }
 }

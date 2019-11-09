@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 enum WebService {
     private static func dataTask(_ url: URL) -> AnyPublisher<Data, Error> {
@@ -35,4 +36,19 @@ enum WebService {
                 .mapError { _ in return PublisherError.parsing }
                 .eraseToAnyPublisher()
     }
+    
+    static func fetchImage(urlString: String) -> AnyPublisher<UIImage, Error> {
+        let url = URL(string: urlString)
+           
+        return
+            URLSession.shared.dataTaskPublisher(for: url!)
+                .tryMap { data, response in
+                    guard let image = UIImage(data: data) else {
+                        throw PublisherError.parsing
+                    }
+                    return image
+                }
+                .receive(on: RunLoop.main)
+                .eraseToAnyPublisher()
+       }
 }

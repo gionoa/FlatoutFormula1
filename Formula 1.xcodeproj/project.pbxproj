@@ -30,6 +30,7 @@
 		3F9BAE58236D4C6800FB994D /* Formula1-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9BAE54236D4C6800FB994D /* Formula1-Regular.ttf */; };
 		3F9C9C062372067000B8FF69 /* ConstructorCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C9C052372067000B8FF69 /* ConstructorCollectionViewController.swift */; };
 		3F9C9C08237215A100B8FF69 /* ConstructorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9C9C07237215A100B8FF69 /* ConstructorCell.swift */; };
+		3FA462E223767AFA001E925E /* ConstructorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA462E123767AFA001E925E /* ConstructorsViewModel.swift */; };
 		3FC1CE27236E277C00B092FB /* DriversViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1CE26236E277C00B092FB /* DriversViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,8 +79,9 @@
 		3F9BAE52236D4C6800FB994D /* Formula1-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula1-Bold.ttf"; sourceTree = "<group>"; };
 		3F9BAE53236D4C6800FB994D /* Formula1-Wide.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula1-Wide.ttf"; sourceTree = "<group>"; };
 		3F9BAE54236D4C6800FB994D /* Formula1-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Formula1-Regular.ttf"; sourceTree = "<group>"; };
-		3F9C9C052372067000B8FF69 /* ConstructorCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConstructorCollectionViewController.swift; path = ../ConstructorCollectionViewController.swift; sourceTree = "<group>"; };
+		3F9C9C052372067000B8FF69 /* ConstructorCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorCollectionViewController.swift; sourceTree = "<group>"; };
 		3F9C9C07237215A100B8FF69 /* ConstructorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorCell.swift; sourceTree = "<group>"; };
+		3FA462E123767AFA001E925E /* ConstructorsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorsViewModel.swift; sourceTree = "<group>"; };
 		3FC1CE26236E277C00B092FB /* DriversViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,15 +110,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F99728823711A5C00796DAB /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				3F99728923711A7200796DAB /* DriversTableViewController.swift */,
-				3F9C9C052372067000B8FF69 /* ConstructorCollectionViewController.swift */,
-			);
-			path = UIKit;
-			sourceTree = "<group>";
-		};
 		3F99728B2371306C00796DAB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +147,7 @@
 				3F3FBBAF236FF85600318BD5 /* ImageLoader.swift */,
 				3F9972902371418A00796DAB /* Fetchable.swift */,
 				3FC1CE25236E274300B092FB /* Models */,
+				3FA462E323769F20001E925E /* ViewControllers */,
 				3F9BAE59236D4E5500FB994D /* Views */,
 				3FC1CE24236E273600B092FB /* ViewModels */,
 				3F9BAE4C236CCDAC00FB994D /* Networking */,
@@ -225,17 +219,27 @@
 			isa = PBXGroup;
 			children = (
 				3F99728E237131C900796DAB /* ViewControllerRepresentation.swift */,
-				3F99728823711A5C00796DAB /* UIKit */,
-				3FE0F3EE23724D9C00FA34E9 /* SwiftUI */,
+				3F9BAE20236CCBB800FB994D /* RootContentView.swift */,
+				3F3FBBB12371033C00318BD5 /* DriversListView.swift */,
 				3F99728B2371306C00796DAB /* Cells */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3FA462E323769F20001E925E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F99728923711A7200796DAB /* DriversTableViewController.swift */,
+				3F9C9C052372067000B8FF69 /* ConstructorCollectionViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		3FC1CE24236E273600B092FB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				3FC1CE26236E277C00B092FB /* DriversViewModel.swift */,
+				3FA462E123767AFA001E925E /* ConstructorsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -245,15 +249,6 @@
 			children = (
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		3FE0F3EE23724D9C00FA34E9 /* SwiftUI */ = {
-			isa = PBXGroup;
-			children = (
-				3F9BAE20236CCBB800FB994D /* RootContentView.swift */,
-				3F3FBBB12371033C00318BD5 /* DriversListView.swift */,
-			);
-			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,6 +397,7 @@
 				3F9BAE1F236CCBB800FB994D /* SceneDelegate.swift in Sources */,
 				3F9BAE21236CCBB800FB994D /* RootContentView.swift in Sources */,
 				3F9C9C062372067000B8FF69 /* ConstructorCollectionViewController.swift in Sources */,
+				3FA462E223767AFA001E925E /* ConstructorsViewModel.swift in Sources */,
 				3F9972912371418A00796DAB /* Fetchable.swift in Sources */,
 				3F3FBBB22371033C00318BD5 /* DriversListView.swift in Sources */,
 				3F7E9DCB236FD579007E4F26 /* PublisherError.swift in Sources */,
