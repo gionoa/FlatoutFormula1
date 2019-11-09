@@ -46,15 +46,15 @@ class ConstructorsCollectionViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier,
                                                       for: indexPath) as! ConstructorCollectionViewCell
-        cell.configure(title: constructor.constructor.name)
+        cell.configure(constructor)
         return cell
     }
 }
 
 extension ConstructorsCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.bounds.width / (2)) - 16,
-                      height: collectionView.frame.width / 1.5)
+        return CGSize(width: collectionView.bounds.width * 0.8,//CGSize(width: (collectionView.bounds.width / (2)) - 16,
+            height: collectionView.frame.width / 1.5)
     }
 }
 
