@@ -8,8 +8,12 @@
 
 import Foundation
 import UIKit
+import Combine
+import SwiftUI
 
 class ConstructorsCollectionViewController: UICollectionViewController {
+    @ObservedObject var viewModel = ConstructorsViewModel()
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         let flowLayout = UICollectionViewFlowLayout()
                 
@@ -17,15 +21,14 @@ class ConstructorsCollectionViewController: UICollectionViewController {
         flowLayout.sectionInset = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
         
         super.init(collectionViewLayout: flowLayout)
-        
-        collectionView.backgroundColor = .blue
-        navigationController?.title = "Constructors"
-        navigationItem.title = "Constructors"
     }
     
     override func viewDidLoad() {
         collectionView.register(ConstructorCollectionViewCell.self,
                                 forCellWithReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier)
+        
+       collectionView.backgroundColor = .white
+        viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -34,19 +37,31 @@ class ConstructorsCollectionViewController: UICollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 10 }
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        viewModel.constructors.count
+    }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let constructor = viewModel.constructors[indexPath.row]
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier,
                                                       for: indexPath) as! ConstructorCollectionViewCell
-        cell.configure(title: "Mercedes")
+        cell.configure(title: constructor.constructor.name)
         return cell
     }
 }
 
 extension ConstructorsCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / (2.15),
+        return CGSize(width: (collectionView.bounds.width / (2)) - 16,
                       height: collectionView.frame.width / 1.5)
+    }
+}
+
+extension ConstructorsCollectionViewController: Fetchable {
+    func didFinishFetching() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
 }

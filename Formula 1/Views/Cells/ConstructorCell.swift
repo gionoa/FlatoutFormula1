@@ -20,11 +20,9 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .darkGray
         addSubviews()
         activateConstraints()
         applySkin()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -45,10 +43,8 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     func applySkin() {
         let contentViewLayer = contentView.layer
         contentViewLayer.borderColor = UIColor.darkGray.cgColor
-        contentViewLayer.borderWidth = 1
-        contentViewLayer.shadowColor = UIColor.darkGray.cgColor
-        contentViewLayer.shadowOffset = CGSize(width: 10, height: 10)
-        contentViewLayer.cornerRadius = 35//frame.width / 4
+        contentViewLayer.borderWidth = 3
+        contentViewLayer.cornerRadius = 35
     }
     
     func configure(title: String) {

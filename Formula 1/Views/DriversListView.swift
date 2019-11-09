@@ -15,10 +15,7 @@ struct DriversListView: View {
     
     var body: some View {
         List(viewModel.driversArray) { driver in
-            HStack {
-                Text(driver.givenName)
-                Text(driver.familyName)
-            }
+            DriverCell(firstName: driver.givenName, lastName: driver.familyName)
             .navigationBarTitle("Drivers")
 
         }

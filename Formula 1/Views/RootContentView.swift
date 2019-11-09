@@ -12,8 +12,9 @@ struct RootContentView: View {
     var body: some View {
         TabView {
             NavigationView {
-                //ViewControllerRepresentation<DriversTableView>()
-                DriversListView() /* SwiftUI version */
+                ViewControllerRepresentation<DriversTableViewController>()
+                //DriversListView() /* SwiftUI version */
+                .navigationBarTitle("Drivers")
             }
             .tabItem {
                 Text("Drivers")
