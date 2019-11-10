@@ -11,16 +11,30 @@ import UIKit
 import Combine
 import SwiftUI
 
+class ConstructorsFlowLayout: UICollectionViewFlowLayout {
+    override func prepare() {
+        setup()
+    }
+    
+    func setup() {
+        guard let collectionView = collectionView else { return }
+        
+        itemSize = CGSize(width: collectionView.bounds.inset(by: collectionView.layoutMargins).size.width,
+                          height: 70.0)
+        
+        sectionInset = UIEdgeInsets(top: minimumLineSpacing, left: 0, bottom: 0, right: 0)
+        sectionInsetReference = .fromSafeArea
+        scrollDirection = .vertical
+    }
+}
+
 class ConstructorsCollectionViewController: UICollectionViewController {
     @ObservedObject var viewModel = ConstructorsViewModel()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        let flowLayout = UICollectionViewFlowLayout()
+        let x = ConstructorsFlowLayout() //UICollectionViewFlowLayout()
                 
-        flowLayout.scrollDirection = .vertical
-        flowLayout.sectionInset = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
-        
-        super.init(collectionViewLayout: flowLayout)
+        super.init(collectionViewLayout: x)
     }
     
     override func viewDidLoad() {
