@@ -15,11 +15,13 @@ struct DriversListView: View {
     
     var body: some View {
         List(viewModel.driversArray) { driver in
-            DriverCell(firstName: driver.givenName, lastName: driver.familyName)
-            .navigationBarTitle("Drivers")
-
+            NavigationLink(destination:
+                Text("Detail")
+                    .navigationBarTitle(Text("\(driver.givenName) \(driver.familyName)"))) {
+                        
+                DriverCell(firstName: driver.givenName, lastName: driver.familyName, driverNumber: driver.permanentNumber)
+            }
         }
         .navigationBarTitle("Drivers")
     }
-
 }
