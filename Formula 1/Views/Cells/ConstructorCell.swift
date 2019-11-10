@@ -12,21 +12,35 @@ import UIKit
 class ConstructorCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = String(describing: self)
     
+    // MARK: - Title (First HStack)
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        // ["Formula1-Display-Bold", "Formula1-Display-Regular", "Formula1-Display-Wide", "Formula1-Display-Black"]
-        
-        label.font = UIFont.Formula1Font
+        label.font = UIFont.Formula1Font.Bold
         label.adjustsFontForContentSizeCategory = true
-       // label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         return label
     }()
     
+    private lazy var nationalityLabel: UILabel = {
+        let label = UILabel()
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.Formula1Font.Regular
+        return label
+    }()
+    
+    private lazy var constructorHStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [titleLabel, nationalityLabel])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+      //  stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 8
+        return  stackView
+    }()
+    
+    // MARK: - Points (VStack)
     private lazy var pointsTextLabel: UILabel = {
            let label = UILabel()
-        label.font = UIFont.Formula1Font
+        label.font = UIFont.Formula1Font.Bold
         label.adjustsFontForContentSizeCategory = true
             label.text = "Points"
            return label
@@ -35,7 +49,7 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     private lazy var pointsLabel: UILabel = {
         let label = UILabel()
         label.adjustsFontForContentSizeCategory = true
-        label.font = UIFont.Formula1Font
+        label.font = UIFont.Formula1Font.Bold
         label.textColor = .systemRed
 
       //  label.font = UIFont.preferredFont(forTextStyle: .title1).withSize(20)
@@ -47,15 +61,16 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.distribution = .fill
-        stackView.spacing = 16
+        stackView.spacing = 8
         return stackView
     }()
     
+    // MARK: - Wins (VStack)
     private lazy var winsTextLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
        // label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        label.font = UIFont.Formula1Font
+        label.font = UIFont.Formula1Font.Bold
         label.text = "Wins"
 
         return label
@@ -65,27 +80,27 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
       //  label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        label.font = UIFont.Formula1Font
+        label.font = UIFont.Formula1Font.Bold
         label.textColor = .systemRed
         return label
     }()
-    
     
     private lazy var winsStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [winsTextLabel, winsLabel])
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.distribution = .fill
-        stackView.spacing = 16
+        stackView.spacing = 8
         return stackView
        }()
     
-    private lazy var stackView: UIStackView = {
+    // MARK: - Stats (HStack of the VStacks)
+    private lazy var statsStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [pointsStackView, winsStackView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.alignment = .center
-        stackView.distribution = .equalCentering
+        stackView.distribution = .fill
         stackView.spacing = 8
         return stackView
     }()
@@ -102,35 +117,40 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     }
     
     func addSubviews() {
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(stackView)
+        contentView.addSubview(constructorHStackView)
+        contentView.addSubview(statsStackView)
     }
     
     func activateConstraints() {
         let inset: CGFloat = 8
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
-            titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            constructorHStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            constructorHStackView.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 16),
+            constructorHStackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: 16),
+           // constructorHStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
-            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: inset),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset * 5),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset * 5)
-           // stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+            statsStackView.topAnchor.constraint(equalTo: constructorHStackView.bottomAnchor, constant: inset),
+            statsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            statsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
+            
+            contentView.topAnchor.constraint(equalTo: constructorHStackView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: statsStackView.bottomAnchor, constant: 8),
+            contentView.leadingAnchor.constraint(equalTo: constructorHStackView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: constructorHStackView.trailingAnchor)
         ])
     }
     
     func applySkin() {
-        let contentViewLayer = contentView.layer
-        contentViewLayer.borderColor = UIColor.darkGray.cgColor
-        contentViewLayer.borderWidth = 3
-        contentViewLayer.cornerRadius = 35
+        backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 0.15)
+
+        layer.cornerRadius = 20
     }
     
     func configure(_ constructor: ConstructorStanding) {
         titleLabel.text = constructor.constructor.name
         pointsLabel.text = constructor.points
         winsLabel.text = constructor.wins
-        
+        nationalityLabel.text = constructor.constructor.nationality
     }
 }

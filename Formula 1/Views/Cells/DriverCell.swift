@@ -16,6 +16,7 @@ struct DriverCell: View {
     
     let firstName: String
     let lastName: String
+    let driverNumber: String
     
     var body: some View {
         HStack {
@@ -25,13 +26,38 @@ struct DriverCell: View {
                 .aspectRatio(contentMode: .fit)
                 .shadow(color: .gray, radius: 5.0, x: 0.0, y: 2.0)
             
-            Text(firstName)
-            Text(lastName)
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(alignment: .center, spacing: 8) {
+                    Text(firstName)
+                        .font(Font(UIFont.Formula1Font.Black)
+                            .weight(.light))
+                    
+                    Text(lastName)
+                        .font(Font(UIFont.Formula1Font.Black)
+                            .weight(.medium))
+                    
+                }
+                
+                Text(driverNumber)
+                    .font(Font(UIFont.Formula1Font.Black)
+                        .weight(.regular))
+                    .foregroundColor(.red)
+            }
         }
         .onAppear {
-            self.imageLoader.getImage(urlString: "https://www.formula1.com/content/fom-website/en/drivers/lewis-hamilton/_jcr_content/image.img.1024.medium.jpg")
+            self.imageLoader.getImage(urlString: DriverImgUrl.hamilton.rawValue)
         }
     }
+}
+
+enum DriverImgUrl: String {
+    case leclerc =  ""
+    case vettel = "d"
+    case hamilton = "https://www.formula1.com/content/fom-website/en/drivers/lewis-hamilton/_jcr_content/image.img.1024.medium.jpg"
+    case bottas = "c"
+    case verstappen = "v"
+    case albon = "b"
+    case sainz = "s"
 }
 
 // MARK: - UIKit View
