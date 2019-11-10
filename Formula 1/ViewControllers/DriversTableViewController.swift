@@ -21,6 +21,14 @@ class DriversTableViewController: UITableViewController {
         
         viewModel.delegate = self
     }
+    
+    override func viewDidLoad() {
+      //  navigationItem.title = "Constructors"
+     //   navigationItem.largeTitleDisplayMode = .always
+        //  navigationController?.navigationBar.prefersLargeTitles = true
+
+
+    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

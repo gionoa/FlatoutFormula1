@@ -28,6 +28,9 @@ class ConstructorsCollectionViewController: UICollectionViewController {
                                 forCellWithReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier)
         
        collectionView.backgroundColor = .white
+        collectionView.alwaysBounceVertical = true
+        navigationController?.hidesBarsOnSwipe = true
+        navigationItem.title = "Constructors"
         viewModel.delegate = self
     }
     
