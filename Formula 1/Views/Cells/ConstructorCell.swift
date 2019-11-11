@@ -68,17 +68,13 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     // MARK: - Wins (VStack)
     private lazy var winsTextLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-       // label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         label.font = UIFont.Formula1Font.Bold
         label.text = "Wins"
-
         return label
     }()
     
     private lazy var winsLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
       //  label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         label.font = UIFont.Formula1Font.Bold
         label.textColor = .systemRed
@@ -99,9 +95,9 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
         let stackView = UIStackView(arrangedSubviews: [pointsStackView, winsStackView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.distribution = .fill
-        stackView.spacing = 8
+       // stackView.alignment = .center
+        //stackView.distribution = .equalCentering
+        stackView.spacing = 40
         return stackView
     }()
     
@@ -125,19 +121,11 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
         let inset: CGFloat = 8
         
         NSLayoutConstraint.activate([
-            constructorHStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            constructorHStackView.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 16),
-            constructorHStackView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: 16),
-           // constructorHStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            constructorHStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            constructorHStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
-            statsStackView.topAnchor.constraint(equalTo: constructorHStackView.bottomAnchor, constant: inset),
-            statsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            statsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
-            
-            contentView.topAnchor.constraint(equalTo: constructorHStackView.topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: statsStackView.bottomAnchor, constant: 8),
-            contentView.leadingAnchor.constraint(equalTo: constructorHStackView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: constructorHStackView.trailingAnchor)
+            statsStackView.topAnchor.constraint(equalTo: constructorHStackView.bottomAnchor, constant: inset * 4),
+            statsStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
     }
     
