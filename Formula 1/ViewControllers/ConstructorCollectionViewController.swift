@@ -19,10 +19,10 @@ class ConstructorsFlowLayout: UICollectionViewFlowLayout {
     func setup() {
         guard let collectionView = collectionView else { return }
         
-        itemSize = CGSize(width: collectionView.bounds.inset(by: collectionView.layoutMargins).size.width,
-                          height: 70.0)
+       // itemSize = CGSize(width: collectionView.bounds.inset(by: collectionView.layoutMargins).size.width,
+         //                 height: 70.0)
         
-        sectionInset = UIEdgeInsets(top: minimumLineSpacing, left: 0, bottom: 0, right: 0)
+        sectionInset = UIEdgeInsets(top: minimumLineSpacing, left: 500, bottom: 0, right: 0)
         sectionInsetReference = .fromSafeArea
         scrollDirection = .vertical
     }
@@ -32,19 +32,26 @@ class ConstructorsCollectionViewController: UICollectionViewController {
     @ObservedObject var viewModel = ConstructorsViewModel()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        let x = ConstructorsFlowLayout() //UICollectionViewFlowLayout()
-                
-        super.init(collectionViewLayout: x)
+        let flowLayout =  UICollectionViewFlowLayout() //ConstructorsFlowLayout()
+        
+            //flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+      //  flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UICollectionViewFlowLayout.automaticSize.height - 120)
+        flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        flowLayout.sectionInsetReference = .fromSafeArea
+        flowLayout.scrollDirection = .vertical
+            
+        super.init(collectionViewLayout: flowLayout)
     }
     
     override func viewDidLoad() {
         collectionView.register(ConstructorCollectionViewCell.self,
                                 forCellWithReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier)
         
-       collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .white
         collectionView.alwaysBounceVertical = true
         navigationController?.hidesBarsOnSwipe = true
         navigationItem.title = "Constructors"
+        
         viewModel.delegate = self
     }
     
@@ -70,8 +77,8 @@ class ConstructorsCollectionViewController: UICollectionViewController {
 
 extension ConstructorsCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width * 0.8,//CGSize(width: (collectionView.bounds.width / (2)) - 16,
-            height: collectionView.frame.width / 1.5)
+        return CGSize(width: collectionView.bounds.width - (8 * 8),//CGSize(width: (collectionView.bounds.width / (2)) - 16,
+            height: 150)//collectionViewLayout.collectionViewContentSize.height)// collectionView.frame.width / 1.5)
     }
 }
 

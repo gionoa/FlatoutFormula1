@@ -65,7 +65,6 @@ private struct Constructors: Codable {
      }
 
 class ConstructorsViewModel: ObservableObject {
-    
     @Published var constructors = [ConstructorStanding]()
     
     weak var delegate: Fetchable?
