@@ -23,13 +23,10 @@ class DriversTableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-      //  navigationItem.title = "Constructors"
-     //   navigationController?.navigationBar.prefersLargeTitles = true
-
-     //   navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+       // navigationItem.largeTitleDisplayMode = .always
         
         navigationItem.title = "Drivers"
-
     }
 
     required init?(coder: NSCoder) {
