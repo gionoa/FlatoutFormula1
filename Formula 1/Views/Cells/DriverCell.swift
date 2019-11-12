@@ -64,18 +64,62 @@ enum DriverImgUrl: String {
 class DriverKitCell: UITableViewCell {
     static let reuseIdentifier = String(describing: self)
     
+//     private lazy var pointsTextLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "Points"
+//        label.textColor = .lightGray
+//        label.font = UIFont.Formula1Font.Regular
+//        return label
+//    }()
+    
+    private lazy var positionLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.Formula1Font.Regular
+        return label
+    }()
+    
+//    private lazy var pointsVStackView: UIStackView = {
+//        let stackView = UIStackView(arrangedSubviews: [pointsTextLabel, pointsLabel])
+//
+//        return stackView
+//    }()
+
     private lazy var firstNameLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.Formula1Font.Regular
+
         return label
     }()
     
     private lazy var lastNameLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.Formula1Font.Bold
+
         return label
     }()
     
-    private lazy var stackView: UIStackView = {
+    private lazy var nameHStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [firstNameLabel, lastNameLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        return stackView
+    }()
+    
+    private lazy var constructorLabel: UILabel = {
+        let label = UILabel()
+        
+        return label
+    }()
+    
+    private lazy var nameAndConstructorStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [nameHStackView, constructorLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        return stackView
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [positionLabel, nameAndConstructorStackView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.alignment = .center
@@ -104,12 +148,15 @@ class DriverKitCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset * 1.5),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset * 2)
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset * 2),
+            //contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -8)
         ])
     }
     
     func configure(_ driver: DriverStanding) {
         firstNameLabel.text = driver.driver.givenName
         lastNameLabel.text = driver.driver.familyName
+        positionLabel.text = driver.position
+        constructorLabel.text = driver.constructors[0].name
     }
 }

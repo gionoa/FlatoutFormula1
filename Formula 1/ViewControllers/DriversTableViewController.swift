@@ -19,6 +19,9 @@ class DriversTableViewController: UITableViewController {
         tableView.register(DriverKitCell.self,
                            forCellReuseIdentifier: DriverKitCell.reuseIdentifier)
         
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 80
+        
         viewModel.delegate = self
     }
     
@@ -32,15 +35,13 @@ class DriversTableViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 44 }
-    
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 44 }
+//
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { viewModel.numberOfDrivers }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let driver = viewModel.driver(at: indexPath.row)
-        
-        print(driver)
-        
+                
         let cell = tableView.dequeueReusableCell(withIdentifier: DriverKitCell.reuseIdentifier,
                                                  for: indexPath)
                                                  as! DriverKitCell
