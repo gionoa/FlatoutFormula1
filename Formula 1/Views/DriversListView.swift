@@ -17,9 +17,9 @@ struct DriversListView: View {
         List(viewModel.driversArray) { driver in
             NavigationLink(destination:
                 Text("Detail")
-                    .navigationBarTitle(Text("\(driver.givenName) \(driver.familyName)"))) {
+                    .navigationBarTitle(Text("\(driver.driver.givenName) \(driver.driver.familyName)"))) {
                         
-                DriverCell(firstName: driver.givenName, lastName: driver.familyName, driverNumber: driver.permanentNumber)
+                        DriverCell(firstName: driver.driver.givenName, lastName: driver.driver.familyName, driverNumber: driver.driver.permanentNumber)
             }
         }
         .navigationBarTitle("Drivers")

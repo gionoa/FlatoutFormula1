@@ -9,7 +9,7 @@
 import Foundation
 
 enum Path: String {
-    case drivers = "/current/drivers.json"
+    case drivers = "/current/driverStandings.json"
     case results = "/results"
     case driverStandings = "/driverStandings"
     case constructorStandings = "/current/constructorStandings.json"

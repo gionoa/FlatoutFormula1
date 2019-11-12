@@ -24,8 +24,7 @@ class DriversTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         navigationController?.navigationBar.prefersLargeTitles = true
-       // navigationItem.largeTitleDisplayMode = .always
-        
+        navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = "Drivers"
     }
 
@@ -40,11 +39,13 @@ class DriversTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let driver = viewModel.driver(at: indexPath.row)
         
+        print(driver)
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: DriverKitCell.reuseIdentifier,
                                                  for: indexPath)
                                                  as! DriverKitCell
         
-        cell.configure(firstName: driver.givenName, lastName: driver.familyName)
+        cell.configure(driver)
         return cell
     }
     

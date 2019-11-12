@@ -108,8 +108,8 @@ class DriverKitCell: UITableViewCell {
         ])
     }
     
-    func configure(firstName: String, lastName: String) {
-        firstNameLabel.text = firstName
-        lastNameLabel.text = lastName
+    func configure(_ driver: DriverStanding) {
+        firstNameLabel.text = driver.driver.givenName
+        lastNameLabel.text = driver.driver.familyName
     }
 }
