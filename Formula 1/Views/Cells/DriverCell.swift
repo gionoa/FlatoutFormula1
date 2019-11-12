@@ -149,6 +149,7 @@ class DriverKitCell: UITableViewCell {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset * 1.5),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset * 2),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             //contentView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -8)
         ])
     }
