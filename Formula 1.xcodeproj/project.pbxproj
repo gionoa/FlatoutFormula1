@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3F3FBBB0236FF85600318BD5 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3FBBAF236FF85600318BD5 /* ImageLoader.swift */; };
 		3F3FBBB22371033C00318BD5 /* DriversListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3FBBB12371033C00318BD5 /* DriversListView.swift */; };
+		3F4448EB237A21570022E871 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4448EA237A21570022E871 /* RootTabBarController.swift */; };
 		3F7E9DC9236F331E007E4F26 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E9DC8236F331E007E4F26 /* Endpoint.swift */; };
 		3F7E9DCB236FD579007E4F26 /* PublisherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E9DCA236FD579007E4F26 /* PublisherError.swift */; };
 		3F99728A23711A7200796DAB /* DriversTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F99728923711A7200796DAB /* DriversTableViewController.swift */; };
@@ -56,6 +57,7 @@
 /* Begin PBXFileReference section */
 		3F3FBBAF236FF85600318BD5 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		3F3FBBB12371033C00318BD5 /* DriversListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversListView.swift; sourceTree = "<group>"; };
+		3F4448EA237A21570022E871 /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
 		3F7E9DC8236F331E007E4F26 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		3F7E9DCA236FD579007E4F26 /* PublisherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherError.swift; sourceTree = "<group>"; };
 		3F99728923711A7200796DAB /* DriversTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversTableViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				3F99728923711A7200796DAB /* DriversTableViewController.swift */,
 				3F9C9C052372067000B8FF69 /* ConstructorCollectionViewController.swift */,
 				3FB95976237A0943004915B7 /* ConstructorsFlowLayout.swift */,
+				3F4448EA237A21570022E871 /* RootTabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				3F9BAE4E236CCDC600FB994D /* WebService.swift in Sources */,
 				3F3FBBB0236FF85600318BD5 /* ImageLoader.swift in Sources */,
 				3F99728D2371307C00796DAB /* DriverCell.swift in Sources */,
+				3F4448EB237A21570022E871 /* RootTabBarController.swift in Sources */,
 				3F99728A23711A7200796DAB /* DriversTableViewController.swift in Sources */,
 				3F9BAE1F236CCBB800FB994D /* SceneDelegate.swift in Sources */,
 				3F9BAE21236CCBB800FB994D /* RootContentView.swift in Sources */,
