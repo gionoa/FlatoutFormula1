@@ -11,14 +11,18 @@ import UIKit
 
 class ConstructorsFlowLayout: UICollectionViewFlowLayout {
     override func prepare() {
-        setup()
+       // setup()
+        
+        sectionInset = UIEdgeInsets(top: minimumLineSpacing, left: 500, bottom: 0, right: 0)
+        sectionInsetReference = .fromSafeArea
+        scrollDirection = .vertical
     }
     
     func setup() {
         guard let collectionView = collectionView else { return }
         
-       // itemSize = CGSize(width: collectionView.bounds.inset(by: collectionView.layoutMargins).size.width,
-         //                 height: 70.0)
+        itemSize = CGSize(width: collectionView.bounds.inset(by: collectionView.layoutMargins).size.width,
+                          height: 70.0)
         
         sectionInset = UIEdgeInsets(top: minimumLineSpacing, left: 500, bottom: 0, right: 0)
         sectionInsetReference = .fromSafeArea

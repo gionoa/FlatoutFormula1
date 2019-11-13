@@ -129,7 +129,6 @@ class DriversViewModel: ObservableObject {
                     print(error)
                 }
             }, receiveValue: { (response: DriverStandings) in
-                print(response)
                 self.drivers = response.driverData.driverStandingsTable.standingsLists[0].driverStandings
                 self.delegate?.didFinishFetching()
             })
