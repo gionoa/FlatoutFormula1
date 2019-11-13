@@ -157,8 +157,9 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     }
     
     func applySkin() {
-        backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 0.15)
-        
+        backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 0.15)
+        layer.borderWidth = 0.2
+        layer.borderColor = UIColor.lightGray.cgColor
         layer.cornerRadius = 20
     }
     
