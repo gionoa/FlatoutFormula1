@@ -9,10 +9,11 @@
 import Foundation
 
 enum Path: String {
-    case drivers = "/current/driverStandings.json"
-    case results = "/results"
-    case driverStandings = "/driverStandings"
+    case circuits = "/current/circuits.json"
     case constructorStandings = "/current/constructorStandings.json"
+    case drivers = "/current/driverStandings.json"
+    case driverStandings = "/driverStandings"
+    case results = "/results"
 }
 
 struct Endpoint {

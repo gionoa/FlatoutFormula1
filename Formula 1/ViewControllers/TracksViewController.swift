@@ -9,6 +9,6 @@
 import Foundation
 import UIKit
 
-class TracksCollectionViewController {
+class CircuitsCollectionViewController: UIViewController {
     
 }
