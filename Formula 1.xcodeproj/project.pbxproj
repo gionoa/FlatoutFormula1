@@ -34,7 +34,6 @@
 		3FA462E223767AFA001E925E /* ConstructorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA462E123767AFA001E925E /* ConstructorsViewModel.swift */; };
 		3FA462E62376AD17001E925E /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA462E52376AD17001E925E /* UIFont.swift */; };
 		3FAB61E0237BB686005C4514 /* ConstructorsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAB61DF237BB686005C4514 /* ConstructorsCollectionView.swift */; };
-		3FB95977237A0943004915B7 /* ConstructorsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB95976237A0943004915B7 /* ConstructorsFlowLayout.swift */; };
 		3FC1CE27236E277C00B092FB /* DriversViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1CE26236E277C00B092FB /* DriversViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,7 +88,6 @@
 		3FA462E123767AFA001E925E /* ConstructorsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorsViewModel.swift; sourceTree = "<group>"; };
 		3FA462E52376AD17001E925E /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		3FAB61DF237BB686005C4514 /* ConstructorsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorsCollectionView.swift; sourceTree = "<group>"; };
-		3FB95976237A0943004915B7 /* ConstructorsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorsFlowLayout.swift; sourceTree = "<group>"; };
 		3FC1CE26236E277C00B092FB /* DriversViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -241,7 +239,6 @@
 				3F99728923711A7200796DAB /* DriversTableViewController.swift */,
 				3F9C9C052372067000B8FF69 /* ConstructorCollectionViewController.swift */,
 				3FAB61DF237BB686005C4514 /* ConstructorsCollectionView.swift */,
-				3FB95976237A0943004915B7 /* ConstructorsFlowLayout.swift */,
 				3F4448EA237A21570022E871 /* RootTabBarController.swift */,
 			);
 			path = ViewControllers;
@@ -398,7 +395,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FB95977237A0943004915B7 /* ConstructorsFlowLayout.swift in Sources */,
 				3F9C9C08237215A100B8FF69 /* ConstructorCell.swift in Sources */,
 				3FA462E62376AD17001E925E /* UIFont.swift in Sources */,
 				3FC1CE27236E277C00B092FB /* DriversViewModel.swift in Sources */,

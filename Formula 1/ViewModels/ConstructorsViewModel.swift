@@ -8,64 +8,10 @@
 
 import Foundation
 
-private struct Constructors: Codable {
-         let mrData: MRData
-
-         enum CodingKeys: String, CodingKey {
-             case mrData = "MRData"
-         }
-     }
-
-     struct MRData: Codable {
-         let standingsTable: StandingsTable
-
-         enum CodingKeys: String, CodingKey {
-             case standingsTable = "StandingsTable"
-         }
-     }
-
-     struct StandingsTable: Codable {
-         let standingsLists: [StandingsList]
-
-         enum CodingKeys: String, CodingKey {
-             case standingsLists = "StandingsLists"
-         }
-     }
-
-     struct StandingsList: Codable {
-         let season, round: String
-         let constructorStandings: [ConstructorStanding]
-
-         enum CodingKeys: String, CodingKey {
-             case season, round
-             case constructorStandings = "ConstructorStandings"
-         }
-     }
-
-     struct ConstructorStanding: Codable {
-         let position, positionText, points, wins: String
-         let constructor: Constructor
-
-         enum CodingKeys: String, CodingKey {
-             case position, positionText, points, wins
-             case constructor = "Constructor"
-         }
-     }
-     
-     struct Constructor: Codable {
-         let constructorID: String
-         let url: String
-         let name: String
-         let nationality: String
-         
-         enum CodingKeys: String, CodingKey {
-             case constructorID = "constructorId"
-             case url, name, nationality
-         }
-     }
-
 class ConstructorsViewModel: ObservableObject {
-    @Published var constructors = [ConstructorStanding]()
+    @Published private var constructors = [ConstructorStanding]()
+    
+    var numberOfConstructors: Int { constructors.count }
     
     weak var delegate: Fetchable?
     
@@ -90,5 +36,62 @@ class ConstructorsViewModel: ObservableObject {
                 self.delegate?.didFinishFetching()
             })
     }
+    
+    func constructor(at index: Int) -> ConstructorStanding { constructors[index] }
 }
 
+private struct Constructors: Codable {
+    let mrData: MRData
+
+    enum CodingKeys: String, CodingKey {
+        case mrData = "MRData"
+    }
+}
+
+struct MRData: Codable {
+    let standingsTable: StandingsTable
+
+    enum CodingKeys: String, CodingKey {
+        case standingsTable = "StandingsTable"
+    }
+}
+
+struct StandingsTable: Codable {
+    let standingsLists: [StandingsList]
+
+    enum CodingKeys: String, CodingKey {
+        case standingsLists = "StandingsLists"
+    }
+}
+
+struct StandingsList: Codable {
+    let season, round: String
+    let constructorStandings: [ConstructorStanding]
+
+    enum CodingKeys: String, CodingKey {
+        case season, round
+        case constructorStandings = "ConstructorStandings"
+    }
+}
+
+struct ConstructorStanding: Codable {
+    let position, positionText, points, wins: String
+    let constructor: Constructor
+
+    enum CodingKeys: String, CodingKey {
+        case position, positionText, points, wins
+        case constructor = "Constructor"
+    }
+}
+
+struct Constructor: Codable {
+    let constructorID: String
+    let url: String
+    let name: String
+    let nationality: String
+    
+    enum CodingKeys: String, CodingKey {
+        case constructorID = "constructorId"
+        case url, name, nationality
+    }
+}

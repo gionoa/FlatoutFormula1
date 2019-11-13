@@ -8,20 +8,43 @@
 
 import UIKit
 
+private class ConstructorsFlowLayout: UICollectionViewFlowLayout {
+    override func prepare() {
+        guard let collectionView = collectionView else { return }
+               
+               itemSize = CGSize(width: collectionView.bounds
+                                       .inset(by: collectionView.layoutMargins)
+                                       .size.width - 50,
+                                 height: 150.0)
+               
+               sectionInset = UIEdgeInsets(top: minimumLineSpacing,
+                                           left: minimumLineSpacing,
+                                           bottom: minimumLineSpacing,
+                                           right: minimumLineSpacing)
+        
+               sectionInsetReference = .fromSafeArea
+               scrollDirection = .vertical
+    }
+}
+
 class ConstructorsCollectionView: UICollectionView {
     required init() {
         let layout = ConstructorsFlowLayout()
-        layout.itemSize = CGSize(width: 200, height: 200)
+        
         super.init(frame: UIScreen.main.bounds, collectionViewLayout: layout)
         
         register(ConstructorCollectionViewCell.self,
-        forCellWithReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier)
-        
-        alwaysBounceVertical = true
-        translatesAutoresizingMaskIntoConstraints = false
+                 forCellWithReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier)
+
+        prepare()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func prepare() {
+        alwaysBounceVertical = true
+        backgroundColor = .white
     }
 }
