@@ -76,7 +76,6 @@ struct CircuitTable: Codable {
     }
 }
 
-// MARK: - Circuit
 struct Circuit: Codable {
     let circuitID: String
     let url: String
@@ -91,7 +90,6 @@ struct Circuit: Codable {
     }
 }
 
-// MARK: - Location
 struct Location: Codable {
     let lat: String
     let long: String
