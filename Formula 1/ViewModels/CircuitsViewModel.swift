@@ -9,9 +9,11 @@
 import Foundation
 
 class CircuitsViewModel: ObservableObject {
-    @Published var circuits = [Circuit]()
+    @Published private var circuits = [Circuit]()
     
      weak var delegate: Fetchable?
+    
+    var numberOfCircuits: Int { circuits.count }
     
     init() {
            fetch()
@@ -32,6 +34,8 @@ class CircuitsViewModel: ObservableObject {
                 self.delegate?.didFinishFetching()
             })
     }
+    
+    func circuit(at index: Int) -> Circuit { circuits[index] }
 }
 
 struct Circuits: Codable {
@@ -101,4 +105,3 @@ struct Location: Codable {
         case country = "country"
     }
 }
-
