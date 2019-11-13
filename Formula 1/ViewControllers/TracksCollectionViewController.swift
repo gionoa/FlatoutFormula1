@@ -11,21 +11,6 @@ import UIKit
 import Combine
 import SwiftUI
 
-class CircuitsCollectionView: UICollectionView {
-    required init() {
-        let layout = ConstructorsFlowLayout()
-        
-        super.init(frame: UIScreen.main.bounds, collectionViewLayout: layout)
-        
-        backgroundColor = .white
-        register(CircuitCell.self, forCellWithReuseIdentifier: CircuitCell.reuseIdentifier)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
 class CircuitsCollectionViewController: UIViewController {
     @ObservedObject var viewModel = CircuitsViewModel()
     

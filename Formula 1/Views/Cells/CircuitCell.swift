@@ -14,6 +14,8 @@ class CircuitCell: UICollectionViewCell {
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.Formula1Font.Regular
         return label
     }()
@@ -35,8 +37,8 @@ class CircuitCell: UICollectionViewCell {
     }
     
     func activateConstraints() {
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false 
         NSLayoutConstraint.activate([
+            
             nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
