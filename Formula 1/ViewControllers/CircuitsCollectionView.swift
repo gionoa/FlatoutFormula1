@@ -12,9 +12,9 @@ class CircuitsCollectionView: UICollectionView {
     required init() {
         let layout = ConstructorsFlowLayout()
         
-        super.init(frame: UIScreen.main.bounds, collectionViewLayout: layout)
+        super.init(frame: .zero, collectionViewLayout: layout)
         
-        backgroundColor = .white
+        backgroundColor = .systemBackground
         register(CircuitCell.self, forCellWithReuseIdentifier: CircuitCell.reuseIdentifier)
     }
     

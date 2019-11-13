@@ -18,7 +18,7 @@ class RootTabBarController: UITabBarController {
         let secondVC =  UINavigationController(rootViewController: ConstructorsCollectionViewController(nibName: nil, bundle: nil))
         secondVC.tabBarItem.title = "Constructors"
         
-        let thirdVC =  UINavigationController(rootViewController: CircuitsCollectionViewController())
+        let thirdVC =  UINavigationController(rootViewController: CircuitsViewController())
         thirdVC.tabBarItem.title = "Circuits"
         
         viewControllers = [firstVC, secondVC, thirdVC]

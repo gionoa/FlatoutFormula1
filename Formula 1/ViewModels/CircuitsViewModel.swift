@@ -35,7 +35,10 @@ class CircuitsViewModel: ObservableObject {
             })
     }
     
-    func circuit(at index: Int) -> Circuit { circuits[index] }
+    func circuit(at index: Int) -> Circuit? {
+        guard index >= 0 && index < circuits.count else { return nil }
+        return circuits[index]
+    }
 }
 
 struct Circuits: Codable {
