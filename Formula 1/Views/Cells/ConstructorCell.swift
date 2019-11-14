@@ -16,6 +16,7 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.Formula1Font.Regular
         label.adjustsFontForContentSizeCategory = true
+        #warning("TODO: Use Localized string")
         label.text = "Position"
         
         return label
@@ -68,6 +69,7 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.Formula1Font.Regular
         label.adjustsFontForContentSizeCategory = true
+        #warning("TODO: Use Localized string")
         label.text = "Points"
         return label
     }()
@@ -95,6 +97,7 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     private lazy var winsTextLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.Formula1Font.Regular
+        #warning("TODO: Use Localized string")
         label.text = "Wins"
         return label
     }()

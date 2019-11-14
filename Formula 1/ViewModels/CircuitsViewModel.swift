@@ -59,12 +59,12 @@ struct CircuitData: Codable {
     let circuitTable: CircuitTable
 
     enum CodingKeys: String, CodingKey {
-        case xmlns = "xmlns"
-        case series = "series"
-        case url = "url"
-        case limit = "limit"
-        case offset = "offset"
-        case total = "total"
+        case xmlns
+        case series
+        case url
+        case limit
+        case offset
+        case total
         case circuitTable = "CircuitTable"
     }
 }
@@ -74,7 +74,7 @@ struct CircuitTable: Codable {
     let circuits: [Circuit]
 
     enum CodingKeys: String, CodingKey {
-        case season = "season"
+        case season
         case circuits = "Circuits"
     }
 }
@@ -87,8 +87,8 @@ struct Circuit: Codable {
 
     enum CodingKeys: String, CodingKey {
         case circuitID = "circuitId"
-        case url = "url"
-        case circuitName = "circuitName"
+        case url
+        case circuitName
         case location = "Location"
     }
 }
@@ -100,9 +100,9 @@ struct Location: Codable {
     let country: String
 
     enum CodingKeys: String, CodingKey {
-        case lat = "lat"
-        case long = "long"
-        case locality = "locality"
-        case country = "country"
+        case lat
+        case long
+        case locality
+        case country
     }
 }

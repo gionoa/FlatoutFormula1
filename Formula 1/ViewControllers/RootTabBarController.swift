@@ -25,3 +25,7 @@ class RootTabBarController: UITabBarController {
         viewControllers = [firstVC, secondVC, thirdVC]
     }
 }
+
+extension RootTabBarController: UITabBarControllerDelegate {
+    should
+}

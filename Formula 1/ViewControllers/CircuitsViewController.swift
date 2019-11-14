@@ -11,31 +11,25 @@ import UIKit
 import Combine
 import SwiftUI
 
-final class CircuitsViewController: UIViewController {
-    private lazy var viewModel: CircuitsViewModel = {
-        let viewModel = CircuitsViewModel()
-        viewModel.delegate = self
-        return viewModel
-    }()
+class CircuitsViewController: UIViewController {
+    @ObservedObject var viewModel = CircuitsViewModel()
     
-    private lazy var collectionView: CircuitsCollectionView = {
-        let collectionView = CircuitsCollectionView()
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        return collectionView
-    }()
+    var collectionView = CircuitsCollectionView()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         title = "Circuits"
         
-       setupUI()
+        addSubviews()
+        activateConstraints()
+        
+        enableDelegates()
     }
     
-    func setupUI() {
+    func addSubviews() {
         view.addSubview(collectionView)
-        
+    }
+    
+    func activateConstraints() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -45,18 +39,23 @@ final class CircuitsViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
+    func enableDelegates() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        viewModel.delegate = self
+    }
 }
 
 extension CircuitsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.numberOfCircuits
-    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { viewModel.numberOfCircuits }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let circuit = viewModel.circuit(at: indexPath.row) else { return UICollectionViewCell() }
+        let circuit = viewModel.circuit(at: indexPath.row)
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CircuitCell.reuseIdentifier, for: indexPath) as! CircuitCell
-        cell.configure(with: circuit)
+        cell.configure(circuit)
         return cell
     }
 }
@@ -64,8 +63,7 @@ extension CircuitsViewController: UICollectionViewDelegate, UICollectionViewData
 extension CircuitsViewController: Fetchable {
     func didFinishFetching() {
         DispatchQueue.main.async {
-            let section = IndexSet([0])
-            self.collectionView.reloadSections(section)
+            self.collectionView.reloadData()
         }
     }
 }

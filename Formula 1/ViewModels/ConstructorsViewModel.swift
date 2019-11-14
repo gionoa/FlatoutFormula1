@@ -9,14 +9,14 @@
 import Foundation
 
 private struct Constructors: Codable {
-         let mrData: MRData
+         let mrData: ConstructorsData
 
          enum CodingKeys: String, CodingKey {
              case mrData = "MRData"
          }
      }
 
-     struct MRData: Codable {
+     struct ConstructorsData: Codable {
          let standingsTable: StandingsTable
 
          enum CodingKeys: String, CodingKey {
