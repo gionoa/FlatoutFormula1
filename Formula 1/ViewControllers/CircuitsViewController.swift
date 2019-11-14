@@ -11,6 +11,7 @@ import UIKit
 import Combine
 import SwiftUI
 
+
 final class CircuitsViewController: UIViewController {
     private lazy var viewModel: CircuitsViewModel = {
         let viewModel = CircuitsViewModel()
