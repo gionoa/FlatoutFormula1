@@ -45,11 +45,12 @@ class CircuitCell: UICollectionViewCell {
     }
     
     func applySkin() {
-          backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 0.15)
-          layer.borderWidth = 0.2
-          layer.borderColor = UIColor.lightGray.cgColor
-          layer.cornerRadius = 20
-      }
+        backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 0.15)
+        layer.borderWidth = 0.2
+        layer.borderColor = UIColor.lightGray.cgColor
+        layer.cornerRadius = 20
+        layer.cornerCurve = .continuous
+    }
     
     func configure(_ circuit: Circuit) {
         nameLabel.text = circuit.circuitName
