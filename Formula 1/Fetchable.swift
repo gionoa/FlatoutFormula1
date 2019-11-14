@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 protocol Fetchable: class {
     func didFinishFetching()
 }
