@@ -56,7 +56,7 @@ extension CircuitsViewController: UICollectionViewDelegate, UICollectionViewData
         guard let circuit = viewModel.circuit(at: indexPath.row) else { return UICollectionViewCell() }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CircuitCell.reuseIdentifier, for: indexPath) as! CircuitCell
-        cell.configure(with: circuit)
+        cell.configure(circuit)
         return cell
     }
 }

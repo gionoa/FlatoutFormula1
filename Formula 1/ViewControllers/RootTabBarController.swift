@@ -14,9 +14,12 @@ class RootTabBarController: UITabBarController {
     override func viewDidLoad() {
         let firstVC = UINavigationController(rootViewController: DriversTableViewController(style: .plain))
         firstVC.tabBarItem.title = "Drivers"
+        firstVC.navigationBar.prefersLargeTitles = true
         
-        let secondVC =  UINavigationController(rootViewController: ConstructorsCollectionViewController(nibName: nil, bundle: nil))
+        let secondVC =  UINavigationController(rootViewController: ConstructorsCollectionViewController())
         secondVC.tabBarItem.title = "Constructors"
+        secondVC.navigationBar.prefersLargeTitles = true
+
         
         let thirdVC =  UINavigationController(rootViewController: CircuitsViewController())
         thirdVC.tabBarItem.title = "Circuits"
@@ -24,8 +27,4 @@ class RootTabBarController: UITabBarController {
         #warning("TODO: Implement navigation")
         viewControllers = [firstVC, secondVC, thirdVC]
     }
-}
-
-extension RootTabBarController: UITabBarControllerDelegate {
-    should
 }

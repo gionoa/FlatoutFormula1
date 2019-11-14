@@ -7,22 +7,20 @@
 //
 
 import Foundation
-import UIKit
-import Combine
 
 class DriversViewModel: ObservableObject {
+    @Published private var drivers = [DriverStanding]()
+    
     var numberOfDrivers: Int { drivers.count }
     var driversArray: [DriverStanding] { drivers }
     
     weak var delegate: Fetchable?
 
-    @Published private var drivers = [DriverStanding]()
-    
     init() {
         fetch()
     }
     
-    func driver(at index: Int) -> DriverStanding { driversArray[index] }
+    func driver(at index: Int) -> DriverStanding { drivers[index] }
     
     private func fetch() {
         WebService.fetch(.drivers)
@@ -35,14 +33,13 @@ class DriversViewModel: ObservableObject {
                     print(error)
                 }
             }, receiveValue: { (response: DriverStandings) in
-                print(response)
-                self.drivers = response.driverData.driverStandingsTable.standingsLists[0].driverStandings
+                self.drivers = response.driverData.driverStandingsTable.standingsLists.first?.driverStandings ?? []
                 self.delegate?.didFinishFetching()
             })
     }
 }
-
-struct DriverStandings: Codable {
+ 
+fileprivate struct DriverStandings: Codable {
     let driverData: DriverData
 
     enum CodingKeys: String, CodingKey {
