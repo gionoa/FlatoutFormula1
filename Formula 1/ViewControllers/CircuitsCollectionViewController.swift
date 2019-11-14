@@ -11,7 +11,7 @@ import UIKit
 import Combine
 import SwiftUI
 
-class CircuitsViewController: UIViewController {
+final class CircuitsViewController: UIViewController {
     private lazy var viewModel: CircuitsViewModel = {
         let vm = CircuitsViewModel()
         vm.delegate = self
