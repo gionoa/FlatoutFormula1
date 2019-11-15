@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 final class RootTabBarController: UITabBarController {
-    
     override func viewDidLoad() {
         let driversNavController = UINavigationController(rootViewController: DriversTableViewController())
         driversNavController.tabBarItem.title = "Drivers"

@@ -9,6 +9,7 @@
 import Foundation
 
 class CircuitsViewModel: ObservableObject {
+    // using @Published for when implementing with SwiftUI
     @Published private var circuits = [Circuit]()
     
      weak var delegate: Fetchable?

@@ -9,6 +9,7 @@
 import Foundation
 
 class DriversViewModel: ObservableObject {
+    // using @Published for when implementing with SwiftUI
     @Published private var drivers = [DriverStanding]()
     
     var numberOfDrivers: Int { drivers.count }

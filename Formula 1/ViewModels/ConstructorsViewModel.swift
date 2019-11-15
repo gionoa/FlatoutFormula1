@@ -9,6 +9,7 @@
 import Foundation
 
 class ConstructorsViewModel: ObservableObject {
+    // using @Published for when implementing with SwiftUI
     @Published private var constructors = [ConstructorStanding]()
     
     var numberOfConstructors: Int { constructors.count }
