@@ -1,14 +1,11 @@
 //
-//  TracksViewController.swift
+//  CircuitsViewController.swift
 //  Formula 1
 //
 //  Created by Gio on 11/12/19.
 //  Copyright © 2019 Gio. All rights reserved.
 //
 
-import Foundation
-import UIKit
-import Combine
 import SwiftUI
 
 final class CircuitsViewController: UIViewController {
@@ -28,6 +25,7 @@ final class CircuitsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        #warning("TODO: Handle Localize strings")
         title = "Circuits"
         
         setupUI()
@@ -56,7 +54,7 @@ extension CircuitsViewController: UICollectionViewDelegate, UICollectionViewData
         guard let circuit = viewModel.circuit(at: indexPath.row) else { return UICollectionViewCell() }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CircuitCell.reuseIdentifier, for: indexPath) as! CircuitCell
-        cell.configure(circuit)
+        cell.configure(with: circuit)
         return cell
     }
 }

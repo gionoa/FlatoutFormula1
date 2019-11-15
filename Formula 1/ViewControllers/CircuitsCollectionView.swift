@@ -8,23 +8,29 @@
 
 import UIKit
 
-final class ConstructorsFlowLayout: UICollectionViewFlowLayout {
+private final class CircuitsFlowLayout: ConstructorsFlowLayout {
+    override required init() {
+        super.init()
+    }
+    
     override func prepare() {
+        super.prepare()
+        
         guard let collectionView = collectionView else { return }
         
         itemSize = CGSize(width: collectionView.bounds.inset(by: collectionView.layoutMargins).size.width,
-                          height: 75.0)
-        
-        sectionInset = UIEdgeInsets(top: minimumLineSpacing, left: 0, bottom: 0, right: 0)
-        sectionInsetReference = .fromSafeArea
-        scrollDirection = .vertical
+                          height: 75)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
 final class CircuitsCollectionView: UICollectionView {
     required init() {
-        let layout = ConstructorsFlowLayout()
-        
+        let layout = CircuitsFlowLayout()
+
         super.init(frame: .zero, collectionViewLayout: layout)
         
         backgroundColor = .systemBackground

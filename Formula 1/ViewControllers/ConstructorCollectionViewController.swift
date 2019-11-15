@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 
-final class ConstructorsCollectionViewController: UIViewController {
+final class ConstructorsViewController: UIViewController {
     private lazy var viewModel: ConstructorsViewModel = {
         let viewModel = ConstructorsViewModel()
         viewModel.delegate = self
@@ -25,13 +25,15 @@ final class ConstructorsCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         navigationController?.hidesBarsOnSwipe = true
+        
+        #warning("TODO: Handle Localized string")
         navigationItem.title = "Constructors"
       
         setupUI()
     }
 }
 
-extension ConstructorsCollectionViewController {
+extension ConstructorsViewController {
     private func setupUI() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -46,7 +48,7 @@ extension ConstructorsCollectionViewController {
     }
 }
 
-extension ConstructorsCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ConstructorsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -63,7 +65,7 @@ extension ConstructorsCollectionViewController: UICollectionViewDelegate, UIColl
     }
 }
 
-extension ConstructorsCollectionViewController: Fetchable {
+extension ConstructorsViewController: Fetchable {
     func didFinishFetching() {
         DispatchQueue.main.async {
             let section = IndexSet([0])

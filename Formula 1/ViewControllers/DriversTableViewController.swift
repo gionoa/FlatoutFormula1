@@ -32,7 +32,7 @@ final class DriversTableViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         
-        #warning("TODO: Use Localized string")
+        #warning("TODO: Handle Localized string")
         navigationItem.title = "Drivers"
     }
 

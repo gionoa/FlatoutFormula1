@@ -10,19 +10,40 @@ import Foundation
 import UIKit
 
 final class RootTabBarController: UITabBarController {
+    private let driversNavController: UINavigationController = {
+        let navController = UINavigationController(
+            rootViewController: DriversTableViewController())
+        
+        #warning("TODO: Handle Localized string")
+        navController.tabBarItem.title = "Drivers"
+        
+        navController.navigationBar.prefersLargeTitles = true
+        return navController
+    }()
+    
+    private let constructorsNavController: UINavigationController = {
+        let navController = UINavigationController(
+            rootViewController: ConstructorsViewController())
+        
+        #warning("TODO: Handle Localized string")
+        navController.tabBarItem.title = "Drivers"
+        
+        navController.navigationBar.prefersLargeTitles = true
+        return navController
+    }()
+    
+    private let circuitsNavController: UINavigationController = {
+        let navController = UINavigationController(
+            rootViewController: CircuitsViewController())
+        
+        #warning("TODO: Handle Localized string")
+        navController.tabBarItem.title = "Drivers"
+        
+        navController.navigationBar.prefersLargeTitles = true
+        return navController
+    }()
+    
     override func viewDidLoad() {
-        let driversNavController = UINavigationController(rootViewController: DriversTableViewController())
-        driversNavController.tabBarItem.title = "Drivers"
-        driversNavController.navigationBar.prefersLargeTitles = true
-        
-        let constructorsNavController =  UINavigationController(rootViewController: ConstructorsCollectionViewController())
-        constructorsNavController.tabBarItem.title = "Constructors"
-        constructorsNavController.navigationBar.prefersLargeTitles = true
-
-        
-        let circuitsNavController =  UINavigationController(rootViewController: CircuitsViewController())
-        circuitsNavController.tabBarItem.title = "Circuits"
-        
         #warning("TODO: Implement navigation")
         viewControllers = [driversNavController, constructorsNavController, circuitsNavController]
     }

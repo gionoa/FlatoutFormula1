@@ -39,6 +39,7 @@
 		3FAB61E4237BE58D005C4514 /* CircuitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAB61E3237BE58D005C4514 /* CircuitsViewModel.swift */; };
 		3FAB61E6237BE9C4005C4514 /* CircuitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAB61E5237BE9C4005C4514 /* CircuitCell.swift */; };
 		3FC1CE27236E277C00B092FB /* DriversViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC1CE26236E277C00B092FB /* DriversViewModel.swift */; };
+		3FD7758B237F6D1000152523 /* Circuit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD7758A237F6D1000152523 /* Circuit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		3FAB61E3237BE58D005C4514 /* CircuitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitsViewModel.swift; sourceTree = "<group>"; };
 		3FAB61E5237BE9C4005C4514 /* CircuitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitCell.swift; sourceTree = "<group>"; };
 		3FC1CE26236E277C00B092FB /* DriversViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversViewModel.swift; sourceTree = "<group>"; };
+		3FD7758A237F6D1000152523 /* Circuit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circuit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +270,7 @@
 		3FC1CE25236E274300B092FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3FD7758A237F6D1000152523 /* Circuit.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				3F9C9C08237215A100B8FF69 /* ConstructorCell.swift in Sources */,
 				3FA462E62376AD17001E925E /* UIFont.swift in Sources */,
 				3FC1CE27236E277C00B092FB /* DriversViewModel.swift in Sources */,
+				3FD7758B237F6D1000152523 /* Circuit.swift in Sources */,
 				3FAB61E2237BBC6D005C4514 /* CircuitsViewController.swift in Sources */,
 				3F62F92C237C754E0037DAA0 /* CircuitsCollectionView.swift in Sources */,
 				3F62F934237D32020037DAA0 /* ConstructorsCollectionView.swift in Sources */,

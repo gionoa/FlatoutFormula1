@@ -159,6 +159,7 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     func applySkin() {
         backgroundColor = .systemGray6
         
+        #warning("TODO: Don't sub-pixel")
         layer.borderWidth = 0.2
         layer.borderColor = UIColor.systemGray2.cgColor
         

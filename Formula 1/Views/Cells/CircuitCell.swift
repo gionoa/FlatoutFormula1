@@ -34,25 +34,26 @@ class CircuitCell: UICollectionViewCell {
 
 extension CircuitCell {
     func setupUI() {
-          contentView.addSubview(nameLabel)
-
-          NSLayoutConstraint.activate([
-              nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-              nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-          ])
-      }
-      
-      func applySkin() {
-          backgroundColor = .systemGray6
-          
-          layer.borderWidth = 0.2
-          layer.borderColor = UIColor.systemGray2.cgColor
-
-          layer.cornerRadius = 20
-          layer.cornerCurve = .continuous
-      }
-      
-      func configure(_ circuit: Circuit) {
-          nameLabel.text = circuit.circuitName
-      }
+        contentView.addSubview(nameLabel)
+        
+        NSLayoutConstraint.activate([
+            nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+        ])
+    }
+    
+    func applySkin() {
+        backgroundColor = .systemGray6
+        
+        #warning("TODO: Don't sub-pixel")
+        layer.borderWidth = 0.2
+        layer.borderColor = UIColor.systemGray2.cgColor
+        
+        layer.cornerRadius = 20
+        layer.cornerCurve = .continuous
+    }
+    
+    func configure(with circuit: Circuit) {
+        nameLabel.text = circuit.circuitName
+    }
 }
