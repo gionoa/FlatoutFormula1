@@ -9,18 +9,42 @@
 import Foundation
 import UIKit
 
-class RootTabBarController: UITabBarController {
+final class RootTabBarController: UITabBarController {
+    private let driversNavController: UINavigationController = {
+        let navController = UINavigationController(
+            rootViewController: DriversTableViewController())
+        
+        #warning("TODO: Handle Localized string")
+        navController.tabBarItem.title = "Drivers"
+        
+        navController.navigationBar.prefersLargeTitles = true
+        return navController
+    }()
+    
+    private let constructorsNavController: UINavigationController = {
+        let navController = UINavigationController(
+            rootViewController: ConstructorsViewController())
+        
+        #warning("TODO: Handle Localized string")
+        navController.tabBarItem.title = "Drivers"
+        
+        navController.navigationBar.prefersLargeTitles = true
+        return navController
+    }()
+    
+    private let circuitsNavController: UINavigationController = {
+        let navController = UINavigationController(
+            rootViewController: CircuitsViewController())
+        
+        #warning("TODO: Handle Localized string")
+        navController.tabBarItem.title = "Drivers"
+        
+        navController.navigationBar.prefersLargeTitles = true
+        return navController
+    }()
     
     override func viewDidLoad() {
-        let firstVC = UINavigationController(rootViewController: DriversTableViewController(style: .plain))
-        firstVC.tabBarItem.title = "Drivers"
-        firstVC.navigationBar.prefersLargeTitles = true
-        
-        let secondVC =  UINavigationController(rootViewController: ConstructorsCollectionViewController())
-        secondVC.tabBarItem.title = "Constructors"
-        secondVC.navigationBar.prefersLargeTitles = true
-
-        
-        viewControllers = [firstVC, secondVC]
+        #warning("TODO: Implement navigation")
+        viewControllers = [driversNavController, constructorsNavController, circuitsNavController]
     }
 }

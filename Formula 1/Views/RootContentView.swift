@@ -21,7 +21,7 @@ struct RootContentView: View {
             }
             
             //NavigationView {
-                ViewControllerRepresentation<ConstructorsCollectionViewController>()
+                ViewControllerRepresentation<ConstructorsViewController>()
             //  .navigationBarTitle("Constructors")
 
           //  }

@@ -10,33 +10,38 @@ import UIKit
 import SwiftUI
 
 // MARK: - DriversTableView
-class DriversTableViewController: UITableViewController {
-    @ObservedObject var viewModel = DriversViewModel()
-
-    override init(style: UITableView.Style) {
-        super.init(style: style)
+#warning("Implement pull to refresh")
+final class DriversTableViewController: UITableViewController {
+    private lazy var viewModel: DriversViewModel = {
+        let viewModel = DriversViewModel()
+        viewModel.delegate = self
+        return viewModel
+    }()
+    
+    required init() {
+        super.init(style: .plain)
         
         tableView.register(DriverKitCell.self,
                            forCellReuseIdentifier: DriverKitCell.reuseIdentifier)
         
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 80
-        
-        viewModel.delegate = self
+        tableView.estimatedRowHeight = 60
     }
     
     override func viewDidLoad() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
+        
+        #warning("TODO: Handle Localized string")
         navigationItem.title = "Drivers"
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 44 }
-//
+}
+
+extension DriversTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { viewModel.numberOfDrivers }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

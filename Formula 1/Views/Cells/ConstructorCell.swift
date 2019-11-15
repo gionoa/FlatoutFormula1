@@ -16,6 +16,7 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.Formula1Font.Regular
         label.adjustsFontForContentSizeCategory = true
+        #warning("TODO: Use Localized string")
         label.text = "Position"
         
         return label
@@ -68,6 +69,7 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.Formula1Font.Regular
         label.adjustsFontForContentSizeCategory = true
+        #warning("TODO: Use Localized string")
         label.text = "Points"
         return label
     }()
@@ -95,6 +97,7 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     private lazy var winsTextLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.Formula1Font.Regular
+        #warning("TODO: Use Localized string")
         label.text = "Wins"
         return label
     }()
@@ -130,8 +133,7 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubviews()
-        activateConstraints()
+        setupUI()
         applySkin()
     }
     
@@ -139,12 +141,10 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addSubviews() {
+    func setupUI() {
         contentView.addSubview(constructorHStackView)
         contentView.addSubview(statsStackView)
-    }
-    
-    func activateConstraints() {
+        
         let inset: CGFloat = 8
         
         NSLayoutConstraint.activate([
@@ -157,10 +157,14 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     }
     
     func applySkin() {
-        backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 0.15)
+        backgroundColor = .systemGray6
+        
+        #warning("TODO: Don't sub-pixel")
         layer.borderWidth = 0.2
-        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderColor = UIColor.systemGray2.cgColor
+        
         layer.cornerRadius = 20
+        layer.cornerCurve = .continuous
     }
     
     func configure(_ constructor: ConstructorStanding) {

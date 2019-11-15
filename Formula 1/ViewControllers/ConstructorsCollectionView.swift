@@ -8,34 +8,28 @@
 
 import UIKit
 
-private class ConstructorsFlowLayout: UICollectionViewFlowLayout {
+ class ConstructorsFlowLayout: UICollectionViewFlowLayout {
     override func prepare() {
         guard let collectionView = collectionView else { return }
-               
-               itemSize = CGSize(width: collectionView.bounds
-                                       .inset(by: collectionView.layoutMargins)
-                                       .size.width - 50,
-                                 height: 150.0)
-               
-               sectionInset = UIEdgeInsets(top: minimumLineSpacing,
-                                           left: minimumLineSpacing,
-                                           bottom: minimumLineSpacing,
-                                           right: minimumLineSpacing)
         
-               sectionInsetReference = .fromSafeArea
-               scrollDirection = .vertical
+        itemSize = CGSize(width: collectionView.bounds.inset(by: collectionView.layoutMargins).size.width,
+                          height: 150.0)
+        
+        sectionInset = UIEdgeInsets(top: minimumLineSpacing, left: 0, bottom: 0, right: 0)
+        sectionInsetReference = .fromSafeArea
+        scrollDirection = .vertical
     }
 }
 
-class ConstructorsCollectionView: UICollectionView {
+final class ConstructorsCollectionView: UICollectionView {
     required init() {
         let layout = ConstructorsFlowLayout()
         
-        super.init(frame: UIScreen.main.bounds, collectionViewLayout: layout)
+        super.init(frame: .zero, collectionViewLayout: layout)
         
         register(ConstructorCollectionViewCell.self,
                  forCellWithReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier)
-
+        
         prepare()
     }
     
@@ -45,6 +39,6 @@ class ConstructorsCollectionView: UICollectionView {
     
     func prepare() {
         alwaysBounceVertical = true
-        backgroundColor = .white
+        backgroundColor = .systemBackground
     }
 }
