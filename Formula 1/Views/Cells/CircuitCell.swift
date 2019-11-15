@@ -23,36 +23,36 @@ class CircuitCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubviews()
-        activateConstraints()
+        setupUI()
         applySkin()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func addSubviews() {
-        contentView.addSubview(nameLabel)
-    }
-    
-    func activateConstraints() {
-        NSLayoutConstraint.activate([
-            
-            nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-        ])
-    }
-    
-    func applySkin() {
-        backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 0.15)
-        layer.borderWidth = 0.2
-        layer.borderColor = UIColor.lightGray.cgColor
-        layer.cornerRadius = 20
-        layer.cornerCurve = .continuous
-    }
-    
-    func configure(_ circuit: Circuit) {
-        nameLabel.text = circuit.circuitName
-    }
+}
+
+extension CircuitCell {
+    func setupUI() {
+          contentView.addSubview(nameLabel)
+
+          NSLayoutConstraint.activate([
+              nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+              nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+          ])
+      }
+      
+      func applySkin() {
+          backgroundColor = .systemGray6
+          
+          layer.borderWidth = 0.2
+          layer.borderColor = UIColor.systemGray2.cgColor
+
+          layer.cornerRadius = 20
+          layer.cornerCurve = .continuous
+      }
+      
+      func configure(_ circuit: Circuit) {
+          nameLabel.text = circuit.circuitName
+      }
 }

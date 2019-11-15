@@ -9,22 +9,22 @@
 import Foundation
 import UIKit
 
-class RootTabBarController: UITabBarController {
+final class RootTabBarController: UITabBarController {
     
     override func viewDidLoad() {
-        let firstVC = UINavigationController(rootViewController: DriversTableViewController(style: .plain))
-        firstVC.tabBarItem.title = "Drivers"
-        firstVC.navigationBar.prefersLargeTitles = true
+        let driversNavController = UINavigationController(rootViewController: DriversTableViewController())
+        driversNavController.tabBarItem.title = "Drivers"
+        driversNavController.navigationBar.prefersLargeTitles = true
         
-        let secondVC =  UINavigationController(rootViewController: ConstructorsCollectionViewController())
-        secondVC.tabBarItem.title = "Constructors"
-        secondVC.navigationBar.prefersLargeTitles = true
+        let constructorsNavController =  UINavigationController(rootViewController: ConstructorsCollectionViewController())
+        constructorsNavController.tabBarItem.title = "Constructors"
+        constructorsNavController.navigationBar.prefersLargeTitles = true
 
         
-        let thirdVC =  UINavigationController(rootViewController: CircuitsViewController())
-        thirdVC.tabBarItem.title = "Circuits"
+        let circuitsNavController =  UINavigationController(rootViewController: CircuitsViewController())
+        circuitsNavController.tabBarItem.title = "Circuits"
         
         #warning("TODO: Implement navigation")
-        viewControllers = [firstVC, secondVC, thirdVC]
+        viewControllers = [driversNavController, constructorsNavController, circuitsNavController]
     }
 }

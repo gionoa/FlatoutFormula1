@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConstructorsCollectionView: UICollectionView {
+final class ConstructorsCollectionView: UICollectionView {
     required init() {
         let layout = ConstructorsFlowLayout()
         
@@ -16,7 +16,7 @@ class ConstructorsCollectionView: UICollectionView {
         
         register(ConstructorCollectionViewCell.self,
                  forCellWithReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier)
-
+        
         prepare()
     }
     

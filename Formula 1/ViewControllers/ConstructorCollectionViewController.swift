@@ -9,19 +9,40 @@
 import UIKit
 import SwiftUI
 
-class ConstructorsCollectionViewController: UIViewController {
-    @ObservedObject var viewModel = ConstructorsViewModel()
+final class ConstructorsCollectionViewController: UIViewController {
+    private lazy var viewModel: ConstructorsViewModel = {
+        let viewModel = ConstructorsViewModel()
+        viewModel.delegate = self
+        return viewModel
+    }()
 
-    var collectionView = ConstructorsCollectionView()
+    private lazy var collectionView: ConstructorsCollectionView = {
+        let collectionView = ConstructorsCollectionView()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        return collectionView
+    }()
     
     override func viewDidLoad() {
         navigationController?.hidesBarsOnSwipe = true
         navigationItem.title = "Constructors"
       
-        addSubviews()
-        activateConstraints()
-    
-        enableDelegates()
+        setupUI()
+    }
+}
+
+extension ConstructorsCollectionViewController {
+    private func setupUI() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(collectionView)
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 }
 
@@ -42,34 +63,11 @@ extension ConstructorsCollectionViewController: UICollectionViewDelegate, UIColl
     }
 }
 
-extension ConstructorsCollectionViewController {
-    private func addSubviews() {
-          view.addSubview(collectionView)
-      }
-      
-      private func activateConstraints() {
-          collectionView.translatesAutoresizingMaskIntoConstraints = false
-
-          NSLayoutConstraint.activate([
-              collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-              collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-              collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-              collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-          ])
-      }
-      
-      private func enableDelegates() {
-          viewModel.delegate = self
-          
-          collectionView.delegate = self
-          collectionView.dataSource = self
-      }
-}
-
 extension ConstructorsCollectionViewController: Fetchable {
     func didFinishFetching() {
         DispatchQueue.main.async {
-            self.collectionView.reloadData()
+            let section = IndexSet([0])
+            self.collectionView.reloadSections(section)
         }
     }
 }

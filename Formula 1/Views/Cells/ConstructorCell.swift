@@ -133,8 +133,7 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubviews()
-        activateConstraints()
+        setupUI()
         applySkin()
     }
     
@@ -142,12 +141,10 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addSubviews() {
+    func setupUI() {
         contentView.addSubview(constructorHStackView)
         contentView.addSubview(statsStackView)
-    }
-    
-    func activateConstraints() {
+        
         let inset: CGFloat = 8
         
         NSLayoutConstraint.activate([
@@ -160,10 +157,13 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     }
     
     func applySkin() {
-        backgroundColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 0.15)
+        backgroundColor = .systemGray6
+        
         layer.borderWidth = 0.2
-        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderColor = UIColor.systemGray2.cgColor
+        
         layer.cornerRadius = 20
+        layer.cornerCurve = .continuous
     }
     
     func configure(_ constructor: ConstructorStanding) {

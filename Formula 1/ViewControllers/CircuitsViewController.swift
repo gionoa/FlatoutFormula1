@@ -11,7 +11,6 @@ import UIKit
 import Combine
 import SwiftUI
 
-
 final class CircuitsViewController: UIViewController {
     private lazy var viewModel: CircuitsViewModel = {
         let viewModel = CircuitsViewModel()
@@ -31,7 +30,7 @@ final class CircuitsViewController: UIViewController {
         
         title = "Circuits"
         
-       setupUI()
+        setupUI()
     }
     
     func setupUI() {

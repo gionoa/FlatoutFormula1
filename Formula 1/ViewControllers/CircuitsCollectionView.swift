@@ -8,16 +8,12 @@
 
 import UIKit
 
-class ConstructorsFlowLayout: UICollectionViewFlowLayout {
+final class ConstructorsFlowLayout: UICollectionViewFlowLayout {
     override func prepare() {
-        setup()
-    }
-    
-    func setup() {
         guard let collectionView = collectionView else { return }
         
         itemSize = CGSize(width: collectionView.bounds.inset(by: collectionView.layoutMargins).size.width,
-                          height: 150.0)
+                          height: 75.0)
         
         sectionInset = UIEdgeInsets(top: minimumLineSpacing, left: 0, bottom: 0, right: 0)
         sectionInsetReference = .fromSafeArea
@@ -25,7 +21,7 @@ class ConstructorsFlowLayout: UICollectionViewFlowLayout {
     }
 }
 
-class CircuitsCollectionView: UICollectionView {
+final class CircuitsCollectionView: UICollectionView {
     required init() {
         let layout = ConstructorsFlowLayout()
         
