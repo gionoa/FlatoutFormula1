@@ -6,7 +6,7 @@
 //  Copyright © 2019 Gio. All rights reserved.
 //
 
-import SwiftUI
+import UIKit
 
 final class CircuitsViewController: UIViewController {
     private lazy var viewModel: CircuitsViewModel = {
