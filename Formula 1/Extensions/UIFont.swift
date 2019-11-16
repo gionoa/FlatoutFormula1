@@ -37,5 +37,5 @@ fileprivate func font(for font: String) -> UIFont {
                             """)
                     }
              
-             return UIFontMetrics.default.scaledFont(for: customFont)
+    return UIFontMetrics.default.scaledFont(for: customFont)
 }
