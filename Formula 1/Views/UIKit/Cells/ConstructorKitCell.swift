@@ -10,10 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: - Constructor Collection View Cell
-class ConstructorKitCell: UICollectionViewCell {
-    // MARK: - Static Reuse Identifier
-    static let reuseIdentifier = String(describing: self)
-    
+class ConstructorKitCell: UICollectionViewCell {    
     // MARK: - Properties
     private lazy var positionTitleLabel: UILabel = {
         let label = UILabel()
@@ -59,11 +56,10 @@ class ConstructorKitCell: UICollectionViewCell {
     
     private lazy var constructorHStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [titleLabel, nationalityLabel])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.distribution = .equalCentering
-        stackView.spacing = 20
+        stackView.spacing = 16
         return  stackView
     }()
     
@@ -107,7 +103,6 @@ class ConstructorKitCell: UICollectionViewCell {
     
     private lazy var winsLabel: UILabel = {
         let label = UILabel()
-        //  label.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         label.font = UIFont.Formula1Font.Bold
         label.textColor = .systemRed
         return label
@@ -125,10 +120,18 @@ class ConstructorKitCell: UICollectionViewCell {
     // MARK: - Stats (HStack of the VStacks)
     private lazy var statsStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [ positionVStackView, pointsStackView, winsStackView])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
+        stackView.distribution = .equalCentering
+        stackView.spacing = 32
+        return stackView
+    }()
+    
+    private lazy var finalStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [ constructorHStackView, statsStackView])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
         stackView.alignment = .center
-        //stackView.distribution = .equalCentering
+        stackView.distribution = .equalCentering
         stackView.spacing = 32
         return stackView
     }()
@@ -149,17 +152,16 @@ class ConstructorKitCell: UICollectionViewCell {
 // MARK: - Functions
 extension ConstructorKitCell {
     func setupUI() {
-        contentView.addSubview(constructorHStackView)
-        contentView.addSubview(statsStackView)
+       // contentView.addSubview(constructorHStackView)
+        //        contentView.addSubview(statsStackView)
+               contentView.addSubview(finalStackView)
         
         let inset: CGFloat = 8
         
         NSLayoutConstraint.activate([
-            constructorHStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            constructorHStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            
-            statsStackView.topAnchor.constraint(equalTo: constructorHStackView.bottomAnchor, constant: inset * 4),
-            statsStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+
+            finalStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            finalStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
     }
     

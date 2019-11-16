@@ -81,25 +81,3 @@ struct StandingsList: Codable {
         case constructorStandings = "ConstructorStandings"
     }
 }
-
-struct ConstructorStanding: Codable {
-    let position, positionText, points, wins: String
-    let constructor: Constructor
-
-    enum CodingKeys: String, CodingKey {
-        case position, positionText, points, wins
-        case constructor = "Constructor"
-    }
-}
-
-struct Constructor: Codable {
-    let constructorID: String
-    let url: String
-    let name: String
-    let nationality: String
-    
-    enum CodingKeys: String, CodingKey {
-        case constructorID = "constructorId"
-        case url, name, nationality
-    }
-}

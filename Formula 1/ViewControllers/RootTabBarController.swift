@@ -14,8 +14,8 @@ private final class F1NavController: UINavigationController {
     //MARK: - init
     required init(rootViewController: UIViewController, titled title: String) {
         super.init(rootViewController: rootViewController)
-        self.title = title
-        navigationBar.prefersLargeTitles = true
+        
+        rootViewController.title = title
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+  
 // MARK: - Circuits View Controller
 final class CircuitsViewController: UIViewController {
     // MARK: - Properties
@@ -19,6 +19,7 @@ final class CircuitsViewController: UIViewController {
     
     private lazy var collectionView: CircuitsCollectionView = {
         let collectionView = CircuitsCollectionView()
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -27,21 +28,15 @@ final class CircuitsViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        #warning("TODO: Handle Localize strings")
-        title = "Circuits"
-        
         setupUI()
     }
 }
 
 // MARK: - Functions
-extension CircuitsViewController{
+extension CircuitsViewController {
     func setupUI() {
         view.addSubview(collectionView)
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
+                
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

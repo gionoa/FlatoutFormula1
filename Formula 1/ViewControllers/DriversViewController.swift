@@ -19,8 +19,8 @@ final class DriversViewController: UIViewController {
         return viewModel
     }()
     
-    lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
+    lazy var tableView: DriversTableView = {
+        let tableView = DriversTableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -30,23 +30,11 @@ final class DriversViewController: UIViewController {
     // MARK: init
     required init() {
         super.init(nibName: nil, bundle: nil)
-        
-        tableView.register(DriverKitCell.self,
-                           forCellReuseIdentifier: DriverKitCell.reuseIdentifier)
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 60
     }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         setupUI()
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
-        
-        #warning("TODO: Handle Localized string")
-        navigationItem.title = "Drivers"
     }
     
     required init?(coder: NSCoder) {

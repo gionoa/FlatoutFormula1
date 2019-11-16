@@ -10,6 +10,11 @@
 		3F3FBBB0236FF85600318BD5 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3FBBAF236FF85600318BD5 /* ImageLoader.swift */; };
 		3F3FBBB22371033C00318BD5 /* DriversListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3FBBB12371033C00318BD5 /* DriversListView.swift */; };
 		3F4448EB237A21570022E871 /* RootTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4448EA237A21570022E871 /* RootTabBarController.swift */; };
+		3F54B7932380876500F43268 /* DriversTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54B7922380876500F43268 /* DriversTableView.swift */; };
+		3F54B795238088AD00F43268 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54B794238088AD00F43268 /* UICollectionViewCell.swift */; };
+		3F54B797238095DD00F43268 /* Constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54B796238095DD00F43268 /* Constructor.swift */; };
+		3F54B7992380A12E00F43268 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54B7982380A12E00F43268 /* UITableView.swift */; };
+		3F54B79B2380A14F00F43268 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54B79A2380A14F00F43268 /* UIView.swift */; };
 		3F62F92C237C754E0037DAA0 /* CircuitsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62F92B237C754E0037DAA0 /* CircuitsCollectionView.swift */; };
 		3F62F934237D32020037DAA0 /* ConstructorsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62F933237D32020037DAA0 /* ConstructorsCollectionView.swift */; };
 		3F7E9DC9236F331E007E4F26 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E9DC8236F331E007E4F26 /* Endpoint.swift */; };
@@ -65,6 +70,11 @@
 		3F3FBBAF236FF85600318BD5 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		3F3FBBB12371033C00318BD5 /* DriversListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversListView.swift; sourceTree = "<group>"; };
 		3F4448EA237A21570022E871 /* RootTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarController.swift; sourceTree = "<group>"; };
+		3F54B7922380876500F43268 /* DriversTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversTableView.swift; sourceTree = "<group>"; };
+		3F54B794238088AD00F43268 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
+		3F54B796238095DD00F43268 /* Constructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constructor.swift; sourceTree = "<group>"; };
+		3F54B7982380A12E00F43268 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		3F54B79A2380A14F00F43268 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		3F62F92B237C754E0037DAA0 /* CircuitsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitsCollectionView.swift; sourceTree = "<group>"; };
 		3F62F933237D32020037DAA0 /* ConstructorsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstructorsCollectionView.swift; sourceTree = "<group>"; };
 		3F7E9DC8236F331E007E4F26 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -220,6 +230,9 @@
 			isa = PBXGroup;
 			children = (
 				3FA462E52376AD17001E925E /* UIFont.swift */,
+				3F54B79A2380A14F00F43268 /* UIView.swift */,
+				3F54B7982380A12E00F43268 /* UITableView.swift */,
+				3F54B794238088AD00F43268 /* UICollectionViewCell.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -270,6 +283,7 @@
 			children = (
 				3FD7758A237F6D1000152523 /* Circuit.swift */,
 				3FD77598237FB5A500152523 /* Driver.swift */,
+				3F54B796238095DD00F43268 /* Constructor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -279,6 +293,7 @@
 			children = (
 				3F62F933237D32020037DAA0 /* ConstructorsCollectionView.swift */,
 				3F62F92B237C754E0037DAA0 /* CircuitsCollectionView.swift */,
+				3F54B7922380876500F43268 /* DriversTableView.swift */,
 				3FD77595237F958700152523 /* Cells */,
 			);
 			path = UIKit;
@@ -446,7 +461,9 @@
 				3FD77599237FB5A500152523 /* Driver.swift in Sources */,
 				3FD7758B237F6D1000152523 /* Circuit.swift in Sources */,
 				3FAB61E2237BBC6D005C4514 /* CircuitsViewController.swift in Sources */,
+				3F54B797238095DD00F43268 /* Constructor.swift in Sources */,
 				3F62F92C237C754E0037DAA0 /* CircuitsCollectionView.swift in Sources */,
+				3F54B7932380876500F43268 /* DriversTableView.swift in Sources */,
 				3F62F934237D32020037DAA0 /* ConstructorsCollectionView.swift in Sources */,
 				3F7E9DC9236F331E007E4F26 /* Endpoint.swift in Sources */,
 				3F9BAE1D236CCBB800FB994D /* AppDelegate.swift in Sources */,
@@ -455,12 +472,15 @@
 				3F99728D2371307C00796DAB /* DriverCell.swift in Sources */,
 				3F4448EB237A21570022E871 /* RootTabBarController.swift in Sources */,
 				3F99728A23711A7200796DAB /* DriversViewController.swift in Sources */,
+				3F54B79B2380A14F00F43268 /* UIView.swift in Sources */,
+				3F54B7992380A12E00F43268 /* UITableView.swift in Sources */,
 				3F9BAE1F236CCBB800FB994D /* SceneDelegate.swift in Sources */,
 				3F9BAE21236CCBB800FB994D /* RootContentView.swift in Sources */,
 				3FD77597237F959400152523 /* DriverKitCell.swift in Sources */,
 				3F9C9C062372067000B8FF69 /* ConstructorsViewController.swift in Sources */,
 				3FA462E223767AFA001E925E /* ConstructorsViewModel.swift in Sources */,
 				3F9972912371418A00796DAB /* Fetchable.swift in Sources */,
+				3F54B795238088AD00F43268 /* UICollectionViewCell.swift in Sources */,
 				3F3FBBB22371033C00318BD5 /* DriversListView.swift in Sources */,
 				3F7E9DCB236FD579007E4F26 /* PublisherError.swift in Sources */,
 				3F99728F237131C900796DAB /* ViewControllerRepresentation.swift in Sources */,

@@ -20,6 +20,7 @@ final class ConstructorsViewController: UIViewController {
     
     private lazy var collectionView: ConstructorsCollectionView = {
         let collectionView = ConstructorsCollectionView()
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -27,11 +28,6 @@ final class ConstructorsViewController: UIViewController {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
-        navigationController?.hidesBarsOnSwipe = true
-        
-        #warning("TODO: Handle Localized string")
-        navigationItem.title = "Constructors"
-        
         setupUI()
     }
 }
@@ -39,8 +35,6 @@ final class ConstructorsViewController: UIViewController {
 // MARK: - Functions
 extension ConstructorsViewController {
     private func setupUI() {
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([

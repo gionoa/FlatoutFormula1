@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Driver struct
 struct Driver: Codable, Identifiable {
     let id = UUID()
     let driverID: String

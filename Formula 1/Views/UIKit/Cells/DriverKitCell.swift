@@ -9,9 +9,6 @@ import UIKit
 
 // MARK: - Driver Table View Cell
 class DriverKitCell: UITableViewCell {
-    // MARK: - Static Reuse Identifier
-    static let reuseIdentifier = String(describing: self)
-    
     // MARK: - Properties
     private lazy var pointsLabel: UILabel = {
         let label = UILabel()
