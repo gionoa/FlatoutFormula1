@@ -14,7 +14,7 @@
 		3F62F934237D32020037DAA0 /* ConstructorsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62F933237D32020037DAA0 /* ConstructorsCollectionView.swift */; };
 		3F7E9DC9236F331E007E4F26 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E9DC8236F331E007E4F26 /* Endpoint.swift */; };
 		3F7E9DCB236FD579007E4F26 /* PublisherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E9DCA236FD579007E4F26 /* PublisherError.swift */; };
-		3F99728A23711A7200796DAB /* DriversTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F99728923711A7200796DAB /* DriversTableViewController.swift */; };
+		3F99728A23711A7200796DAB /* DriversViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F99728923711A7200796DAB /* DriversViewController.swift */; };
 		3F99728D2371307C00796DAB /* DriverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F99728C2371307C00796DAB /* DriverCell.swift */; };
 		3F99728F237131C900796DAB /* ViewControllerRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F99728E237131C900796DAB /* ViewControllerRepresentation.swift */; };
 		3F9972912371418A00796DAB /* Fetchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9972902371418A00796DAB /* Fetchable.swift */; };
@@ -68,7 +68,7 @@
 		3F62F933237D32020037DAA0 /* ConstructorsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstructorsCollectionView.swift; sourceTree = "<group>"; };
 		3F7E9DC8236F331E007E4F26 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		3F7E9DCA236FD579007E4F26 /* PublisherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherError.swift; sourceTree = "<group>"; };
-		3F99728923711A7200796DAB /* DriversTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversTableViewController.swift; sourceTree = "<group>"; };
+		3F99728923711A7200796DAB /* DriversViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversViewController.swift; sourceTree = "<group>"; };
 		3F99728C2371307C00796DAB /* DriverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverCell.swift; sourceTree = "<group>"; };
 		3F99728E237131C900796DAB /* ViewControllerRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerRepresentation.swift; sourceTree = "<group>"; };
 		3F9972902371418A00796DAB /* Fetchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetchable.swift; sourceTree = "<group>"; };
@@ -246,7 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				3F4448EA237A21570022E871 /* RootTabBarController.swift */,
-				3F99728923711A7200796DAB /* DriversTableViewController.swift */,
+				3F99728923711A7200796DAB /* DriversViewController.swift */,
 				3F9C9C052372067000B8FF69 /* ConstructorsViewController.swift */,
 				3FAB61E1237BBC6D005C4514 /* CircuitsViewController.swift */,
 			);
@@ -450,7 +450,7 @@
 				3F3FBBB0236FF85600318BD5 /* ImageLoader.swift in Sources */,
 				3F99728D2371307C00796DAB /* DriverCell.swift in Sources */,
 				3F4448EB237A21570022E871 /* RootTabBarController.swift in Sources */,
-				3F99728A23711A7200796DAB /* DriversTableViewController.swift in Sources */,
+				3F99728A23711A7200796DAB /* DriversViewController.swift in Sources */,
 				3F9BAE1F236CCBB800FB994D /* SceneDelegate.swift in Sources */,
 				3F9BAE21236CCBB800FB994D /* RootContentView.swift in Sources */,
 				3FD77597237F959400152523 /* DriverKitCell.swift in Sources */,

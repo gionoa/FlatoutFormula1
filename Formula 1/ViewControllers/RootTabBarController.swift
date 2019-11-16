@@ -12,7 +12,7 @@ import UIKit
 final class RootTabBarController: UITabBarController {
     private let driversNavController: UINavigationController = {
         let navController = UINavigationController(
-            rootViewController: DriversTableViewController())
+            rootViewController: DriversViewController())
         
         #warning("TODO: Handle Localized string")
         navController.tabBarItem.title = "Drivers"
