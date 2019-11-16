@@ -11,7 +11,7 @@ import SwiftUI
 
 // MARK: - DriversTableView
 #warning("Implement pull to refresh")
-final class DriversTableViewController: UITableViewController {
+final class DriversViewController: UITableViewController {
     private lazy var viewModel: DriversViewModel = {
         let viewModel = DriversViewModel()
         viewModel.delegate = self
@@ -41,7 +41,7 @@ final class DriversTableViewController: UITableViewController {
     }
 }
 
-extension DriversTableViewController {
+extension DriversViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { viewModel.numberOfDrivers }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -61,7 +61,7 @@ extension DriversTableViewController {
 }
 
 // MARK: - Fetchable
-extension DriversTableViewController: Fetchable {
+extension DriversViewController: Fetchable {
     func didFinishFetching() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
