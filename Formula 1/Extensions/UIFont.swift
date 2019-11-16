@@ -8,7 +8,9 @@
 
 import UIKit
 
+// MARK: - Font extension
 extension UIFont {
+    // MARK: - Formula 1 Font
     enum Formula1Font {
         private enum F1Font: String, RawRepresentable {
             case Black = "Formula1-Display-Black"
@@ -18,6 +20,7 @@ extension UIFont {
            
         }
         
+        // MARK: - Font types
         static var Black: UIFont { font(for: F1Font.Black.rawValue) }
         static var Bold: UIFont { font(for: F1Font.Bold.rawValue) }
         static var Regular: UIFont { font(for: F1Font.Regular.rawValue) }
@@ -25,6 +28,7 @@ extension UIFont {
     }    
 }
 
+// MARK: - Font Builder
 fileprivate func font(for font: String) -> UIFont {
     guard let customFont = UIFont(name: font, size: UIFont.labelFontSize) else {
                         fatalError("""
@@ -35,6 +39,3 @@ fileprivate func font(for font: String) -> UIFont {
              
              return UIFontMetrics.default.scaledFont(for: customFont)
 }
-
-// usage
-let someFont = UIFont.Formula1Font.Bold

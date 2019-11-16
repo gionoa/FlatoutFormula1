@@ -8,7 +8,9 @@
 
 import Foundation
 
+// MARK: - Constructors View Model
 class ConstructorsViewModel: ObservableObject {
+    // MARK: - Properties
     // using @Published for when implementing with SwiftUI
     @Published private var constructors = [ConstructorStanding]()
     
@@ -16,10 +18,14 @@ class ConstructorsViewModel: ObservableObject {
     
     weak var delegate: Fetchable?
     
+    // MARK: - init
     init() {
         fetch()
     }
-    
+}
+
+// MARK: - Functions
+extension ConstructorsViewModel {
     private func fetch() {
         WebService.fetch(.constructorStandings)
             .receive(on: RunLoop.main)
@@ -41,6 +47,7 @@ class ConstructorsViewModel: ObservableObject {
     func constructor(at index: Int) -> ConstructorStanding { constructors[index] }
 }
 
+// MARK: - Private Codable structs
 private struct Constructors: Codable {
     let mrData: MRData
 

@@ -9,9 +9,12 @@
 import Foundation
 import UIKit
 
-class ConstructorCollectionViewCell: UICollectionViewCell {
+// MARK: - Constructor Collection View Cell
+class ConstructorKitCell: UICollectionViewCell {
+    // MARK: - Static Reuse Identifier
     static let reuseIdentifier = String(describing: self)
     
+    // MARK: - Properties
     private lazy var positionTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.Formula1Font.Regular
@@ -130,6 +133,7 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
+    // MARK: - init
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -140,7 +144,10 @@ class ConstructorCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+// MARK: - Functions
+extension ConstructorKitCell {
     func setupUI() {
         contentView.addSubview(constructorHStackView)
         contentView.addSubview(statsStackView)

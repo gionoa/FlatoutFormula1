@@ -8,7 +8,9 @@
 
 import UIKit
 
- class ConstructorsFlowLayout: UICollectionViewFlowLayout {
+// MARK: - Constructors Flow Layout
+class ConstructorsFlowLayout: UICollectionViewFlowLayout {
+    // MARK: - Lifecycle
     override func prepare() {
         guard let collectionView = collectionView else { return }
         
@@ -21,14 +23,16 @@ import UIKit
     }
 }
 
+// MARK: - Constructors Collection View
 final class ConstructorsCollectionView: UICollectionView {
+    // MARK: - Lifecycle
     required init() {
         let layout = ConstructorsFlowLayout()
         
         super.init(frame: .zero, collectionViewLayout: layout)
         
-        register(ConstructorCollectionViewCell.self,
-                 forCellWithReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier)
+        register(ConstructorKitCell.self,
+                 forCellWithReuseIdentifier: ConstructorKitCell.reuseIdentifier)
         
         prepare()
     }
@@ -36,9 +40,12 @@ final class ConstructorsCollectionView: UICollectionView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+// MARK: - Functions
+extension ConstructorsCollectionView {
     func prepare() {
-        alwaysBounceVertical = true
-        backgroundColor = .systemBackground
-    }
+         alwaysBounceVertical = true
+         backgroundColor = .systemBackground
+     }
 }

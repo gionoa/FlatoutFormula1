@@ -8,7 +8,9 @@
 
 import UIKit
 
+// MARK: - Circuits View Controller
 final class CircuitsViewController: UIViewController {
+    // MARK: - Properties
     private lazy var viewModel: CircuitsViewModel = {
         let viewModel = CircuitsViewModel()
         viewModel.delegate = self
@@ -22,6 +24,7 @@ final class CircuitsViewController: UIViewController {
         return collectionView
     }()
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +33,10 @@ final class CircuitsViewController: UIViewController {
         
         setupUI()
     }
-    
+}
+
+// MARK: - Functions
+extension CircuitsViewController{
     func setupUI() {
         view.addSubview(collectionView)
         
@@ -45,6 +51,7 @@ final class CircuitsViewController: UIViewController {
     }
 }
 
+// MARK: - CollectionView Delegate / DataSource
 extension CircuitsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.numberOfCircuits
@@ -59,6 +66,7 @@ extension CircuitsViewController: UICollectionViewDelegate, UICollectionViewData
     }
 }
 
+// MARK: - Fetchable
 extension CircuitsViewController: Fetchable {
     func didFinishFetching() {
         DispatchQueue.main.async {

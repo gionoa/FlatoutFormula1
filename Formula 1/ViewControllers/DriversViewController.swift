@@ -9,15 +9,17 @@
 import UIKit
 import SwiftUI
 
-// MARK: - DriversTableView
+// MARK: - Drivers View Controller
 #warning("Implement pull to refresh")
 final class DriversViewController: UITableViewController {
+    // MARK: - Properties
     private lazy var viewModel: DriversViewModel = {
         let viewModel = DriversViewModel()
         viewModel.delegate = self
         return viewModel
     }()
     
+    // MARK: init
     required init() {
         super.init(style: .plain)
         
@@ -28,6 +30,7 @@ final class DriversViewController: UITableViewController {
         tableView.estimatedRowHeight = 60
     }
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
@@ -41,6 +44,7 @@ final class DriversViewController: UITableViewController {
     }
 }
 
+// MARK: - Table View Delegate / DataSource
 extension DriversViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { viewModel.numberOfDrivers }
     

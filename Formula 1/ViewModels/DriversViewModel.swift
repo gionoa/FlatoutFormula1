@@ -8,19 +8,26 @@
 
 import Foundation
 
+// MARK: - Drivers View Model
 class DriversViewModel: ObservableObject {
+    // MARK: - Properties
     // using @Published for when implementing with SwiftUI
     @Published private var drivers = [DriverStanding]()
     
     var numberOfDrivers: Int { drivers.count }
     var driversArray: [DriverStanding] { drivers }
     
+    // MARK: - Fetchable Delegate
     weak var delegate: Fetchable?
 
+    // MARK: - Lifecycle
     init() {
         fetch()
     }
-    
+}
+
+// MARK: - Functions
+extension DriversViewModel {
     func driver(at index: Int) -> DriverStanding { drivers[index] }
     
     private func fetch() {
@@ -39,8 +46,9 @@ class DriversViewModel: ObservableObject {
             })
     }
 }
- 
-fileprivate struct DriverStandings: Codable {
+
+// MARK: - Private Codable structs
+private struct DriverStandings: Codable {
     let driverData: DriverData
 
     enum CodingKeys: String, CodingKey {
@@ -107,29 +115,6 @@ fileprivate struct DriverStandings: Codable {
         case constructorID = "constructorId"
         case url = "url"
         case name = "name"
-        case nationality = "nationality"
-    }
-}
-
-struct Driver: Codable, Identifiable {
-    let id = UUID()
-    let driverID: String
-    let permanentNumber: String
-    let code: String
-    let url: String
-    let givenName: String
-    let familyName: String
-    let dateOfBirth: String
-    let nationality: String
-
-    enum CodingKeys: String, CodingKey {
-        case driverID = "driverId"
-        case permanentNumber = "permanentNumber"
-        case code = "code"
-        case url = "url"
-        case givenName = "givenName"
-        case familyName = "familyName"
-        case dateOfBirth = "dateOfBirth"
         case nationality = "nationality"
     }
 }
