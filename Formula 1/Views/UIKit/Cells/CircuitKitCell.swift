@@ -9,9 +9,12 @@
 import Foundation
 import UIKit
 
+// MARK: - Circuit Collection View Cell
 class CircuitCell: UICollectionViewCell {
+    // MARK: - Static Reuse Identifier
     static let reuseIdentifier = String(describing: self)
     
+    // MARK: - Properties
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -20,6 +23,7 @@ class CircuitCell: UICollectionViewCell {
         return label
     }()
     
+    // MARK: - init
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -32,6 +36,7 @@ class CircuitCell: UICollectionViewCell {
     }
 }
 
+// MARK: - Functions
 extension CircuitCell {
     func setupUI() {
         contentView.addSubview(nameLabel)

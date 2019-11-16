@@ -10,7 +10,9 @@ import Foundation
 import SwiftUI
 import Combine
 
+// MARK: - Drivers SwiftUI Table View
 struct DriversListView: View {
+    // MARK: - Properties
     @ObservedObject var viewModel = DriversViewModel()
     
     var body: some View {

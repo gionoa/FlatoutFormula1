@@ -9,13 +9,15 @@
 import UIKit
 import SwiftUI
 
+// MARK: Constructors View Controller
 final class ConstructorsViewController: UIViewController {
+    // Mark: - Properties
     private lazy var viewModel: ConstructorsViewModel = {
         let viewModel = ConstructorsViewModel()
         viewModel.delegate = self
         return viewModel
     }()
-
+    
     private lazy var collectionView: ConstructorsCollectionView = {
         let collectionView = ConstructorsCollectionView()
         collectionView.delegate = self
@@ -23,16 +25,18 @@ final class ConstructorsViewController: UIViewController {
         return collectionView
     }()
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         navigationController?.hidesBarsOnSwipe = true
         
         #warning("TODO: Handle Localized string")
         navigationItem.title = "Constructors"
-      
+        
         setupUI()
     }
 }
 
+// MARK: - Functions
 extension ConstructorsViewController {
     private func setupUI() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +52,7 @@ extension ConstructorsViewController {
     }
 }
 
+// MARK: - CollectionView Delegate / DataSource
 extension ConstructorsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
     
@@ -58,13 +63,14 @@ extension ConstructorsViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let constructor = viewModel.constructor(at: indexPath.row)
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConstructorCollectionViewCell.reuseIdentifier,
-                                                      for: indexPath) as! ConstructorCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ConstructorKitCell.reuseIdentifier,
+                                                      for: indexPath) as! ConstructorKitCell
         cell.configure(constructor)
         return cell
     }
 }
 
+// MARK: - Fetchable
 extension ConstructorsViewController: Fetchable {
     func didFinishFetching() {
         DispatchQueue.main.async {
@@ -73,4 +79,3 @@ extension ConstructorsViewController: Fetchable {
         }
     }
 }
-

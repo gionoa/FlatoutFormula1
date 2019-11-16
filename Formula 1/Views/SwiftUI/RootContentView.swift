@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+// MARK: - SwiftUI Root View (Entry point)
 struct RootContentView: View {
     var body: some View {
         TabView {

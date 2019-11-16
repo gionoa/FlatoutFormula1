@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Path
 enum Path: String {
     case circuits = "/current/circuits.json"
     case constructorStandings = "/current/constructorStandings.json"
@@ -16,6 +17,7 @@ enum Path: String {
     case results = "/results"
 }
 
+// MARK: - Endpoint
 struct Endpoint {
     private (set) var path = "/api/f1"
     
@@ -24,6 +26,7 @@ struct Endpoint {
     }
 }
 
+// MARK: - Path url
 extension Endpoint {
     var url: URL? {
         var components = URLComponents()

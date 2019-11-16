@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Circuit
 struct Circuit: Codable {
     let circuitID: String
     let url: String

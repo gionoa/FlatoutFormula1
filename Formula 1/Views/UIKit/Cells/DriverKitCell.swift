@@ -7,10 +7,12 @@
 
 import UIKit
 
-// MARK: - UIKit View
+// MARK: - Driver Table View Cell
 class DriverKitCell: UITableViewCell {
+    // MARK: - Static Reuse Identifier
     static let reuseIdentifier = String(describing: self)
     
+    // MARK: - Properties
     private lazy var pointsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -66,24 +68,25 @@ class DriverKitCell: UITableViewCell {
         return stackView
     }()
     
+    // MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        addSubviews()
-        activateConstraints()
+        setupUI()
         accessoryType = .disclosureIndicator
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func addSubviews() {
+}
+
+// MARK: - Functions
+extension DriverKitCell {
+    func setupUI() {
         contentView.addSubview(stackView)
         contentView.addSubview(pointsLabel)
-    }
-    
-    func activateConstraints() {
+        
         let inset: CGFloat = 8
         
         NSLayoutConstraint.activate([

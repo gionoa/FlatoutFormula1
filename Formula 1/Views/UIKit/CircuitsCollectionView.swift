@@ -8,11 +8,14 @@
 
 import UIKit
 
+// MARK: - Circuits Flow Layout
 private final class CircuitsFlowLayout: ConstructorsFlowLayout {
+    // MARK: - init
     override required init() {
         super.init()
     }
     
+    // MARK: - Lifecycle
     override func prepare() {
         super.prepare()
         
@@ -27,7 +30,9 @@ private final class CircuitsFlowLayout: ConstructorsFlowLayout {
     }
 }
 
+// MARK: - Circuits Collection View
 final class CircuitsCollectionView: UICollectionView {
+    // MARK: - init
     required init() {
         let layout = CircuitsFlowLayout()
 

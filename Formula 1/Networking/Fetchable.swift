@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+// MARK: - Fetchable 
 protocol Fetchable: class {
     func didFinishFetching()
 }

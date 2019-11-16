@@ -8,18 +8,25 @@
 
 import Foundation
 
+// MARK: - Circuits View Model
 class CircuitsViewModel: ObservableObject {
+    // MARK: - Properties
     // using @Published for when implementing with SwiftUI
     @Published private var circuits = [Circuit]()
     
-    weak var delegate: Fetchable?
-    
     var numberOfCircuits: Int { circuits.count }
     
+    // MARK: - Fetchable Delegate
+    weak var delegate: Fetchable?
+    
+    // MARK: - init
     init() {
         fetch()
     }
-    
+}
+
+// MARK: - Functions
+extension CircuitsViewModel {
     private func fetch() {
         WebService.fetch(.circuits)
             .receive(on: RunLoop.main)
@@ -42,6 +49,7 @@ class CircuitsViewModel: ObservableObject {
     }
 }
 
+// MARK: - Private Codable structs
 private struct Circuits: Codable {
     let mrData: CircuitData
     

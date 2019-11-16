@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
+// MARK: - F1 Navigation Controller
 private final class F1NavController: UINavigationController {
+    //MARK: - init
     required init(rootViewController: UIViewController, titled title: String) {
         super.init(rootViewController: rootViewController)
         self.title = title
@@ -21,7 +23,9 @@ private final class F1NavController: UINavigationController {
     }
 }
 
+// MARK: - Tab Bar Controller
 final class RootTabBarController: UITabBarController {
+    // MARK: - Properties
     #warning("TODO: Handle Localized string")
     private let driversNavController = F1NavController(rootViewController: DriversViewController(),
                                                        titled: "Drivers")
@@ -31,8 +35,10 @@ final class RootTabBarController: UITabBarController {
                                                             titled: "Constructors")
     
     #warning("TODO: Handle Localized string")
-    private let circuitsNavController = F1NavController(rootViewController: DriversViewController(),
+    private let circuitsNavController = F1NavController(rootViewController: CircuitsViewController(),
                                                         titled: "Circuits")
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         #warning("TODO: Implement navigation")
         viewControllers = [driversNavController, constructorsNavController, circuitsNavController]

@@ -8,12 +8,14 @@
 
 import Foundation
 
+// MARK: - Publisher Error
 enum PublisherError: Error {
     case url
     case network
     case parsing
 }
 
+// MARK: - Publisher Description
 extension PublisherError: CustomStringConvertible {
     var description: String {
         switch self {

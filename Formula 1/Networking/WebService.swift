@@ -10,7 +10,11 @@ import Foundation
 import Combine
 import UIKit
 
-enum WebService {
+// MARK: - Web Service
+enum WebService { }
+
+extension WebService {
+    // MARK: - Static functions
     private static func dataTask(_ url: URL) -> AnyPublisher<Data, Error> {
         return
             URLSession.shared
