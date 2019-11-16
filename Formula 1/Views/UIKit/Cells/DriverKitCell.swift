@@ -1,4 +1,3 @@
-//
 //  DriverKitCell.swift
 //  Formula 1
 //
