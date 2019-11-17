@@ -31,8 +31,7 @@ final class ConstructorsCollectionView: UICollectionView {
         
         super.init(frame: .zero, collectionViewLayout: layout)
         
-        register(ConstructorKitCell.self,
-                 forCellWithReuseIdentifier: ConstructorKitCell.reuseIdentifier)
+        registerCell(ConstructorKitCell.self)
         
         prepare()
     }

@@ -10,10 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: - Circuit Collection View Cell
-class CircuitCell: UICollectionViewCell {
-    // MARK: - Static Reuse Identifier
-    static let reuseIdentifier = String(describing: self)
-    
+class CircuitCell: UICollectionViewCell {    
     // MARK: - Properties
     lazy var nameLabel: UILabel = {
         let label = UILabel()

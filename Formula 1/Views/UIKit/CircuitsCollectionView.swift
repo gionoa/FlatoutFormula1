@@ -39,7 +39,7 @@ final class CircuitsCollectionView: UICollectionView {
         super.init(frame: .zero, collectionViewLayout: layout)
         
         backgroundColor = .systemBackground
-        register(CircuitCell.self, forCellWithReuseIdentifier: CircuitCell.reuseIdentifier)
+        registerCell(CircuitCell.self)
     }
     
     required init?(coder: NSCoder) {
