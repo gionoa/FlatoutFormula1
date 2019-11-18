@@ -99,8 +99,8 @@ extension DriverKitCell {
     func configure(_ driver: DriverStanding) {
         firstNameLabel.text = driver.driver.givenName
         lastNameLabel.text = driver.driver.familyName
-        positionLabel.text = driver.position
+        positionLabel.text = driver.position.positionNumber
         constructorLabel.text = driver.constructors[0].name
         pointsLabel.text = driver.points
-    }
+        }
 }

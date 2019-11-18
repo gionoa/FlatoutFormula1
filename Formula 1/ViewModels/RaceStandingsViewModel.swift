@@ -11,11 +11,10 @@ import UIKit
 import Combine
 import SwiftUI
 
-class RaceStandingsViewModel: ObservableObject {
+final class RaceStandingsViewModel: ObservableObject {
     @Published var standings = [Race]()
        
-    
-     init() {
+     required init() {
         fetch()
     }
 }
