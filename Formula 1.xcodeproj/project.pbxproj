@@ -15,6 +15,8 @@
 		3F54B797238095DD00F43268 /* Constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54B796238095DD00F43268 /* Constructor.swift */; };
 		3F54B7992380A12E00F43268 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54B7982380A12E00F43268 /* UITableView.swift */; };
 		3F54B79B2380A14F00F43268 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F54B79A2380A14F00F43268 /* UIView.swift */; };
+		3F6075552382334F005E9EE0 /* RaceStandingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6075542382334F005E9EE0 /* RaceStandingsViewModel.swift */; };
+		3F60755723823893005E9EE0 /* RaceStandingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F60755623823893005E9EE0 /* RaceStandingsViewController.swift */; };
 		3F62F92C237C754E0037DAA0 /* CircuitsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62F92B237C754E0037DAA0 /* CircuitsCollectionView.swift */; };
 		3F62F934237D32020037DAA0 /* ConstructorsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F62F933237D32020037DAA0 /* ConstructorsCollectionView.swift */; };
 		3F7E9DC9236F331E007E4F26 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E9DC8236F331E007E4F26 /* Endpoint.swift */; };
@@ -75,6 +77,8 @@
 		3F54B796238095DD00F43268 /* Constructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constructor.swift; sourceTree = "<group>"; };
 		3F54B7982380A12E00F43268 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		3F54B79A2380A14F00F43268 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		3F6075542382334F005E9EE0 /* RaceStandingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceStandingsViewModel.swift; sourceTree = "<group>"; };
+		3F60755623823893005E9EE0 /* RaceStandingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceStandingsViewController.swift; sourceTree = "<group>"; };
 		3F62F92B237C754E0037DAA0 /* CircuitsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitsCollectionView.swift; sourceTree = "<group>"; };
 		3F62F933237D32020037DAA0 /* ConstructorsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstructorsCollectionView.swift; sourceTree = "<group>"; };
 		3F7E9DC8236F331E007E4F26 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 				3F99728923711A7200796DAB /* DriversViewController.swift */,
 				3F9C9C052372067000B8FF69 /* ConstructorsViewController.swift */,
 				3FAB61E1237BBC6D005C4514 /* CircuitsViewController.swift */,
+				3F60755623823893005E9EE0 /* RaceStandingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 				3FC1CE26236E277C00B092FB /* DriversViewModel.swift */,
 				3FA462E123767AFA001E925E /* ConstructorsViewModel.swift */,
 				3FAB61E3237BE58D005C4514 /* CircuitsViewModel.swift */,
+				3F6075542382334F005E9EE0 /* RaceStandingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -456,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F9C9C08237215A100B8FF69 /* ConstructorKitCell.swift in Sources */,
+				3F60755723823893005E9EE0 /* RaceStandingsViewController.swift in Sources */,
 				3FA462E62376AD17001E925E /* UIFont.swift in Sources */,
 				3FC1CE27236E277C00B092FB /* DriversViewModel.swift in Sources */,
 				3FD77599237FB5A500152523 /* Driver.swift in Sources */,
@@ -464,6 +471,7 @@
 				3F54B797238095DD00F43268 /* Constructor.swift in Sources */,
 				3F62F92C237C754E0037DAA0 /* CircuitsCollectionView.swift in Sources */,
 				3F54B7932380876500F43268 /* DriversTableView.swift in Sources */,
+				3F6075552382334F005E9EE0 /* RaceStandingsViewModel.swift in Sources */,
 				3F62F934237D32020037DAA0 /* ConstructorsCollectionView.swift in Sources */,
 				3F7E9DC9236F331E007E4F26 /* Endpoint.swift in Sources */,
 				3F9BAE1D236CCBB800FB994D /* AppDelegate.swift in Sources */,

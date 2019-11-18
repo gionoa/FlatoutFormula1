@@ -15,6 +15,7 @@ enum Path: String {
     case drivers = "/current/driverStandings.json"
     case driverStandings = "/driverStandings"
     case results = "/results"
+    case raceStandings = "/current/results.json"
 }
 
 // MARK: - Endpoint
@@ -22,6 +23,7 @@ struct Endpoint {
     private (set) var path = "/api/f1"
     
     init(_ subPath: Path) {
+        print(subPath.rawValue)
         path.append(subPath.rawValue)
     }
 }
@@ -33,6 +35,7 @@ extension Endpoint {
         components.scheme = "https"
         components.host = "ergast.com"
         components.path = path
+        print("components", components.url)
         return components.url
     }
 }
