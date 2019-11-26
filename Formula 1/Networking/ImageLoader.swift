@@ -17,11 +17,12 @@ class ImageLoader: ObservableObject {
 
 // MARK: - Functions
 extension ImageLoader {
-    func getImage(urlString: String) {
+    func getImage(urlString: String, _ completion: @escaping (() -> Void?)) {
            WebService.fetchImage(urlString: urlString)
                .sink(receiveCompletion: { completion in })
                { image in
                    self.image = image
+                   completion()
                }
            }
 }
