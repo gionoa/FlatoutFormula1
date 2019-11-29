@@ -10,6 +10,26 @@ import UIKit
 // MARK: - Driver Table View Cell
 class DriverKitCell: UITableViewCell {
     // MARK: - Properties
+    
+    private let permanentNumberLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.Formula1Font.Regular
+        return label
+    }()
+    
+    private let constructorColor: UIView = {
+        let view = UIView()
+        view.backgroundColor = .blue
+        // set to constructor color
+        return view
+    }()
+    
+    private lazy var nameLabel: UILabel = {
+          let label = UILabel()
+          label.font = UIFont.Formula1Font.Regular
+          return label
+      }()
+      
     private lazy var pointsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -17,46 +37,8 @@ class DriverKitCell: UITableViewCell {
         return label
     }()
     
-    private lazy var positionLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.Formula1Font.Regular
-        return label
-    }()
-    
-    private lazy var firstNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.Formula1Font.Regular
-        return label
-    }()
-    
-    private lazy var lastNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.Formula1Font.Bold
-        return label
-    }()
-    
-    private lazy var nameHStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [firstNameLabel, lastNameLabel])
-        stackView.axis = .horizontal
-        stackView.spacing = 8
-        return stackView
-    }()
-    
-    private lazy var constructorLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.Formula1Font.Regular
-        return label
-    }()
-    
-    private lazy var nameAndConstructorStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [nameHStackView, constructorLabel])
-        stackView.axis = .vertical
-        stackView.spacing = 8
-        return stackView
-    }()
-    
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [positionLabel, nameAndConstructorStackView])
+        let stackView = UIStackView(arrangedSubviews: [constructorColor, nameLabel, permanentNumberLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.alignment = .center
@@ -85,11 +67,14 @@ extension DriverKitCell {
         contentView.addSubview(pointsLabel)
         
         let inset: CGFloat = 8
-        
+
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset * 1.5),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset * 2),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset),
+            
+            constructorColor.widthAnchor.constraint(equalToConstant: 8),
+            constructorColor.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: -inset * 2),
             
             pointsLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             pointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset)
@@ -97,10 +82,9 @@ extension DriverKitCell {
     }
     
     func configure(_ driver: DriverStanding) {
-        firstNameLabel.text = driver.driver.givenName
-        lastNameLabel.text = driver.driver.familyName
-        positionLabel.text = driver.position
-        constructorLabel.text = driver.constructors[0].name
+        permanentNumberLabel.text = driver.driver.permanentNumber
+        nameLabel.text = "\(driver.driver.givenName) \(driver.driver.familyName)"
         pointsLabel.text = driver.points
+        constructorColor.backgroundColor = UIColor.Mercedes
     }
 }
