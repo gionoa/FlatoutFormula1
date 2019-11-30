@@ -38,9 +38,14 @@ final class RootTabBarController: UITabBarController {
     private let circuitsNavController = F1NavController(rootViewController: CircuitsViewController(),
                                                         titled: "Circuits")
     
+    
+    #warning("TODO: Handle Localized string")
+       private let raceStandingsNavController = F1NavController(rootViewController: RaceStandingsViewController(),
+                                                           titled: "Race Standings")
+       
     // MARK: - Lifecycle
     override func viewDidLoad() {
         #warning("TODO: Implement navigation")
-        viewControllers = [driversNavController, constructorsNavController, circuitsNavController]
+        viewControllers = [driversNavController, constructorsNavController, circuitsNavController, raceStandingsNavController]
     }
 }

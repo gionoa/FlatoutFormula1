@@ -59,6 +59,9 @@ extension DriversViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let detailVC = UIViewController()
+        navigationController?.present(detailVC, animated: true)
     }
 }
 
@@ -79,7 +82,8 @@ extension DriversViewController {
 extension DriversViewController: Fetchable {
     func didFinishFetching() {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            let section = IndexSet([0])
+            self.tableView.reloadSections(section, with: .automatic)
         }
     }
 }

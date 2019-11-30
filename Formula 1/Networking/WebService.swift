@@ -24,6 +24,7 @@ extension WebService {
                         let httpResponse = response as? HTTPURLResponse,
                         200..<300 ~= httpResponse.statusCode
                         else {
+                            print(response.description)
                             throw PublisherError.network
                     }
                     return data
@@ -33,7 +34,6 @@ extension WebService {
     
     static func fetch<T: Decodable>(_ subPath: Path) -> AnyPublisher<T, PublisherError> {
         let url = Endpoint(subPath).url!
-        
         return
             dataTask(url)
                 .decode(type: T.self, decoder: JSONDecoder())
