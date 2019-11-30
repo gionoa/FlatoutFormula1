@@ -18,5 +18,5 @@ extension UIColor {
     static let RacingPoint = UIColor(red: 245 / 255, green: 150 / 255, blue: 200 / 255, alpha: 1)// RGBA(245, 150, 200, 1)
     static let AlfaRomeo = UIColor(red: 155 / 255, green: 0, blue: 0, alpha: 1) // RGBA(155, 0, 0, 1)
     static let Haas = UIColor(red: 189 / 255, green: 158 / 255, blue: 87 / 255, alpha: 1) // RGBA(189, 158, 87, 1)
-    static let Williams = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1) // RGBA(0, 0, 0, 1)
+    static let Williams = UIColor(red: 0 / 255, green: 153 / 255, blue: 255 / 255, alpha: 1) // RGBA(0, 0, 0, 1)
 }

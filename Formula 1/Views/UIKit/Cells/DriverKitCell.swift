@@ -10,13 +10,6 @@ import UIKit
 // MARK: - Driver Table View Cell
 class DriverKitCell: UITableViewCell {
     // MARK: - Properties
-    
-    private let permanentNumberLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.Formula1Font.Regular
-        return label
-    }()
-    
     private let constructorColor: UIView = {
         let view = UIView()
         view.backgroundColor = .blue
@@ -29,6 +22,20 @@ class DriverKitCell: UITableViewCell {
           label.font = UIFont.Formula1Font.Regular
           return label
       }()
+    
+    private lazy var constructorLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.Formula1Font.Regular
+        return label
+    }()
+    
+    private lazy var titleStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [nameLabel, constructorLabel])
+        stackView.axis = .vertical
+        stackView.alignment = .leading
+        stackView.spacing = 8
+        return stackView
+    }()
       
     private lazy var pointsLabel: UILabel = {
         let label = UILabel()
@@ -38,7 +45,7 @@ class DriverKitCell: UITableViewCell {
     }()
     
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [constructorColor, nameLabel, permanentNumberLabel])
+        let stackView = UIStackView(arrangedSubviews: [constructorColor, titleStackView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.alignment = .center
@@ -82,9 +89,38 @@ extension DriverKitCell {
     }
     
     func configure(_ driver: DriverStanding) {
-        permanentNumberLabel.text = driver.driver.permanentNumber
+        guard let constructor = driver.constructors.first?.name else { return }
+        constructorColor.backgroundColor =  constructorColor(for: constructor)
+
         nameLabel.text = "\(driver.driver.givenName) \(driver.driver.familyName)"
-        pointsLabel.text = driver.points
-        constructorColor.backgroundColor = UIColor.Mercedes
+        constructorLabel.text = constructor
+        pointsLabel.text = "\(driver.points) PTS"
+    }
+    
+    func constructorColor(for constructor: String) -> UIColor {
+        switch constructor {
+        case "Mercedes":
+            return .Mercedes
+        case "Ferrari":
+            return .Ferrari
+        case "Red Bull":
+            return .Redbull
+        case "McLaren":
+            return .McLaren
+        case "Racing Point":
+            return .RacingPoint
+        case "Renault":
+            return .Renault
+        case "Toro Rosso":
+            return .Redbull
+        case "Williams":
+            return .Williams
+        case "Alfa Romeo":
+            return .AlfaRomeo
+        case "Haas F1 Team":
+            return .Haas
+        default:
+            fatalError()
+        }
     }
 }
