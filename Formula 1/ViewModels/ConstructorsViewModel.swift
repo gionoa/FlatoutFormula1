@@ -7,12 +7,15 @@
 //
 
 import Foundation
+import Combine
 
 // MARK: - Constructors View Model
 class ConstructorsViewModel: ObservableObject {
     // MARK: - Properties
     // using @Published for when implementing with SwiftUI
     @Published private var constructors = [ConstructorStanding]()
+    
+    private var cancellable: AnyCancellable?
     
     var numberOfConstructors: Int { constructors.count }
     
@@ -27,21 +30,23 @@ class ConstructorsViewModel: ObservableObject {
 // MARK: - Functions
 extension ConstructorsViewModel {
     private func fetch() {
-        WebService.fetch(.constructorStandings)
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print(error)
-                }
-            }, receiveValue: { (response: Constructors) in
-                let standingsList = response.mrData.standingsTable.standingsLists
-                self.constructors = standingsList.first?.constructorStandings ?? []
-                
-                self.delegate?.didFinishFetching()
-            })
+        cancellable =
+            WebService
+                .fetch(.constructorStandings)
+                .receive(on: RunLoop.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print(error)
+                    }
+                }, receiveValue: { (response: Constructors) in
+                    let standingsList = response.mrData.standingsTable.standingsLists
+                    self.constructors = standingsList.first?.constructorStandings ?? []
+                    
+                    self.delegate?.didFinishFetching()
+                })
     }
     
     func constructor(at index: Int) -> ConstructorStanding { constructors[index] }

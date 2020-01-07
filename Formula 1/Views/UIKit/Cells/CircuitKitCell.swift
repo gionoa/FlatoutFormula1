@@ -23,18 +23,18 @@ class CircuitCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var image: UIImageView = {
-        let imageView = UIImageView()
-        
-        imageLoader.getImage(urlString: "https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Germany_Circuit.png.transform/7col-retina/image.pnghttps://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Germany_Circuit.png.transform/7col-retina/image.png")
-        imageView.image = imageLoader.image {
-            
-        }
-        return imageView
-    }()
-    
+//    lazy var image: UIImageView = {
+//        let imageView = UIImageView()
+//
+//        imageLoader.getImage(urlString: "https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Germany_Circuit.png.transform/7col-retina/image.pnghttps://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/Germany_Circuit.png.transform/7col-retina/image.png")
+//        imageView.image = imageLoader.image {
+//
+//        }
+//        return imageView
+//    }()
+//
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [nameLabel, image])
+        let stackView = UIStackView(arrangedSubviews: [nameLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         return stackView

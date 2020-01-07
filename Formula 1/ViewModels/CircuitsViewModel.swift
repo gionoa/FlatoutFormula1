@@ -7,12 +7,15 @@
 //
 
 import Foundation
+import Combine
 
 // MARK: - Circuits View Model
 class CircuitsViewModel: ObservableObject {
     // MARK: - Properties
     // using @Published for when implementing with SwiftUI
     @Published private var circuits = [Circuit]()
+    
+    private var cancellable: AnyCancellable?
     
     var numberOfCircuits: Int { circuits.count }
     
@@ -28,19 +31,21 @@ class CircuitsViewModel: ObservableObject {
 // MARK: - Functions
 extension CircuitsViewModel {
     private func fetch() {
-        WebService.fetch(.circuits)
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print(error.description)
-                }
-            }, receiveValue: { (response: Circuits) in
-                self.circuits = response.mrData.circuitTable.circuits
-                self.delegate?.didFinishFetching()
-            })
+        cancellable =
+            WebService
+                .fetch(.circuits)
+                .receive(on: RunLoop.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print(error.description)
+                    }
+                }, receiveValue: { (response: Circuits) in
+                    self.circuits = response.mrData.circuitTable.circuits
+                    self.delegate?.didFinishFetching()
+                })
     }
     
     func circuit(at index: Int) -> Circuit? {

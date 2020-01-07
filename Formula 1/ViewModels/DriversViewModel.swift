@@ -7,12 +7,15 @@
 //
 
 import Foundation
+import Combine
 
 // MARK: - Drivers View Model
 class DriversViewModel: ObservableObject {
     // MARK: - Properties
     // using @Published for when implementing with SwiftUI
     @Published private var drivers = [DriverStanding]()
+    
+    private var cancellable: AnyCancellable?
     
     var numberOfDrivers: Int { drivers.count }
     var driversArray: [DriverStanding] { drivers }
@@ -31,19 +34,21 @@ extension DriversViewModel {
     func driver(at index: Int) -> DriverStanding { drivers[index] }
     
     private func fetch() {
-        WebService.fetch(.drivers)
-            .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print(error)
-                }
-            }, receiveValue: { (response: DriverStandings) in
-                self.drivers = response.driverData.driverStandingsTable.standingsLists.first?.driverStandings ?? []
-                self.delegate?.didFinishFetching()
-            })
+        cancellable =
+            WebService
+                .fetch(.drivers)
+                .receive(on: RunLoop.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        print(error)
+                    }
+                }, receiveValue: { (response: DriverStandings) in
+                    self.drivers = response.driverData.driverStandingsTable.standingsLists.first?.driverStandings ?? []
+                    self.delegate?.didFinishFetching()
+                })
     }
 }
 
