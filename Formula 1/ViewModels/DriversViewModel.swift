@@ -48,7 +48,9 @@ class DriversViewModel: ObservableObject, ViewModel {
 
 // MARK: - Functions
 extension DriversViewModel {
-    func driver(at index: Int) -> DriverStanding { dataSource[index] }
+    func item(at index: Int) -> DriverStanding? {
+        dataSource[index]
+    }
 }
 
 // MARK: - Private Codable structs
