@@ -16,6 +16,7 @@ enum Path: String {
     case driverStandings = "/driverStandings"
     case results = "/results"
     case raceStandings = "/current/results.json"
+    case seasons = "/seasons.json"
 }
 
 // MARK: - Endpoint
@@ -35,7 +36,6 @@ extension Endpoint {
         components.scheme = "https"
         components.host = "ergast.com"
         components.path = path
-        print("components", components.url)
         return components.url
     }
 }
