@@ -44,8 +44,22 @@ final class DriversViewController: UIViewController {
     }
 }
 
-// MARK: - Table View Delegate / DataSource
-extension DriversViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: - Table View Delegate
+extension DriversViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let detailViewController = DriverDetailViewController()
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+}
+
+// MARK: - Table View DataSource
+extension DriversViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int { viewModel.numberOfSections }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { sectionHeaders[section] }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { viewModel.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
