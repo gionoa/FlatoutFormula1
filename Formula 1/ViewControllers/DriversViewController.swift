@@ -44,7 +44,7 @@ final class DriversViewController: UIViewController {
 
 // MARK: - Table View Delegate / DataSource
 extension DriversViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { viewModel.numberOfDrivers }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { viewModel.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let driver = viewModel.driver(at: indexPath.row)

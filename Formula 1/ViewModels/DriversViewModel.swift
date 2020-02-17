@@ -10,30 +10,22 @@ import Foundation
 import Combine
 
 // MARK: - Drivers View Model
-class DriversViewModel: ObservableObject {
-    // MARK: - Properties
-    // using @Published for when implementing with SwiftUI
-    @Published private var drivers = [DriverStanding]()
+class DriversViewModel: ObservableObject, ViewModel {
+    // MARK: ViewModel Properties
+    @Published private(set) var dataSource = [DriverStanding]()
     
-    private var cancellable: AnyCancellable?
-    
-    var numberOfDrivers: Int { drivers.count }
-    var driversArray: [DriverStanding] { drivers }
-    
+    var cancellable: AnyCancellable?
+    var count: Int { dataSource.count }
+   
     // MARK: - Fetchable Delegate
     weak var delegate: Fetchable?
 
     // MARK: - Lifecycle
     init() {
-        fetch()
+        fetchData()
     }
-}
-
-// MARK: - Functions
-extension DriversViewModel {
-    func driver(at index: Int) -> DriverStanding { drivers[index] }
     
-    private func fetch() {
+    func fetchData() {
         cancellable =
             WebService
                 .fetch(.drivers)
@@ -46,10 +38,17 @@ extension DriversViewModel {
                         print(error)
                     }
                 }, receiveValue: { (response: DriverStandings) in
-                    self.drivers = response.driverData.driverStandingsTable.standingsLists.first?.driverStandings ?? []
+                    self.dataSource = response.driverData.driverStandingsTable.standingsLists.first?.driverStandings ?? []
                     self.delegate?.didFinishFetching()
                 })
     }
+}
+
+// MARK: - Functions
+extension DriversViewModel {
+    func driver(at index: Int) -> DriverStanding { dataSource[index] }
+    
+   
 }
 
 // MARK: - Private Codable structs

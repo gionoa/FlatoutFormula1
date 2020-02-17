@@ -16,7 +16,7 @@ struct DriversListView: View {
     @ObservedObject var viewModel = DriversViewModel()
     
     var body: some View {
-        List(viewModel.driversArray) { driver in
+        List(viewModel.dataSource) { driver in
             NavigationLink(destination:
                 Text("Detail")
                     .navigationBarTitle(Text("\(driver.driver.givenName) \(driver.driver.familyName)"))) {
