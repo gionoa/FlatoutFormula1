@@ -34,10 +34,13 @@ extension WebService {
     
     static func fetch<T: Decodable>(_ subPath: Path) -> AnyPublisher<T, PublisherError> {
         let url = Endpoint(subPath).url!
+        
         return
             dataTask(url)
                 .decode(type: T.self, decoder: JSONDecoder())
-                .mapError { _ in return PublisherError.parsing }
+                .mapError { error in
+                    print(error)
+                    return PublisherError.parsing }
                 .eraseToAnyPublisher()
     }
     
