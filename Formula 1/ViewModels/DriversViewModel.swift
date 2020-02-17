@@ -11,6 +11,8 @@ import Combine
 
 // MARK: - Drivers View Model
 class DriversViewModel: ObservableObject, ViewModel {
+    var numberOfSections: Int { 1 }
+    
     // MARK: ViewModel Properties
     @Published private(set) var dataSource = [DriverStanding]()
     
@@ -47,8 +49,6 @@ class DriversViewModel: ObservableObject, ViewModel {
 // MARK: - Functions
 extension DriversViewModel {
     func driver(at index: Int) -> DriverStanding { dataSource[index] }
-    
-   
 }
 
 // MARK: - Private Codable structs

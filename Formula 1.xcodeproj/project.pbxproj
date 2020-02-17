@@ -51,6 +51,7 @@
 		3FD77597237F959400152523 /* DriverKitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD77596237F959400152523 /* DriverKitCell.swift */; };
 		3FD77599237FB5A500152523 /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD77598237FB5A500152523 /* Driver.swift */; };
 		6030FC0B23FA4FCE007F0901 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030FC0A23FA4FCE007F0901 /* ViewModel.swift */; };
+		6030FC0D23FA5C46007F0901 /* DriverDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030FC0C23FA5C46007F0901 /* DriverDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		3FD77596237F959400152523 /* DriverKitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverKitCell.swift; sourceTree = "<group>"; };
 		3FD77598237FB5A500152523 /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
 		6030FC0A23FA4FCE007F0901 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		6030FC0C23FA5C46007F0901 /* DriverDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +278,7 @@
 				3F9C9C052372067000B8FF69 /* ConstructorsViewController.swift */,
 				3FAB61E1237BBC6D005C4514 /* CircuitsViewController.swift */,
 				3F60755623823893005E9EE0 /* RaceStandingsViewController.swift */,
+				6030FC0C23FA5C46007F0901 /* DriverDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				3FAB61E2237BBC6D005C4514 /* CircuitsViewController.swift in Sources */,
 				3F54B797238095DD00F43268 /* Constructor.swift in Sources */,
 				3F62F92C237C754E0037DAA0 /* CircuitsCollectionView.swift in Sources */,
+				6030FC0D23FA5C46007F0901 /* DriverDetailViewController.swift in Sources */,
 				3F54B7932380876500F43268 /* DriversTableView.swift in Sources */,
 				3F6075552382334F005E9EE0 /* RaceStandingsViewModel.swift in Sources */,
 				3F62F934237D32020037DAA0 /* ConstructorsCollectionView.swift in Sources */,

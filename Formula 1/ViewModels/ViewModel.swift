@@ -14,6 +14,6 @@ protocol ViewModel {
     var dataSource: DataType { get }
     var cancellable: AnyCancellable? { get }
     var count: Int { get }
-    
+    var numberOfSections: Int { get }
     func fetchData()
 }

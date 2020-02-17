@@ -27,6 +27,8 @@ final class DriversViewController: UIViewController {
         return tableView
     }()
     
+    var sectionHeaders: [String] = ["2019"]
+    
     // MARK: init
     required init() {
         super.init(nibName: nil, bundle: nil)
@@ -55,13 +57,6 @@ extension DriversViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.configure(driver)
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        let detailVC = UIViewController()
-        navigationController?.present(detailVC, animated: true)
     }
 }
 
