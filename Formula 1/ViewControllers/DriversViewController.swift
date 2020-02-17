@@ -37,6 +37,7 @@ final class DriversViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         setupUI()
+        setupNavBar()
     }
     
     required init?(coder: NSCoder) {
@@ -84,6 +85,23 @@ extension DriversViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    func setupNavBar() {
+        let seasonButton = UIBarButtonItem(title: "Season",
+                                           style: .plain,
+                                           target: self,
+                                           action: #selector(didtapSeasonButton(_:)))
+        
+        navigationItem.rightBarButtonItem = seasonButton
+    }
+    
+    @objc func didtapSeasonButton(_ sender: UIBarButtonItem) {
+        let viewController = SelectYearViewController()
+        viewController.modalPresentationStyle = .overCurrentContext
+
+        let navigationViewController = UINavigationController(rootViewController: viewController)
+        present(navigationViewController, animated: true)
     }
 }
 
