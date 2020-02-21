@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import Combine
 
+protocol SelectYearDelegate: class {
+    func didSelectYear(year: Int)
+}
+
 class SelectYearViewController: UIViewController {
     lazy var viewModel: SelectYearViewModel = {
         let viewModel = SelectYearViewModel()
@@ -17,12 +21,14 @@ class SelectYearViewController: UIViewController {
         return viewModel
     }()
     
+    weak var delegate: SelectYearDelegate?
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(SeasonKitCell.self, forCellReuseIdentifier: SeasonKitCell.reuseID)
         return tableView
     }()
     
@@ -39,13 +45,12 @@ class SelectYearViewController: UIViewController {
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(cancelButtonTapped(_:)))
-
-        view.backgroundColor = .systemBackground
-        
         setupUI()
     }
     
     func setupUI() {
+        view.backgroundColor = .systemBackground
+
         title = "Select Season"
         navigationController?.navigationBar.prefersLargeTitles = false
         
@@ -65,59 +70,42 @@ class SelectYearViewController: UIViewController {
       }
 }
 
-extension SelectYearViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(">>>>>>>>>>", viewModel.count)
-        return viewModel.count
-    }
+extension SelectYearViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int { 1 }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { viewModel.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: SeasonKitCell.reuseID,
+                                                 for: indexPath)
+            as! SeasonKitCell
         
-        if viewModel.dataSource.isEmpty == false {
-            cell.textLabel?.text = viewModel.dataSource[indexPath.row].season
-        }
+        guard let season = viewModel.item(at: indexPath.row) else { fatalError() }
+        
+        cell.yearLabel.text = season.season
         
         return cell
     }
 }
 
+extension SelectYearViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let season = viewModel.item(at: indexPath.row) else { fatalError() }
+        guard let year = Int(season.season) else { fatalError() }
+        delegate?.didSelectYear(year: year)
+        
+        dismiss(animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 44 }
+}
+
 extension SelectYearViewController: Fetchable {
     func didFinishFetching() {
-        tableView.reloadSections(IndexSet([0]), with: .automatic)
+        DispatchQueue.main.async {
+            self.tableView.reloadSections(IndexSet([0]), with: .automatic)
+        }
     }
-}
-
-struct Year: Codable {
-    let mrData: YearData
-
-    enum CodingKeys: String, CodingKey {
-        case mrData = "MRData"
-    }
-}
-
-struct YearData: Codable {
-    let xmlns: String
-    let series: String
-    let url: String
-    let limit, offset, total: String
-    let seasonTable: SeasonTable
-
-    enum CodingKeys: String, CodingKey {
-        case xmlns, series, url, limit, offset, total
-        case seasonTable = "SeasonTable"
-    }
-}
-
-struct SeasonTable: Codable {
-    let seasons: [Season]
-
-    enum CodingKeys: String, CodingKey {
-        case seasons = "Seasons"
-    }
-}
-
-struct Season: Codable {
-    let season: String
-    let url: String
 }

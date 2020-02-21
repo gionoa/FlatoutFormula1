@@ -10,12 +10,7 @@ import UIKit
 // MARK: - Driver Table View Cell
 class DriverKitCell: UITableViewCell {
     // MARK: - Properties
-    private let constructorColor: UIView = {
-        let view = UIView()
-        view.backgroundColor = .blue
-        // set to constructor color
-        return view
-    }()
+    private let constructorColor = UIView()
     
     private lazy var nameLabel: UILabel = {
           let label = UILabel()
@@ -74,17 +69,17 @@ extension DriverKitCell {
         contentView.addSubview(pointsLabel)
         
         let inset: CGFloat = 8
-
+        let safeArea = contentView.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset * 1.5),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset * 2),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset),
-            
+            stackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: inset * 2),
+            stackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: inset * 2),
+            stackView.bottomAnchor.constraint(lessThanOrEqualTo: safeArea.bottomAnchor, constant: -inset),
+               
             constructorColor.widthAnchor.constraint(equalToConstant: 8),
-            constructorColor.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: -inset * 2),
+            constructorColor.heightAnchor.constraint(equalTo: safeArea.heightAnchor, constant: -inset * 2),
             
-            pointsLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            pointsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset)
+            pointsLabel.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor),
+            pointsLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -inset)
         ])
     }
     
@@ -94,7 +89,9 @@ extension DriverKitCell {
 
         nameLabel.text = "\(driver.driver.givenName) \(driver.driver.familyName)"
         constructorLabel.text = constructor
-        pointsLabel.text = "\(driver.points) PTS"
+        
+        let points = Int(driver.points) ?? 0
+        pointsLabel.text = "\(points) PTS"
     }
     
     func constructorColor(for constructor: String) -> UIColor {
@@ -120,7 +117,7 @@ extension DriverKitCell {
         case "Haas F1 Team":
             return .Haas
         default:
-            fatalError()
+            return .systemYellow
         }
     }
 }

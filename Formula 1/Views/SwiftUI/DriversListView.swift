@@ -21,7 +21,7 @@ struct DriversListView: View {
                 Text("Detail")
                     .navigationBarTitle(Text("\(driver.driver.givenName) \(driver.driver.familyName)"))) {
                         
-                        DriverCell(firstName: driver.driver.givenName, lastName: driver.driver.familyName, driverNumber: driver.driver.permanentNumber)
+                        DriverCell(firstName: driver.driver.givenName, lastName: driver.driver.familyName, driverNumber: driver.driver.permanentNumber ?? "00")
             }
         }
         .navigationBarTitle("Drivers")
