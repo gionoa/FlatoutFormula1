@@ -12,8 +12,8 @@ import Foundation
 struct Driver: Codable, Identifiable {
     let id = UUID()
     let driverID: String
-    let permanentNumber: String
-    let code: String
+    let permanentNumber: String?
+    let code: String?
     let url: String
     let givenName: String
     let familyName: String
@@ -31,3 +31,4 @@ struct Driver: Codable, Identifiable {
         case nationality = "nationality"
     }
 }
+
