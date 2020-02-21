@@ -27,8 +27,6 @@ final class DriversViewController: UIViewController {
         return tableView
     }()
     
-    var sectionHeaders: [String] = ["2019"]
-    
     // MARK: init
     required init() {
         super.init(nibName: nil, bundle: nil)
@@ -59,7 +57,7 @@ extension DriversViewController: UITableViewDelegate {
 extension DriversViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int { viewModel.numberOfSections }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { sectionHeaders[section] }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { viewModel.sectionYearHeader }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { viewModel.count }
     
@@ -98,6 +96,7 @@ extension DriversViewController {
     
     @objc func didtapSeasonButton(_ sender: UIBarButtonItem) {
         let viewController = SelectYearViewController()
+        viewController.delegate = self
         viewController.modalPresentationStyle = .overCurrentContext
 
         let navigationViewController = UINavigationController(rootViewController: viewController)
@@ -112,5 +111,11 @@ extension DriversViewController: Fetchable {
             let section = IndexSet([0])
             self.tableView.reloadSections(section, with: .automatic)
         }
+    }
+}
+
+extension DriversViewController: SelectYearDelegate {
+    func didSelectYear(year: Int) {
+        viewModel.fetchData(for: year)
     }
 }
