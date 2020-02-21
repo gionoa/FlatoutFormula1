@@ -9,40 +9,46 @@
 import Foundation
 import Combine
 
-class SelectYearViewModel: ViewModel {
-    func item(at index: Int) -> Season? {
-        dataSource[index]
+class SelectYearViewModel: ObservableObject {
+    @Published var dataSource = [Season]() {
+        didSet {
+            self.delegate?.didFinishFetching()
+        }
     }
     
-    @Published var dataSource = [Season]()
-    
     weak var delegate: Fetchable?
-
+    
     var cancellable: AnyCancellable?
     
     var count: Int { dataSource.count }
     
     var numberOfSections: Int { 1 }
     
-    required init() {
+    init() {
         fetchData()
     }
-    
+}
+
+extension SelectYearViewModel {
     func fetchData() {
         cancellable =
             WebService
                 .fetch(.seasons)
-                    .receive(on: RunLoop.main)
-                    .sink(receiveCompletion: { completion in
-                        switch completion {
-                        case .finished:
-                            print()
-                        case .failure(let error):
-                            print(error)
-                        }
-                    }, receiveValue: { (years: Year) in
-                        self.dataSource = years.mrData.seasonTable.seasons
-                        self.delegate?.didFinishFetching()
-                    })
+                .receive(on: RunLoop.main)
+                .sink(receiveCompletion: { completion in
+                    switch completion {
+                    case .finished:
+                        print()
+                    case .failure(let error):
+                        print(error)
+                    }
+                }, receiveValue: { (years: Year) in
+                    self.dataSource = years.mrData.seasonTable.seasons
+                    self.delegate?.didFinishFetching()
+                })
+    }
+    
+    func item(at index: Int) -> Season? {
+        dataSource[index]
     }
 }

@@ -18,19 +18,21 @@ class DriversViewModel: ObservableObject, ViewModel {
     
     var cancellable: AnyCancellable?
     var count: Int { dataSource.count }
+    
+    var sectionYearHeader = "2019"
    
     // MARK: - Fetchable Delegate
     weak var delegate: Fetchable?
 
     // MARK: - Lifecycle
     init() {
-        fetchData()
+        fetchData(for: 2019)
     }
     
-    func fetchData() {
+    func fetchData(for year: Int?) {
         cancellable =
             WebService
-                .fetch(.drivers)
+                .fetch(.drivers, for: year)
                 .receive(on: RunLoop.main)
                 .sink(receiveCompletion: { completion in
                     switch completion {
@@ -42,6 +44,7 @@ class DriversViewModel: ObservableObject, ViewModel {
                 }, receiveValue: { (response: DriverStandings) in
                     self.dataSource = response.driverData.driverStandingsTable.standingsLists.first?.driverStandings ?? []
                     self.delegate?.didFinishFetching()
+                    self.sectionYearHeader = String(year!)
                 })
     }
 }
