@@ -32,9 +32,8 @@ extension WebService {
                 .eraseToAnyPublisher()
     }
     
-    static func fetch<T: Decodable>(_ subPath: Path) -> AnyPublisher<T, PublisherError> {
-        let url = Endpoint(subPath).url!
-        
+    static func fetch<T: Decodable>(_ subPath: Path, for year: Int? = 2019) -> AnyPublisher<T, PublisherError> {
+        let url = Endpoint(subPath, for: year).url!
         return
             dataTask(url)
                 .decode(type: T.self, decoder: JSONDecoder())
@@ -46,7 +45,6 @@ extension WebService {
     
     static func fetchImage(urlString: String) -> AnyPublisher<UIImage, Error> {
         let url = URL(string: urlString)
-           
         return
             URLSession.shared.dataTaskPublisher(for: url!)
                 .tryMap { data, response in
