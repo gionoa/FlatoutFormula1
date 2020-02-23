@@ -16,7 +16,7 @@ import SwiftUI
 
  */
 struct ViewControllerRepresentation<ViewController: UIViewController>: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIViewController { UINavigationController(rootViewController: ViewController()) }
+    func makeUIViewController(context: Context) -> UIViewController { ViewController() }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }
 }

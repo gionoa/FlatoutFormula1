@@ -13,7 +13,7 @@ import SwiftUI
 final class ConstructorsViewController: UIViewController {
     // Mark: - Properties
     private lazy var viewModel: ConstructorsViewModel = {
-        let viewModel = ConstructorsViewModel()
+        let viewModel = ConstructorsViewModel.shared
         viewModel.delegate = self
         return viewModel
     }()

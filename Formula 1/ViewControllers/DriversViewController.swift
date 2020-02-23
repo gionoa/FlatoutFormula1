@@ -8,16 +8,19 @@
 
 import UIKit
 import SwiftUI
+import Combine
 
 // MARK: - Drivers View Controller
 #warning("Implement pull to refresh")
 final class DriversViewController: UIViewController {
     // MARK: - Properties
     private lazy var viewModel: DriversViewModel = {
-        let viewModel = DriversViewModel()
+        let viewModel = DriversViewModel.shared
         viewModel.delegate = self
         return viewModel
     }()
+    
+    var cancellables = Set<AnyCancellable>()
     
     lazy var tableView: DriversTableView = {
         let tableView = DriversTableView()
@@ -36,6 +39,17 @@ final class DriversViewController: UIViewController {
     override func viewDidLoad() {
         setupUI()
         setupNavBar()
+        
+        cancellables.insert(
+            SelectYearViewModel.yearValueSubject
+        
+        .sink() { year in
+            self.viewModel.fetchData(for: year)
+        })
+        
+//        _ = viewModel.$dataSource.sink() { _ in
+//            self.tableView.reloadSections(IndexSet([0]), with: .automatic)
+//        }
     }
     
     required init?(coder: NSCoder) {

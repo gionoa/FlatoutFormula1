@@ -10,13 +10,15 @@ import Foundation
 import Combine
 
 // MARK: - Drivers View Model
-class DriversViewModel: ObservableObject, ViewModel {
+class DriversViewModel: ViewModel {
+    static let shared = DriversViewModel()
+    
     var numberOfSections: Int { 1 }
     
     // MARK: ViewModel Properties
     @Published private(set) var dataSource = [DriverStanding]()
     
-    var cancellable: AnyCancellable?
+    @Published var cancellable: AnyCancellable?
     var count: Int { dataSource.count }
     
     var sectionYearHeader = "2019"
@@ -25,7 +27,7 @@ class DriversViewModel: ObservableObject, ViewModel {
     weak var delegate: Fetchable?
 
     // MARK: - Lifecycle
-    init() {
+    private init() {
         fetchData(for: 2019)
     }
     

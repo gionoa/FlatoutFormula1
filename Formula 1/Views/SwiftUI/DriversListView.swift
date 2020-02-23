@@ -13,7 +13,11 @@ import Combine
 // MARK: - Drivers SwiftUI Table View
 struct DriversListView: View {
     // MARK: - Properties
-    @ObservedObject var viewModel = DriversViewModel()
+    var viewModel: DriversViewModel
+    
+    init(viewModel: DriversViewModel = DriversViewModel.shared) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         List(viewModel.dataSource) { driver in

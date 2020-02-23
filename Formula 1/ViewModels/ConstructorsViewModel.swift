@@ -11,6 +11,9 @@ import Combine
 
 // MARK: - Constructors View Model
 class ConstructorsViewModel: ObservableObject {
+    // MARK: - Singleton Instance
+    static let shared = ConstructorsViewModel()
+    
     // MARK: - Properties
     // using @Published for when implementing with SwiftUI
     @Published private var constructors = [ConstructorStanding]()
@@ -22,7 +25,7 @@ class ConstructorsViewModel: ObservableObject {
     weak var delegate: Fetchable?
     
     // MARK: - init
-    init() {
+    private init() {
         fetch()
     }
 }

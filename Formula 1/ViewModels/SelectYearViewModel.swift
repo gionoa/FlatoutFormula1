@@ -9,12 +9,10 @@
 import Foundation
 import Combine
 
-class SelectYearViewModel: ObservableObject {
-    @Published var dataSource = [Season]() {
-        didSet {
-            self.delegate?.didFinishFetching()
-        }
-    }
+class SelectYearViewModel {
+    static var yearValueSubject = CurrentValueSubject<Int, Never>(2019)
+    
+    @Published var dataSource = [Season]()
     
     weak var delegate: Fetchable?
     
@@ -30,7 +28,7 @@ class SelectYearViewModel: ObservableObject {
 }
 
 extension SelectYearViewModel {
-    func fetchData() {
+    private func fetchData() {
         cancellable =
             WebService
                 .fetch(.seasons)
@@ -49,6 +47,11 @@ extension SelectYearViewModel {
     }
     
     func item(at index: Int) -> Season? {
-        dataSource[index]
+        guard index < dataSource.count else { return nil }
+        return dataSource[index]
+    }
+    
+    func updateCurrentValue(for year: Int) {
+           SelectYearViewModel.yearValueSubject.value = year
     }
 }
