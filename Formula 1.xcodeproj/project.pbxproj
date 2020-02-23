@@ -56,6 +56,7 @@
 		6030FC1123FA8163007F0901 /* SelectYearViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030FC1023FA8163007F0901 /* SelectYearViewModel.swift */; };
 		6030FCA023FFB09C007F0901 /* SeasonKitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030FC9F23FFB09C007F0901 /* SeasonKitCell.swift */; };
 		6030FCA223FFB31B007F0901 /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6030FCA123FFB31B007F0901 /* Year.swift */; };
+		60E3FD52240205A5001AD1AF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E3FD51240205A5001AD1AF /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		6030FC1023FA8163007F0901 /* SelectYearViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectYearViewModel.swift; sourceTree = "<group>"; };
 		6030FC9F23FFB09C007F0901 /* SeasonKitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonKitCell.swift; sourceTree = "<group>"; };
 		6030FCA123FFB31B007F0901 /* Year.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
+		60E3FD51240205A5001AD1AF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +290,7 @@
 				3F60755623823893005E9EE0 /* RaceStandingsViewController.swift */,
 				6030FC0C23FA5C46007F0901 /* DriverDetailViewController.swift */,
 				6030FC0E23FA71A6007F0901 /* SelectYearViewController.swift */,
+				60E3FD51240205A5001AD1AF /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				3FD77599237FB5A500152523 /* Driver.swift in Sources */,
 				3FD7758B237F6D1000152523 /* Circuit.swift in Sources */,
 				3FA7FA262391BBF600498764 /* UIColor.swift in Sources */,
+				60E3FD52240205A5001AD1AF /* SettingsViewController.swift in Sources */,
 				3FAB61E2237BBC6D005C4514 /* CircuitsViewController.swift in Sources */,
 				3F54B797238095DD00F43268 /* Constructor.swift in Sources */,
 				3F62F92C237C754E0037DAA0 /* CircuitsCollectionView.swift in Sources */,
