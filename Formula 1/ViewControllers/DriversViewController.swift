@@ -11,12 +11,16 @@ import SwiftUI
 import Combine
 
 // MARK: - Drivers View Controller
-#warning("Implement pull to refresh")
 final class DriversViewController: UIViewController {
     // MARK: - Properties
     private lazy var viewModel: DriversViewModel = {
-        let viewModel = DriversViewModel.shared
-        viewModel.delegate = self
+        let viewModel = DriversViewModel()
+        
+        viewModel.$dataSource.sink { _ in
+            self.tableView.reloadSections(IndexSet([0]), with: .automatic)
+            }
+            .store(in: &cancellables)
+        
         return viewModel
     }()
     
@@ -29,9 +33,10 @@ final class DriversViewController: UIViewController {
         tableView.dataSource = self
         return tableView
     }()
-    
+        
     // MARK: init
     required init() {
+        cancellables = []
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -40,16 +45,11 @@ final class DriversViewController: UIViewController {
         setupUI()
         setupNavBar()
         
-        cancellables.insert(
-            SelectYearViewModel.yearValueSubject
-        
-        .sink() { year in
-            self.viewModel.fetchData(for: year)
-        })
-        
-//        _ = viewModel.$dataSource.sink() { _ in
-//            self.tableView.reloadSections(IndexSet([0]), with: .automatic)
-//        }
+        SelectYearViewModel.yearValueSubject
+            .sink() { year in
+                self.viewModel.fetchData(for: year)
+            }
+            .store(in: &cancellables)
     }
     
     required init?(coder: NSCoder) {
@@ -105,31 +105,21 @@ extension DriversViewController {
                                            target: self,
                                            action: #selector(didtapSeasonButton(_:)))
         
-        navigationItem.rightBarButtonItem = seasonButton
+        //navigationItem.rightBarButtonItem = seasonButton
     }
     
-    @objc func didtapSeasonButton(_ sender: UIBarButtonItem) {
-        let viewController = SelectYearViewController()
-        viewController.delegate = self
-        viewController.modalPresentationStyle = .overCurrentContext
+    @objc func didtapOptionsButton(_ sender: UIBarButtonItem) {
+        #warning("TODO")
+        
+        let modalVC = UIHostingController(rootView: SettingsView())
+        modalVC.modalPresentationStyle = .pageSheet
+        
+        // let viewController = SelectYearViewController()
+        // viewController.delegate = self
+        // viewController.modalPresentationStyle = .overCurrentContext
 
-        let navigationViewController = UINavigationController(rootViewController: viewController)
-        present(navigationViewController, animated: true)
-    }
-}
-
-// MARK: - Fetchable
-extension DriversViewController: Fetchable {
-    func didFinishFetching() {
-        DispatchQueue.main.async {
-            let section = IndexSet([0])
-            self.tableView.reloadSections(section, with: .automatic)
-        }
-    }
-}
-
-extension DriversViewController: SelectYearDelegate {
-    func didSelectYear(year: Int) {
-        viewModel.fetchData(for: year)
+        // let navigationViewController = UINavigationController(rootViewController: viewController)
+        // present(navigationViewController, animated: true)
+        present(modalVC, animated: true)
     }
 }

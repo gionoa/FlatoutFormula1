@@ -15,7 +15,7 @@ struct DriversListView: View {
     // MARK: - Properties
     var viewModel: DriversViewModel
     
-    init(viewModel: DriversViewModel = DriversViewModel.shared) {
+    init(viewModel: DriversViewModel = DriversViewModel()) {
         self.viewModel = viewModel
     }
     
