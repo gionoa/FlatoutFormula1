@@ -51,6 +51,8 @@ final class RootTabBarController: UITabBarController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         #warning("TODO: Implement navigation")
-        viewControllers = [driversNavController, constructorsNavController, circuitsNavController, raceStandingsNavController, settingsNavController]
+        viewControllers = [driversNavController, constructorsNavController, circuitsNavController, raceStandingsNavController]
     }
 }
+
+
