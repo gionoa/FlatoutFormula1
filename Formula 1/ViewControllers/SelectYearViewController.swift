@@ -58,11 +58,7 @@ class SelectYearViewController: UIViewController {
     }
     
     func setupUI() {
-        view.backgroundColor = .systemBackground
-
-       // title = "Select Season"
-        //navigationController?.navigationBar.prefersLargeTitles = false
-        
+        view.backgroundColor = .systemBackground        
         view.addSubview(tableView)
         
         let safeArea = view.safeAreaLayoutGuide
@@ -104,7 +100,6 @@ extension SelectYearViewController: UITableViewDelegate {
         guard let season = viewModel.item(at: indexPath.row) else { fatalError() }
         guard let year = Int(season.season) else { fatalError() }
         
-        delegate?.didSelectYear(year: year)
         SelectYearViewModel.yearValueSubject.value = year
         dismiss(animated: true)
     }

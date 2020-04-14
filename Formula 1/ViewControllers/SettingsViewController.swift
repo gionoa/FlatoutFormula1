@@ -49,16 +49,14 @@ struct SettingsView: View {
     }
     
     var body: some View {
-        List {
-            NavigationLink(destination: Text("Hey")) {
-                SettingsCell(navTitle: "Select F1 Year", year: viewModel.year)
-                
+        NavigationView {
+            List {                
+                NavigationLink(destination: ViewControllerRepresentation<SelectYearViewController>()) {
+                    SettingsCell(navTitle: "Select F1 Year", year: viewModel.year)
+                }
+                .navigationBarTitle("Settings")
             }
-            
-            NavigationLink(destination: ViewControllerRepresentation<SelectYearViewController>()) {
-                SettingsCell(navTitle: "Select F1 Year", year: viewModel.year)
-            }
-             .navigationBarTitle("Settings")
+        .navigationBarTitle("Settings")
         }
     }
 }

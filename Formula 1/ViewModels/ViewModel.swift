@@ -14,7 +14,7 @@ protocol ViewModel: class {
     associatedtype SubType
     
     var dataSource: DataType { get }
-    var cancellable: AnyCancellable? { get }
+    var cancellables: AnyCancellable? { get }
     var count: Int { get }
     var numberOfSections: Int { get }
     

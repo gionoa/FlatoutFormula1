@@ -10,15 +10,14 @@ import Foundation
 import Combine
 
 // MARK: - Drivers View Model
-class DriversViewModel: ViewModel {
-    static let shared = DriversViewModel()
-    
+class DriversViewModel {
     var numberOfSections: Int { 1 }
     
     // MARK: ViewModel Properties
     @Published private(set) var dataSource = [DriverStanding]()
     
-    @Published var cancellable: AnyCancellable?
+    @Published var cancellable: Set<AnyCancellable>
+    
     var count: Int { dataSource.count }
     
     var sectionYearHeader = "2019"
@@ -27,12 +26,12 @@ class DriversViewModel: ViewModel {
     weak var delegate: Fetchable?
 
     // MARK: - Lifecycle
-    private init() {
+    init() {
+        cancellable = []
         fetchData(for: 2019)
     }
     
     func fetchData(for year: Int?) {
-        cancellable =
             WebService
                 .fetch(.drivers, for: year)
                 .receive(on: RunLoop.main)
@@ -47,7 +46,7 @@ class DriversViewModel: ViewModel {
                     self.dataSource = response.driverData.driverStandingsTable.standingsLists.first?.driverStandings ?? []
                     self.delegate?.didFinishFetching()
                     self.sectionYearHeader = String(year!)
-                })
+                }).store(in: &cancellable)
     }
 }
 

@@ -108,7 +108,7 @@ extension DriversViewController {
         //navigationItem.rightBarButtonItem = seasonButton
     }
     
-    @objc func didtapOptionsButton(_ sender: UIBarButtonItem) {
+    @objc func didtapSeasonButton(_ sender: UIBarButtonItem) {
         #warning("TODO")
         
         let modalVC = UIHostingController(rootView: SettingsView())

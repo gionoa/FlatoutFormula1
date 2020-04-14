@@ -18,7 +18,7 @@ class ConstructorsViewModel: ObservableObject {
     // using @Published for when implementing with SwiftUI
     @Published private var constructors = [ConstructorStanding]()
     
-    private var cancellable: AnyCancellable?
+    private var cancellables: Set<AnyCancellable>
     
     var numberOfConstructors: Int { constructors.count }
     
@@ -26,6 +26,7 @@ class ConstructorsViewModel: ObservableObject {
     
     // MARK: - init
     private init() {
+        cancellables = []
         fetch()
     }
 }
@@ -33,7 +34,7 @@ class ConstructorsViewModel: ObservableObject {
 // MARK: - Functions
 extension ConstructorsViewModel {
     private func fetch() {
-        cancellable =
+       
             WebService
                 .fetch(.constructorStandings)
                 .receive(on: RunLoop.main)
@@ -49,7 +50,7 @@ extension ConstructorsViewModel {
                     self.constructors = standingsList.first?.constructorStandings ?? []
                     
                     self.delegate?.didFinishFetching()
-                })
+                }).store(in: &cancellables)
     }
     
     func constructor(at index: Int) -> ConstructorStanding { constructors[index] }
