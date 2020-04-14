@@ -23,7 +23,7 @@ enum Path: String {
         case .circuits:
             return "/\(year)/circuits.json"
         case .constructorStandings:
-            return "/\(year)constructorStandings.json"
+            return "/\(year)/constructorStandings.json"
         case .drivers:
             return "/\(year)/driverStandings.json"
         case .driverStandings:

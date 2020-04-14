@@ -8,16 +8,23 @@
 
 import UIKit
 import SwiftUI
+import Combine
 
 // MARK: - Drivers View Controller
-#warning("Implement pull to refresh")
 final class DriversViewController: UIViewController {
     // MARK: - Properties
     private lazy var viewModel: DriversViewModel = {
         let viewModel = DriversViewModel()
-        viewModel.delegate = self
+        
+        viewModel.$dataSource.sink { _ in
+            self.tableView.reloadSections(IndexSet([0]), with: .automatic)
+            }
+            .store(in: &cancellables)
+        
         return viewModel
     }()
+    
+    var cancellables = Set<AnyCancellable>()
     
     lazy var tableView: DriversTableView = {
         let tableView = DriversTableView()
@@ -26,9 +33,10 @@ final class DriversViewController: UIViewController {
         tableView.dataSource = self
         return tableView
     }()
-    
+        
     // MARK: init
     required init() {
+        cancellables = []
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -36,6 +44,12 @@ final class DriversViewController: UIViewController {
     override func viewDidLoad() {
         setupUI()
         setupNavBar()
+        
+        SelectYearViewModel.yearValueSubject
+            .sink() { year in
+                self.viewModel.fetchData(for: year)
+            }
+            .store(in: &cancellables)
     }
     
     required init?(coder: NSCoder) {
@@ -91,31 +105,21 @@ extension DriversViewController {
                                            target: self,
                                            action: #selector(didtapSeasonButton(_:)))
         
-        navigationItem.rightBarButtonItem = seasonButton
+        //navigationItem.rightBarButtonItem = seasonButton
     }
     
     @objc func didtapSeasonButton(_ sender: UIBarButtonItem) {
-        let viewController = SelectYearViewController()
-        viewController.delegate = self
-        viewController.modalPresentationStyle = .overCurrentContext
+        #warning("TODO")
+        
+        let modalVC = UIHostingController(rootView: SettingsView())
+        modalVC.modalPresentationStyle = .pageSheet
+        
+        // let viewController = SelectYearViewController()
+        // viewController.delegate = self
+        // viewController.modalPresentationStyle = .overCurrentContext
 
-        let navigationViewController = UINavigationController(rootViewController: viewController)
-        present(navigationViewController, animated: true)
-    }
-}
-
-// MARK: - Fetchable
-extension DriversViewController: Fetchable {
-    func didFinishFetching() {
-        DispatchQueue.main.async {
-            let section = IndexSet([0])
-            self.tableView.reloadSections(section, with: .automatic)
-        }
-    }
-}
-
-extension DriversViewController: SelectYearDelegate {
-    func didSelectYear(year: Int) {
-        viewModel.fetchData(for: year)
+        // let navigationViewController = UINavigationController(rootViewController: viewController)
+        // present(navigationViewController, animated: true)
+        present(modalVC, animated: true)
     }
 }

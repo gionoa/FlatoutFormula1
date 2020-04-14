@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Combine
+import SwiftUI
 
 protocol SelectYearDelegate: class {
     func didSelectYear(year: Int)
@@ -20,6 +21,8 @@ class SelectYearViewController: UIViewController {
         viewModel.delegate = self
         return viewModel
     }()
+    
+    var cancellables = Set<AnyCancellable>()
     
     weak var delegate: SelectYearDelegate?
     
@@ -41,19 +44,21 @@ class SelectYearViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel",
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(cancelButtonTapped(_:)))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel",
+//                                                            style: .done,
+//                                                            target: self,
+//                                                            action: #selector(cancelButtonTapped(_:)))
         setupUI()
+        
+        viewModel.$dataSource
+            .sink() { arr in
+                self.tableView.reloadSections(IndexSet([0]), with: .automatic)
+            }
+            .store(in: &cancellables)
     }
     
     func setupUI() {
-        view.backgroundColor = .systemBackground
-
-        title = "Select Season"
-        navigationController?.navigationBar.prefersLargeTitles = false
-        
+        view.backgroundColor = .systemBackground        
         view.addSubview(tableView)
         
         let safeArea = view.safeAreaLayoutGuide
@@ -81,8 +86,8 @@ extension SelectYearViewController: UITableViewDataSource {
             as! SeasonKitCell
         
         guard let season = viewModel.item(at: indexPath.row) else { fatalError() }
-        
-        cell.yearLabel.text = season.season
+
+        cell.configure(with: season)
         
         return cell
     }
@@ -94,8 +99,8 @@ extension SelectYearViewController: UITableViewDelegate {
         
         guard let season = viewModel.item(at: indexPath.row) else { fatalError() }
         guard let year = Int(season.season) else { fatalError() }
-        delegate?.didSelectYear(year: year)
         
+        SelectYearViewModel.yearValueSubject.value = year
         dismiss(animated: true)
     }
     

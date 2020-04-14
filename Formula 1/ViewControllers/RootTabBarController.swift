@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 // MARK: - F1 Navigation Controller
 private final class F1NavController: UINavigationController {
@@ -41,7 +42,11 @@ final class RootTabBarController: UITabBarController {
     
     #warning("TODO: Handle Localized string")
        private let raceStandingsNavController = F1NavController(rootViewController: RaceStandingsViewController(),
-                                                           titled: "Race Standings")
+                                                           titled: "GP Results")
+    
+    #warning("TODO: Handle Localized string")
+    private let settingsNavController = F1NavController(rootViewController: UIHostingController(rootView: SettingsView()),
+                                                        titled: "Settings")
        
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -49,3 +54,5 @@ final class RootTabBarController: UITabBarController {
         viewControllers = [driversNavController, constructorsNavController, circuitsNavController, raceStandingsNavController]
     }
 }
+
+

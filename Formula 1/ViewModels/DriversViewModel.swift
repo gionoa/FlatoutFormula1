@@ -10,13 +10,14 @@ import Foundation
 import Combine
 
 // MARK: - Drivers View Model
-class DriversViewModel: ObservableObject, ViewModel {
+class DriversViewModel {
     var numberOfSections: Int { 1 }
     
     // MARK: ViewModel Properties
     @Published private(set) var dataSource = [DriverStanding]()
     
-    var cancellable: AnyCancellable?
+    @Published var cancellable: Set<AnyCancellable>
+    
     var count: Int { dataSource.count }
     
     var sectionYearHeader = "2019"
@@ -26,11 +27,11 @@ class DriversViewModel: ObservableObject, ViewModel {
 
     // MARK: - Lifecycle
     init() {
+        cancellable = []
         fetchData(for: 2019)
     }
     
     func fetchData(for year: Int?) {
-        cancellable =
             WebService
                 .fetch(.drivers, for: year)
                 .receive(on: RunLoop.main)
@@ -45,7 +46,7 @@ class DriversViewModel: ObservableObject, ViewModel {
                     self.dataSource = response.driverData.driverStandingsTable.standingsLists.first?.driverStandings ?? []
                     self.delegate?.didFinishFetching()
                     self.sectionYearHeader = String(year!)
-                })
+                }).store(in: &cancellable)
     }
 }
 
