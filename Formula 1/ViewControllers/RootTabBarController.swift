@@ -40,7 +40,7 @@ final class RootTabBarController: UITabBarController {
                                                         titled: "Circuits")
     
     
-    #warning("TODO: Handle Localized string")
+    #warning("TODO: Handle Localized string") 
        private let raceStandingsNavController = F1NavController(rootViewController: RaceStandingsViewController(),
                                                            titled: "GP Results")
     
